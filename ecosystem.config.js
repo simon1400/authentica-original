@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name   : "Authentica strapi",
+    name   : "Authentica client",
     script : "yarn start",
     env_production: {}
   }],

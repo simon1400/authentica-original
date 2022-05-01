@@ -10,7 +10,9 @@ const ScrollingSection = () => {
   const [offset, setOffset] = useState(0)
 
   useEffect(() => {
+    // @ts-ignore
     if(ref?.current?.offsetLeft) {
+      // @ts-ignore
       setOffset(ref.current?.offsetLeft)
     }
   }, [ref])
