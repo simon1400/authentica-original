@@ -18,17 +18,17 @@ const SocialNav: FC<SocialNavProps> = ({
     <Social invert={invert} big={big}>
       <ul>
         <li>
-          <a href="/">
+          <a href="#">
             <Facebook />
           </a>
         </li>
          <li>
-          <a href="/">
+          <a href="#">
             <Instagram />
           </a>
         </li>
         <li>
-          <a href="/">
+          <a href="#">
             <Linkedin />
           </a>
         </li>

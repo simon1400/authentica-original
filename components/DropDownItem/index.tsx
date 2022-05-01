@@ -10,8 +10,8 @@ const DropDownItem = () => {
       <div>
         <Typography variant="h5">in store design</Typography>
         <ul>
-          <li><a href="/">Shop in shop</a></li>
-          <li><a href="/">Shop in shop</a></li>
+          <li><a href="#">Shop in shop</a></li>
+          <li><a href="#">Shop in shop</a></li>
         </ul>
       </div>
     </DropDownItemC>

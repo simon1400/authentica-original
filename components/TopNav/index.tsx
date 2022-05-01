@@ -21,19 +21,19 @@ const TopNav: FC<{setDropShown: any}> = ({
             <a>{item.title}</a>
           </Link>
         </li>)} */}
-        <li><a href="/">some title</a></li>
+        <li><a href="#">some title</a></li>
         <li 
           onMouseEnter={() => setDropShown(1)}
           className="drop-down-item"
         >
-          <a href="/">some title<DownIcon /></a>
+          <a href="#">some title<DownIcon /></a>
         </li>
         <li className="active">
-          <a href="/">some title</a>
+          <a href="#">some title</a>
         </li>
-        <li><a href="/">some title</a></li>
-        <li><a href="/">some title</a></li>
-        <li><a href="/">some title</a></li>
+        <li><a href="#">some title</a></li>
+        <li><a href="#">some title</a></li>
+        <li><a href="#">some title</a></li>
       </ul>
     </Nav>
   )
