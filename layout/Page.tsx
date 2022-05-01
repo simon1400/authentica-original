@@ -54,7 +54,8 @@ const Page: FC<PageProps> = ({
 
         <meta charSet="utf-8" />
 
-        
+        {/* FONTY */}
+        <link rel="stylesheet preload prefetch" href="https://use.typekit.net/vpe5tmu.css" as="style" type="text/css" crossOrigin="anonymous" />
 
         {/* FAVICON */}
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />

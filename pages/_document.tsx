@@ -8,10 +8,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="cs">
-        <Head>
-          {/* FONTY */}
-          <link rel="stylesheet preload prefetch" href="https://use.typekit.net/vpe5tmu.css" as="style" type="text/css" crossOrigin="anonymous" />
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />
