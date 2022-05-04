@@ -20,7 +20,7 @@ export async function getServerSideProps() {
 const ReferenceCategory: NextPage = () => {
   return (
     <Page>
-      <PageHead
+      {/* <PageHead
         items={[
           'Shop in shop',
         ]} 
@@ -28,7 +28,7 @@ const ReferenceCategory: NextPage = () => {
 
       <Chapter content contentBig />
       <Chapter items smallReference />
-      <Chapter head categoryItems /> 
+      <Chapter head categoryItems />  */}
     </Page>
   )
 }
