@@ -6,7 +6,7 @@ import { NextPage } from "next"
 
 const ReferenceFull: NextPage = () => {
   return(
-    <Page absoluteHeader>
+    <Page>
       <PageHeadInside />
       <Chapter images={[
         '/assets/blogIn.jpeg',
@@ -34,6 +34,14 @@ const ReferenceFull: NextPage = () => {
       
     </Page>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: { 
+      absoluteHeader: true
+    }
+  };
 }
 
 export default ReferenceFull

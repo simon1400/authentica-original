@@ -21,7 +21,6 @@ const Page: FC<PageProps> = ({
   tags,
   ogTitle = '',
   ogDescription = '',
-  absoluteHeader = false,
 }) => {
 
   const router = useRouter()
@@ -97,9 +96,7 @@ const Page: FC<PageProps> = ({
 
       </Head>
 
-      <Header absoluteHeader={absoluteHeader} />
       <main id={id} style={{paddingBottom: "60px", zIndex: "10", background: "white"}} className={className}>{children}</main>
-      <Footer />
     </div>
   );
 }

@@ -7,12 +7,18 @@ import BigImage from "styles/BigImage";
 import ContentWrap from "styles/ContentWrap";
 import ImageSquare from "styles/ImageSquare";
 
+interface IButtonInfo {
+  link: string;
+  text: string;
+}
+
 interface ChapterProps {
-  content?: boolean;
+  content?: string;
   head?: boolean;
   items?: boolean;
   images?: string[];
   buttonVariant?: ButtonProps['variant'];
+  button?: IButtonInfo;
   contentBig?: boolean;
   smallLevel?: boolean;
   smallReference?: boolean;
@@ -20,10 +26,11 @@ interface ChapterProps {
 }
 
 const Chapter: FC<ChapterProps> = ({
-  content = false,
+  content = "",
   head = false,
   items = false,
   images = [],
+  button = {},
   buttonVariant = undefined,
   contentBig = false,
   smallLevel = false,
@@ -46,7 +53,7 @@ const Chapter: FC<ChapterProps> = ({
       {(head || content) && <Container>
         <ContentWrap>
           {head && <Typography variant={smallLevel ? "h3" : "h2"} component="h2" marginBottom={12}>Vybavení prodejen</Typography>}
-          {content && <Typography variant={contentBig ? "body1" : "body2"} marginBottom={12}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla pulvinar eleifend sem. Praesent id justo in neque elementum ultrices. Sed convallis magna eu sem. Duis viverra diam non justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas fermentum, sem in pharetra pellentesque, velit tuante, in pharetra metus odio a lectus. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.</Typography>}
+          {content && <Typography variant={contentBig ? "body1" : "body2"} marginBottom={12}><div dangerouslySetInnerHTML={{__html: content}} /></Typography>}
         </ContentWrap>
       </Container>}
       {!!images.length && <Container maxWidth="xl">
@@ -80,18 +87,18 @@ const Chapter: FC<ChapterProps> = ({
       {items && <Container maxWidth="xl">
         <Grid container spacing={10} marginBottom={24}>
           <Grid item xs={4}>
-            <ReferenceItem small={smallReference} inverse bg="#e61e2c" />
+            <ReferenceItem small={smallReference} inverse={true} bg="#e61e2c" />
           </Grid>
           <Grid item xs={4}>
-            <ReferenceItem small={smallReference} inverse bg="#e61e2c" />
+            <ReferenceItem small={smallReference} inverse={true} bg="#e61e2c" />
           </Grid>
           <Grid item xs={4}>
-            <ReferenceItem small={smallReference} inverse bg="#e61e2c" />
+            <ReferenceItem small={smallReference} inverse={true} bg="#e61e2c" />
           </Grid>
         </Grid>
       </Container>}
-      {buttonVariant && <Container>
-        <Button variant={buttonVariant} sx={{marginBottom: "60px"}}>ukázka vybavení prodejen</Button>
+      {(button.link && button.text) && <Container>
+        <Button variant={buttonVariant} href={button.link} sx={{marginBottom: "60px"}}>{button.text}</Button>
       </Container>}
     </section>
   )

@@ -1,9 +1,11 @@
+import { useLazyQuery, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { Container } from "@mui/material"
-// import axios from "axios";
+import axios from "axios";
 import DropDown from "components/DropDown";
-// import INavItem from "interfaces/navItem";
+import INavItem from "interfaces/navItem";
 import Link from "next/link";
+import topNavQuery from "queries/topNav";
 import { FC, SyntheticEvent, useEffect, useState } from "react";
 import Logo from "styles/Logo";
 import TopNav from "styles/TopNav";
@@ -11,35 +13,28 @@ import Navigation from "../components/TopNav"
 
 
 interface HeaderProps {
-  absoluteHeader: boolean
+  absoluteHeader?: boolean
 }
 
 const Header: FC<HeaderProps> = ({
-  absoluteHeader
+  absoluteHeader = false
 }) => {
+
+  const { loading, error, data } = useQuery(topNavQuery);
   
-  // const [nav, setNav] = useState<INavItem[]>([])
   const [dropShown, setDropShown] = useState<number>(-1)
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:1340/api/navigation/render/navigation').then(res => {
-  //     // @ts-ignore
-  //     let resNav = []
-  //     // @ts-ignore
-  //     res.data.map(item => {
-  //       resNav.push({
-  //         id: item.id,
-  //         order: 2,
-  //         title: item.title,
-  //         slug: item.related.slug || item.path
-  //       })
-  //     })
-  //     // @ts-ignore
-  //     return resNav
-  //   }).then(res => {
-  //     setNav(res);
-  //   })
-  // }, [])
+  if(loading) {
+    return null
+  }
+
+  if(error) {
+    console.log("Erorr with header nav -", error);
+  }
+
+  let topNav = data.navigation.data.attributes.topNav
+
+  const nav: INavItem[] = topNav
 
   return (
     <HeaderC absoluteHeader={absoluteHeader} dropShown={dropShown}>
@@ -50,7 +45,7 @@ const Header: FC<HeaderProps> = ({
               <img src="/assets/logo.png" alt="" />
             </Logo>
           </Link>
-          <Navigation setDropShown={setDropShown} />
+          <Navigation data={nav} setDropShown={setDropShown} />
         </TopNav>
       </Container>
       <DropDown shown={dropShown} setDropShown={setDropShown} />

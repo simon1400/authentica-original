@@ -6,37 +6,49 @@ import Map from "components/Map";
 import PageHead from "components/PageHead";
 import Page from "layout/Page";
 import { NextPage } from "next";
+import contactQuery from "queries/contact";
+import { client } from "utility/graphql";
 
-const Contact: NextPage = () => {
+export async function getServerSideProps() {
+  const { data } = await client.query({
+    query: contactQuery
+  });
+
+  return {
+    props: {
+      data: data.contact.data.attributes,
+    },
+  };
+}
+
+const Contact: NextPage = ({
+  // @ts-ignore
+  data
+}) => {
   return (
     <Page>
-      <PageHead items={[
-        'Spojte se s námi!'
-      ]} />
-      <Chapter content contentBig />
-      <ContactLine />
-      {/* <Map /> */}
+
+      <PageHead label={data.label} head={data.title} />
+
+      <Chapter content={data.content} contentBig />
+
+      <ContactLine data={data.contactItem} />
+
+      <Map />
+
       <Container>
         <Grid container marginBottom={8} justifyContent="center">
           <Grid item xs={6}>
-            <ContactItem level="h3" />
+            <ContactItem data={data.headquarters} level="h3" />
           </Grid>
         </Grid>
-        <Divider />
-        <Grid container marginTop={12} justifyContent="center">
-          <Grid item xs={6}>
-            <ContactItem />
-          </Grid>
-          <Grid item xs={6}>
-            <ContactItem />
-          </Grid>
-          <Grid item xs={6}>
-            <ContactItem />
-          </Grid>
-          <Grid item xs={6}>
-            <ContactItem />
-          </Grid>
-        </Grid>
+        {!!data.adresses.length && <Divider />}
+        {!!data.adresses.length && <Grid container marginTop={12} justifyContent="center">
+          {/* @ts-ignore */}
+          {data.adresses.map((item, index) => <Grid key={index} item xs={6}>
+            <ContactItem data={item} />
+          </Grid>)}
+        </Grid>}
       </Container>
     </Page>
   )

@@ -8,11 +8,13 @@ import Footer from 'layout/Footer';
 
 import createEmotionCache from 'utility/createEmotionCache';
 import theme from 'styles/theme';
+import { WithGraphQL } from 'utility/graphql';
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
 const clientSideEmotionCache = createEmotionCache();
+
 
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -21,9 +23,11 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-          {/* <Header absoluteHeader={false} /> */}
+        <WithGraphQL>
+          <Header absoluteHeader={pageProps.absoluteHeader} />
           <Component {...pageProps} />
-          {/* <Footer /> */}
+          <Footer />
+        </WithGraphQL>
       </ThemeProvider>
     </CacheProvider>
   );

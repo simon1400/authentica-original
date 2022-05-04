@@ -1,22 +1,91 @@
-import qs from 'qs'
+import { gql } from "@apollo/client";
 
-export const homepageQuery = qs.stringify({
-  populate: [
-    "video",
-    "titles",
-    "references",
-    "refCta",
-    "partners",
-    "footerLink",
-    "cta",
-  ],
-  fields: [
-    'content', 
-    "contentReference",
-    "label",
-    "titlePartners"
-  ],
-  publicationState: 'live',
-}, {
-  encodeValuesOnly: true, // prettify url
-});
+const homepageQuery = gql`
+  query Homepage {
+    homepage {
+      data{
+        attributes{
+          titles {
+            Text
+            article {
+              data{
+                attributes{
+                  slug
+                }
+              }
+            }
+          }
+          label
+          video{
+            data{
+              attributes{
+                url
+                hash
+                formats
+                name
+              }
+            }
+          }
+          content
+          cta{
+            text
+            link
+          }
+          references{
+            data{
+              attributes{
+                slug
+                logo{
+                  data{
+                    attributes{
+                      url
+                    }
+                  }
+                }
+                image{
+                  data{
+                    attributes{
+                      url
+                    }
+                  }
+                }
+                content
+                Background
+              }
+            }
+          }
+          contentReference
+          refCta{
+            text
+            link
+          }
+          titlePartners
+          partners{
+            link
+            logo{
+              data{
+                attributes{
+                  url
+                }
+              }
+            }
+            image{
+              data{
+                attributes{
+                  url
+                }
+              }
+            }
+          }
+          footer{
+            title
+            link
+            subTitle
+          }
+        }
+      }
+    }
+  }
+`
+
+export default homepageQuery

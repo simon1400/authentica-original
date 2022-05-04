@@ -1,4 +1,3 @@
-import Logo from 'public/assets/waterdrop.svg'
 import styled from "@emotion/styled"
 import { Typography } from '@mui/material';
 
@@ -18,7 +17,7 @@ export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
   text-align: ${small ? 'center' : 'left'};
 `)
 
-export const ReferenceHead = styled(Typography)<{inverse: boolean}>(({inverse}) => `
+export const ReferenceHead = styled(Typography)<{inverse?: boolean}>(({inverse = false}) => `
   font-size: 27px;
   font-weight: bold;
   line-height: 1.3;
@@ -36,9 +35,11 @@ export const Image = styled.img<{small: boolean}>(({small}) => `
   transform: translateX(-50%);
 `)
 
-export const LogoReference = styled(Logo)<{inverse: boolean}>(({inverse}) => `
-  margin-bottom: 50px;
-  width: 210px;
-  fill: ${inverse ? "white" : "black"};
-  color: ${inverse ? "white" : "black"};
+export const LogoReference = styled.div<{inverse?: boolean}>(({inverse = false}) => `
+  svg, img{
+    margin-bottom: 50px;
+    width: 210px;
+    fill: ${inverse ? "white" : "black"};
+    color: ${inverse ? "white" : "black"};
+  }
 `)

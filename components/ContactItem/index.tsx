@@ -1,30 +1,23 @@
-import styled from "@emotion/styled"
 import { Typography, TypographyProps } from "@mui/material"
 import { FC } from "react"
-
+import { ContactItemC } from "./styled";
 interface ContactItem {
-  level?: TypographyProps[`variant`]
+  level?: TypographyProps[`variant`];
+  data: any
 }
 
 const ContactItem: FC<ContactItem> = ({
-  level = `h4`
+  level = `h4`,
+  data
 }) => {
   return(
     <ContactItemC>
-      <Typography variant={level}>Brno - sídlo společnosti</Typography>
-      <Typography variant="body2"><b>areál Prologis Syrovice</b><br /> Syrovice 688 -  rampa F <br />664 67 Syrovice Česká republika</Typography>
+      <Typography variant={level}>{data.title}</Typography>
+      <Typography variant="body2"><div dangerouslySetInnerHTML={{__html: data.content}} /></Typography>
     </ContactItemC>
   )
 }
 
-const ContactItemC = styled.div`
-  text-align: center;
-  padding-bottom: 40px;
-  padding-top: 40px;
-  margin-bottom: 20px;
-  h3, h4{
-    margin-bottom: 45px;
-  }
-`
+
 
 export default ContactItem

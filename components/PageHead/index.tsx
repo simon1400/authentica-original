@@ -3,25 +3,38 @@ import PlayIcon from 'public/assets/play.svg'
 import { FC } from "react"
 import { Head, PageHead } from "./styles";
 import SymbolSVG from '../Symbol'
+import Link from "next/link";
+
+interface IHead {
+  Text: string;
+  article: any;
+}
 
 interface PageHeadProps {
-  items: string[];
-  buttons?: boolean
+  head: IHead[] | string;
+  buttons?: boolean;
+  label: string
 }
 
 const PageHeadComponent: FC<PageHeadProps> = ({
-  items = [],
-  buttons = false
+  head,
+  buttons = false,
+  label
 }) => {
 
   return (
     <Container>
       <PageHead>
         <SymbolSVG />
-        <Typography variant='body1'>Jsme Authentica, navrhujeme a vyrábíme</Typography>
-        {items.map((item, index) => <div key={index}>
-          <Head variant='h1'>{item}</Head>
-        </div>)}
+        <Typography variant='body1'>{label}</Typography>
+        {Array.isArray(head) 
+          ? head.map((item, index) => <div key={index}>
+            <Link href={"/"+item.article.data.attributes.slug} passHref>
+              <Head variant='h1'>{item.Text}</Head>
+            </Link>
+          </div>) 
+          : <Head variant='h1'>{head}</Head>
+        }
         {buttons && <Grid
           container
           direction="row"

@@ -6,58 +6,52 @@ import { Head } from 'styles/Head';
 import BrandItem from 'components/BrandItem';
 import PageHead from 'components/PageHead'
 import ScrollingSection from 'components/ScrolingSection'
-// import { AxiosAPI } from 'restClient';
-// import { homepageQuery } from 'queries/homepage';
+import homepageQuery from 'queries/homepage';
+import { client } from 'utility/graphql';
 
-// export async function getServerSideProps() {
+export async function getServerSideProps() {
+  const { data } = await client.query({
+    query: homepageQuery
+  });
 
-//   const resData = await AxiosAPI.get(`/homepage?${homepageQuery}`)
-
-//   return {
-//     props: {
-//       data: resData.data.data.attributes
-//     }
-//   }
-// }
+  return {
+    props: {
+      data: data.homepage.data.attributes,
+    },
+ };
+}
 
 
 const Home: NextPage = ({
   // @ts-ignore
-  // data
+  data
 }) => {
+
+  console.log(data);
   
   return (
     <Page>
 
       <PageHead 
-        items={[
-          'In Store Design',
-          'POS média',
-          'Design výloh',
-          'Interiérové dekorace'
-        ]} 
+        label={data.label}
+        head={data.titles} 
         buttons
       />
 
-      <Chapter buttonVariant='text' content contentBig />
+      <Chapter buttonVariant='text' button={data.cta} content={data.content} contentBig />
 
       <ScrollingSection />
 
-      <Chapter buttonVariant='contained' content contentBig />
+      <Chapter buttonVariant='contained' button={data.refCta} content={data.contentReference} contentBig />
 
       <Container>
-        <Head variant="h2">Přidejte se k těm nejlepším</Head>
-        <Grid container spacing={6} marginBottom={26}>
-          <Grid item xs={4}>
-            <BrandItem index={0} />
-          </Grid>
-          <Grid item xs={4}>
-            <BrandItem index={1} />
-          </Grid>
-          <Grid item xs={4}>
-            <BrandItem index={2} />
-          </Grid>
-        </Grid>
+        <Head variant="h2">{data.titlePartners}</Head>
+        {!!data.partners.length && <Grid container spacing={6} marginBottom={26}>
+          {/* @ts-ignore */}
+          {data.partners.map((item, index) => <Grid key={index} item xs={4}>
+            <BrandItem index={index} />
+          </Grid>)}
+        </Grid>}
       </Container>
     </Page>
   )
