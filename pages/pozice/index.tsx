@@ -8,11 +8,11 @@ import { NextPage } from "next"
 const PositionCatalog: NextPage = () => {
   return (
     <Page>
-      <PageHead items={[
+      {/* <PageHead items={[
         'Volné pracovní pozice'
-      ]} />
+      ]} /> */}
 
-      <Chapter content contentBig />
+      {/* <Chapter content contentBig /> */}
 
       <TabsNav />
 
@@ -22,7 +22,7 @@ const PositionCatalog: NextPage = () => {
       <ShortItem />
 
       <Chapter />
-      <Chapter head content />
+      {/* <Chapter head content /> */}
 
     </Page>
   )

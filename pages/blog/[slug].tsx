@@ -7,7 +7,7 @@ import { NextPage } from "next"
 const Article: NextPage = () => {
   return(
     <Page>
-      <PageHead items={[
+      {/* <PageHead items={[
         'People & Culture Manager'
       ]} />
 
@@ -23,7 +23,7 @@ const Article: NextPage = () => {
       <Chapter content />
       <Chapter head items smallReference />
       <Chapter content />
-      <Chapter content />
+      <Chapter content /> */}
 
       <ArticleBottom />
 

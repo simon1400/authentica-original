@@ -6,14 +6,14 @@ import { NextPage } from "next"
 const PositionFull: NextPage = () => {
   return(
     <Page>
-      <PageHead items={[
+      {/* <PageHead items={[
         'People & Culture Manager'
       ]} />
 
       <Chapter content contentBig />
       <Chapter content />
       <Chapter head content smallLevel />
-      <Chapter head content buttonVariant="contained" smallLevel />
+      <Chapter head content buttonVariant="contained" smallLevel /> */}
       <Chapter head items smallReference />
     </Page>
   )

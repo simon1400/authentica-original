@@ -11,7 +11,7 @@ const ReferenceFull: NextPage = () => {
       <Chapter images={[
         '/assets/blogIn.jpeg',
       ]} />
-      <Chapter content images={[
+      {/* <Chapter content images={[
         '/assets/blogIn.jpeg',
         '/assets/blogIn.jpeg',
         '/assets/blogIn.jpeg',
@@ -28,7 +28,7 @@ const ReferenceFull: NextPage = () => {
         '/assets/blogIn.jpeg',
       ]} />
 
-      <Chapter content />
+      <Chapter content /> */}
 
       <Chapter head items />
       
