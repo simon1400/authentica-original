@@ -18,30 +18,16 @@ const topNavQuery = gql`
                   }
                 }
               }
-              tech_articles{
-                data{
-                  attributes{
-                    title
-                    slug
-                  }
-                }
-              }
-              blogs{
-                data{
-                  attributes{
-                    title
-                    slug
-                  }
-                }
-              }
-              references{
-                data{
-                  attributes{
-                    title
-                    slug
-                  }
-                }
-              }
+              subTitle1
+              subUrl1
+              subTitle2
+              subUrl2
+              subTitle3
+              subUrl3
+              subTitle4
+              subUrl4
+              subTitle5
+              subUrl5
             }
           }
         }

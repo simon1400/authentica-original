@@ -1,23 +1,23 @@
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { Container } from "@mui/material"
-import axios from "axios";
 import DropDown from "components/DropDown";
 import INavItem from "interfaces/navItem";
 import Link from "next/link";
 import topNavQuery from "queries/topNav";
-import { FC, SyntheticEvent, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Logo from "styles/Logo";
 import TopNav from "styles/TopNav";
+import { checkColor } from "utility/checkColor";
 import Navigation from "../components/TopNav"
-
+import LogoIcon from '../public/assets/logo.svg'
 
 interface HeaderProps {
-  absoluteHeader?: boolean
+  backgroundAbsolute?: string;
 }
 
 const Header: FC<HeaderProps> = ({
-  absoluteHeader = false
+  backgroundAbsolute = "#ffffff"
 }) => {
 
   const { loading, error, data } = useQuery(topNavQuery);
@@ -37,12 +37,12 @@ const Header: FC<HeaderProps> = ({
   const nav: INavItem[] = topNav
 
   return (
-    <HeaderC absoluteHeader={absoluteHeader} dropShown={dropShown}>
+    <HeaderC backgroundAbsolute={backgroundAbsolute} dropShown={dropShown}>
       <Container maxWidth="xl">
         <TopNav>
           <Link href="/" passHref>
             <Logo>
-              <img src="/assets/logo.png" alt="" />
+              <LogoIcon />
             </Logo>
           </Link>
           <Navigation data={nav} setDropShown={setDropShown} />
@@ -53,12 +53,16 @@ const Header: FC<HeaderProps> = ({
   )
 }
 
-const HeaderC = styled.header<{absoluteHeader: boolean; dropShown: number}>(({absoluteHeader, dropShown}) => `
-  position: ${absoluteHeader ? 'absolute' : 'static'};
+const HeaderC = styled.header<{backgroundAbsolute: string; dropShown: number}>(({backgroundAbsolute, dropShown}) => `
+  position: ${backgroundAbsolute ? 'absolute' : 'static'};
   top: 0;
   left: 0;
   width: 100%;
-  background: white;
+  background: ${backgroundAbsolute ? backgroundAbsolute : "#ffffff"};
+  * {
+    color: ${checkColor(backgroundAbsolute) ? "white" : "black"}!important;
+    fill: ${checkColor(backgroundAbsolute) ? "white" : "black"}!important;
+  }
   &:after{
     position: fixed;
     content: '';

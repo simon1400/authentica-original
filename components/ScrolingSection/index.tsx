@@ -1,9 +1,20 @@
 import { Container } from "@mui/material"
-import ReferenceItem from "components/Reference"
-import { useEffect, useRef, useState } from "react"
+import { FC, ReactChild, useEffect, useRef, useState } from "react"
 import { ContainerScroll, ContentScroll, ItemScroll, Scroll } from "./styled"
 
-const ScrollingSection = () => {
+interface IScrollSection {
+  height: string;
+  children: ReactChild | ReactChild[];
+  widthColumn: string;
+  column: number;
+}
+
+const ScrollingSection: FC<IScrollSection> = ({
+  children,
+  height,
+  widthColumn,
+  column
+}) => {
 
   const ref = useRef(null)
 
@@ -18,30 +29,11 @@ const ScrollingSection = () => {
   }, [ref])
 
   return (
-    <ContainerScroll>
+    <ContainerScroll height={height}>
       <Container ref={ref} maxWidth="xl"></Container>
-      <Scroll>
-        <ContentScroll column={9} left={offset}>
-          <ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll>
-          <ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll><ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll><ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll><ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll><ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll><ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll><ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll><ItemScroll>
-            <ReferenceItem bg="#efeae4" />
-          </ItemScroll>
+      <Scroll height={height}>
+        <ContentScroll height={height} widthColumn={widthColumn} column={column} left={offset}>
+          {children}
         </ContentScroll>
       </Scroll>
     </ContainerScroll>

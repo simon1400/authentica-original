@@ -48,7 +48,7 @@ const Page: FC<PageProps> = ({
   const theImage = image ? image : global.defaultImage;
 
   return (
-    <div className="root-component">
+    <>
       <Head>
 
         <meta charSet="utf-8" />
@@ -95,9 +95,8 @@ const Page: FC<PageProps> = ({
         {tags && <meta name="article:tag" content={tags} />}
 
       </Head>
-
       <main id={id} style={{paddingBottom: "60px", zIndex: "10", background: "white"}} className={className}>{children}</main>
-    </div>
+    </>
   );
 }
 

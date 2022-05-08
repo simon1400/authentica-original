@@ -24,7 +24,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <WithGraphQL>
-          <Header absoluteHeader={pageProps.absoluteHeader} />
+          <Header backgroundAbsolute={pageProps.bgHeaderAbsolute} />
           <Component {...pageProps} />
           <Footer />
         </WithGraphQL>

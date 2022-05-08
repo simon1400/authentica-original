@@ -1,20 +1,39 @@
-import styled from "@emotion/styled"
 import { Container, Grid, Typography } from "@mui/material"
 import Tags from "components/Tags"
+import { FC } from "react"
+import { Bottom, Top, WrapPageImg } from "./styles"
 
-const PageHeadInside = () => {
+interface IPageHeadeInside {
+  label: string;
+  title: string;
+  image: string;
+  content: string;
+  background: string;
+  tags: any;
+  invert: boolean;
+}
+
+const PageHeadInside: FC<IPageHeadeInside> = ({
+  label,
+  title,
+  image,
+  content,
+  background,
+  tags,
+  invert
+}) => {
   return (
     <section>
-      <Top>
+      <Top background={background} invert={invert}>
         <Container>
           <Grid container justifyContent="space-between">
             <Grid item xs={8}>
-              <Typography variant='body1'>Jsme Authentica, navrhujeme a vyrábíme</Typography>
-              <Typography variant='h1'>Vybavení interiéru pro Waterdrop</Typography>
+              <Typography variant='body1'>{label}</Typography>
+              <Typography variant='h1'>{title}</Typography>
             </Grid>
             <Grid item xs={4}>
               <WrapPageImg>
-                <img src="/assets/image1.png" />
+                <img src={"http://localhost:1340"+image} />
               </WrapPageImg>
             </Grid>
           </Grid>
@@ -24,11 +43,12 @@ const PageHeadInside = () => {
         <Container>
           <Grid container spacing={18}>
             <Grid item xs={8}>
-              <Typography variant='body1'>Vybavení interiéru první vlajkové prodejny Waterdrop v Brně vychází ze stejného konceptu jako signature store ve Vídni a další po celém světě budou následovat. Lokace obchodu v úzkém centru města, na prestižní adrese na Rašínova 4 o podlahové ploše 66 m². Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam in lorem sit amet leo ad Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</Typography>
+              <Typography variant='body1'><div dangerouslySetInnerHTML={{__html: content}}/></Typography>
             </Grid>
             <Grid item xs={4}>
-              <Tags />
-              <Tags />
+              {!!tags.categories.length && <Tags title="Kategorie" data={tags.categories} />}
+              {!!tags.technologies.length && <Tags title="Technologie" data={tags.technologies} />}
+              {!!tags.materials.length && <Tags title="Materialy" data={tags.materials} />}
             </Grid>
           </Grid>
         </Container>
@@ -36,31 +56,5 @@ const PageHeadInside = () => {
     </section>
   )
 }
-
-const Top = styled.div`
-  background-color: #efeae4;
-  padding-top: 355px;
-  padding-bottom: 60px;
-  p{
-    margin-bottom: 30px;
-  }
-`
-
-const Bottom = styled.div`
-  padding-top: 90px;
-  padding-bottom: 90px;
-`
-const WrapPageImg = styled.div`
-  position: relative;
-  height: calc(100% + 60px);
-  img{
-    position: absolute;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    left: 0;
-    bottom: -60px;
-  }
-`
 
 export default PageHeadInside

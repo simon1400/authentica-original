@@ -1,31 +1,54 @@
 import ArticleBottom from "components/ArticleBottom"
-import Chapter from "components/Chapter"
+import ChapterItem from "components/ChapterItem"
+import Chapters from "components/Chapters"
 import PageHead from "components/PageHead"
 import Page from "layout/Page"
 import { NextPage } from "next"
+import postQuery from "queries/post"
+import { client } from "utility/graphql"
 
-const Article: NextPage = () => {
+// @ts-ignore
+export async function getServerSideProps(ctx) {
+  const { data } = await client.query({
+    query: postQuery,
+    variables: {
+      slug: ctx.query.slug
+    }
+  });
+
+  return {
+    props: {
+      data: data.blogs.data[0].attributes
+    },
+  };
+}
+
+interface IArticleData {
+  title: string;
+  chapters: any[];
+  label: string;
+  content: string;
+  textPublication: string | null;
+}
+
+interface IArticle {
+  data: IArticleData
+}
+
+const Article: NextPage<IArticle> = ({
+  data
+}) => {
   return(
     <Page>
-      {/* <PageHead items={[
-        'People & Culture Manager'
-      ]} />
+       <PageHead 
+        head={data.title} 
+        label={data.label} />
 
-      <Chapter content contentBig images={[
-        '/assets/blogIn.jpeg',
-      ]} />
-      <Chapter head content images={[
-        '/assets/blogIn.jpeg',
-        '/assets/blogIn.jpeg',
-        '/assets/blogIn.jpeg',
-      ]} />
-      <Chapter content />
-      <Chapter content />
-      <Chapter head items smallReference />
-      <Chapter content />
-      <Chapter content /> */}
+      <ChapterItem content={data.content} contentBig />
 
-      <ArticleBottom />
+      <Chapters data={data.chapters} />
+
+      <>{!!data.textPublication ? <ArticleBottom data={data.textPublication} /> : null}</>
 
     </Page>
   )

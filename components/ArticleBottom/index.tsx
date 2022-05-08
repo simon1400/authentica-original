@@ -3,12 +3,18 @@ import {Container, Grid, Typography} from '@mui/material'
 import SocialNav from "components/SocialNav"
 import styled from "@emotion/styled"
 
-const ArticleBottom: FC = () => {
+interface IArticleBottom {
+  data: string;
+}
+
+const ArticleBottom: FC<IArticleBottom> = ({
+  data
+}) => {
   return (
     <Container>
       <Grid container justifyContent="space-between" alignItems="center" marginBottom={30}>
         <Grid item>
-          <Publication>PUBLIKOVÁNO 25. 2. 2022 / NIKOLA KOKEŠOVÁ</Publication>
+          <Publication>{data}</Publication>
         </Grid>
         <Grid item>
           <SocialNav invert big />

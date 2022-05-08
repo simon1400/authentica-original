@@ -74,9 +74,6 @@ const TabsNav = () => {
   return (
     <Container>
       <TabsWrap>
-        <SearchBox aria-label="search" color="primary">
-          <SearchIcon />
-        </SearchBox>
         <AntTabs value={value} onChange={handleChange} aria-label="ant example" variant="scrollable" scrollButtons={false}>
           <AntTab label="Všechny" />
           <AntTab label="práce v OFFICE" />

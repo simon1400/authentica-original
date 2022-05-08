@@ -1,13 +1,25 @@
 import styled from "@emotion/styled"
+import Link from "next/link";
+import { FC } from "react";
 
-const Tags = () => {
+interface ITags {
+  title: string;
+  data: any[]
+}
+
+const Tags: FC<ITags> = ({
+  title,
+  data
+}) => {
   return (
     <TagsC>
-      <label>KATEGORIE</label>
+      <label>{title}</label>
       <ul>
-        <li><a href="">In-store design</a></li>
-        <li><a href="">travertinové desky</a></li>
-        <li><a href="">frézované logo</a></li>
+        {data.map((item ,index) => <li key={index}>
+          <Link href={item.attributes.slug}>
+            <a>{item.attributes.title}</a>
+          </Link>
+        </li>)}
       </ul>
     </TagsC>
   )

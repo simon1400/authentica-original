@@ -1,31 +1,25 @@
 import styled from "@emotion/styled"
 import { Container, Grid } from "@mui/material"
+import { FC } from "react"
 
-const Numbers = () => {
+interface INumbers {
+  data: any
+}
+
+const Numbers: FC<INumbers> = ({
+  data
+}) => {
+
   return (
     <Container>
       <Grid container marginBottom={6}>
-        <Grid item xs={3}>
+        {/* @ts-ignore */}
+        {data.map((item, index) => <Grid key={index} item xs={12 / data.length}>
           <Number>
-            <span>1650</span>
-            <span>pracovních hodin</span>
+            <span>{item.number}</span>
+            <span>{item.description}</span>
           </Number>
-        </Grid><Grid item xs={3}>
-          <Number>
-            <span>1650</span>
-            <span>pracovních hodin</span>
-          </Number>
-        </Grid><Grid item xs={3}>
-          <Number>
-            <span>1650</span>
-            <span>pracovních hodin</span>
-          </Number>
-        </Grid><Grid item xs={3}>
-          <Number>
-            <span>1650</span>
-            <span>pracovních hodin</span>
-          </Number>
-        </Grid>
+        </Grid>)}
       </Grid>
     </Container>
   )
@@ -39,10 +33,10 @@ const Number = styled.div`
     color: black;
     line-height: 1;
     font-weight: bold;
-    &:first-child{
+    &:first-of-type{
       font-size: 94px;
     }
-    &:last-child{
+    &:last-of-type{
       font-size: 23px;
     }
   }

@@ -24,7 +24,7 @@ const Nav = styled.nav(({theme}) => `
             position: absolute;
             width: 100%;
             height: 1.5px;
-            background: ${theme.palette.primary.main};
+            background: ${theme.palette.primary.main}!important;
             left: 0;
             bottom: -4px;
           }
@@ -46,8 +46,9 @@ const Nav = styled.nav(({theme}) => `
         font-weight: 600;
         position: relative;
         z-index: 100;
+        transition: all .5s ease;
         &:hover{
-          color: ${theme.palette.primary.main};
+          color: ${theme.palette.primary.main}!important;
         }
         svg{
           fill: ${theme.palette.primary.main};

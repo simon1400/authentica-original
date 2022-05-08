@@ -13,13 +13,15 @@ interface IHead {
 interface PageHeadProps {
   head: IHead[] | string;
   buttons?: boolean;
-  label: string
+  label: string;
+  openModal?: () => void
 }
 
 const PageHeadComponent: FC<PageHeadProps> = ({
   head,
   buttons = false,
-  label
+  label,
+  openModal
 }) => {
 
   return (
@@ -47,7 +49,8 @@ const PageHeadComponent: FC<PageHeadProps> = ({
           </Grid>
           <Grid item md='auto'>
             <Button 
-              variant="withIcon" 
+              variant="withIcon"
+              onClick={openModal}
               disableRipple
               startIcon={<SvgIcon>
                 <PlayIcon />

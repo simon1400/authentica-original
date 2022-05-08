@@ -1,34 +1,37 @@
 import ArticleBottom from "components/ArticleBottom"
-import Chapter from "components/Chapter"
+import ChapterItem from "components/ChapterItem"
+import Chapters from "components/Chapters"
 import PageHead from "components/PageHead"
 import Page from "layout/Page"
 import { NextPage } from "next"
 
-const Article: NextPage = () => {
+interface IArticleData {
+  title: string;
+  chapters: any[];
+  label: string;
+  content: string;
+  textPublication: string | null;
+}
+
+interface IArticle {
+  data: IArticleData
+}
+
+const ArticleFull: NextPage<IArticle> = ({
+  data
+}) => {
   return(
     <Page>
-      {/* <PageHead items={[
-        'People & Culture Manager'
-      ]} />
+       <PageHead 
+        head={data.title} 
+        label={data.label} />
 
-      <Chapter content contentBig images={[
-        '/assets/blogIn.jpeg',
-      ]} />
-      <Chapter head content images={[
-        '/assets/blogIn.jpeg',
-        '/assets/blogIn.jpeg',
-        '/assets/blogIn.jpeg',
-      ]} />
-      <Chapter content />
-      <Chapter content />
-      <Chapter head items smallReference />
-      <Chapter content />
-      <Chapter content /> */}
+      <ChapterItem content={data.content} contentBig />
 
-      <ArticleBottom />
+      <Chapters data={data.chapters} />
 
     </Page>
   )
 }
 
-export default Article
+export default ArticleFull

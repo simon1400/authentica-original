@@ -1,7 +1,6 @@
-import styled from "@emotion/styled"
 import { Button, ButtonProps, Container, Grid, Typography } from "@mui/material"
 import CategoryItem from "components/CategoryItem";
-import ReferenceItem from "components/Reference"
+import ReferenceItem from "components/ReferenceItem"
 import { FC, useEffect, useState } from "react"
 import BigImage from "styles/BigImage";
 import ContentWrap from "styles/ContentWrap";
@@ -14,9 +13,9 @@ interface IButtonInfo {
 
 interface ChapterProps {
   content?: string;
-  head?: boolean;
-  items?: boolean;
-  images?: string[];
+  head?: string | boolean;
+  items?: any[];
+  images?: any[];
   buttonVariant?: ButtonProps['variant'];
   button?: IButtonInfo;
   contentBig?: boolean;
@@ -25,10 +24,10 @@ interface ChapterProps {
   categoryItems?: boolean;
 }
 
-const Chapter: FC<ChapterProps> = ({
+const ChapterItem: FC<ChapterProps> = ({
   content = "",
   head = false,
-  items = false,
+  items = [],
   images = [],
   button = {},
   buttonVariant = undefined,
@@ -52,7 +51,7 @@ const Chapter: FC<ChapterProps> = ({
     <section>
       {(head || content) && <Container>
         <ContentWrap>
-          {head && <Typography variant={smallLevel ? "h3" : "h2"} component="h2" marginBottom={12}>Vybavení prodejen</Typography>}
+          {head && <Typography variant={smallLevel ? "h3" : "h2"} component="h2" marginBottom={12}>{head}</Typography>}
           {content && <Typography variant={contentBig ? "body1" : "body2"} marginBottom={12}><div dangerouslySetInnerHTML={{__html: content}} /></Typography>}
         </ContentWrap>
       </Container>}
@@ -60,10 +59,10 @@ const Chapter: FC<ChapterProps> = ({
         <Grid container spacing={10} marginBottom={12} justifyContent="center">
           {images.map((item, index) => <Grid key={index} item xs={column}>
             {column < 12 && <ImageSquare>
-              <img src={item} />
+              <img src={"http://localhost:1340"+item.attributes.url} alt="asd" />
             </ImageSquare>}
             {column === 12 && <BigImage>
-              <img src={item} />
+              <img src={"http://localhost:1340"+item.attributes.url} alt="asd" />
             </BigImage>}
           </Grid>)}
         </Grid>
@@ -84,17 +83,12 @@ const Chapter: FC<ChapterProps> = ({
           </Grid>
         </Grid>
       </Container>}
-      {items && <Container maxWidth="xl">
+      {!!items.length && <Container maxWidth="xl">
         <Grid container spacing={10} marginBottom={24}>
-          <Grid item xs={4}>
-            <ReferenceItem small={smallReference} inverse={true} bg="#e61e2c" />
-          </Grid>
-          <Grid item xs={4}>
-            <ReferenceItem small={smallReference} inverse={true} bg="#e61e2c" />
-          </Grid>
-          <Grid item xs={4}>
-            <ReferenceItem small={smallReference} inverse={true} bg="#e61e2c" />
-          </Grid>
+          {/* @ts-ignore */}
+          {items.map((item, index) => <Grid key={index} item xs={4}>
+            <ReferenceItem small={smallReference} data={item.attributes} bg="#e61e2c" />
+          </Grid>)}
         </Grid>
       </Container>}
       {(button.link && button.text) && <Container>
@@ -106,4 +100,4 @@ const Chapter: FC<ChapterProps> = ({
 
 
 
-export default Chapter
+export default ChapterItem

@@ -49,7 +49,8 @@ const homepageQuery = gql`
                     }
                   }
                 }
-                content
+                description
+                title
                 Background
               }
             }

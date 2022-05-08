@@ -1,20 +1,52 @@
-import Chapter from "components/Chapter"
+import Chapter from "components/ChapterItem"
+import Chapters from "components/Chapters";
 import PageHead from "components/PageHead"
 import Page from "layout/Page"
 import { NextPage } from "next"
+import carierQuery from "queries/carier";
+import { client } from "utility/graphql";
 
-const PositionFull: NextPage = () => {
+// @ts-ignore
+export async function getServerSideProps(ctx) {
+  const { data } = await client.query({
+    query: carierQuery,
+    variables: {
+      slug: ctx.query.slug
+    }
+  });
+
+  return {
+    props: {
+      data: data.vacancies.data[0].attributes
+    },
+  };
+}
+
+interface ICarierData {
+  title: string;
+  chapters: any[];
+  label: string;
+  content: string;
+  textPublication: string | null;
+}
+
+interface ICarier {
+  data: ICarierData
+}
+
+const PositionFull: NextPage<ICarier> = ({
+  data
+}) => {
   return(
     <Page>
-      {/* <PageHead items={[
-        'People & Culture Manager'
-      ]} />
+      <PageHead 
+        head={data.title} 
+        label={data.label} />
 
-      <Chapter content contentBig />
-      <Chapter content />
-      <Chapter head content smallLevel />
-      <Chapter head content buttonVariant="contained" smallLevel /> */}
-      <Chapter head items smallReference />
+      <Chapter content={data.content} contentBig />
+
+      <Chapters data={data.chapters} />
+
     </Page>
   )
 }

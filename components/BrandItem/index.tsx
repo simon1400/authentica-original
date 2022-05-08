@@ -1,17 +1,25 @@
+import { IImage } from "interfaces/image";
 import { FC } from "react"
 import { BrandItem, Logo, LogoWrap } from "./styled"
 
+interface IBrandItem {
+  image: IImage;
+  logo: IImage;
+  link: string
+}
 interface BrandItemProps {
-  index: number
+  index: number;
+  data: IBrandItem
 }
 
 const BrandItemComponent: FC<BrandItemProps> = ({
-  index
+  index,
+  data
 }) => {
   return (
-    <BrandItem index={index}>
+    <BrandItem href={data.link} index={index} image={data.image.data.attributes.url}>
       <LogoWrap>
-        <Logo src="/assets/waterdrop.svg" />
+        <Logo src={`http://localhost:1340${data.logo.data.attributes.url}`} />
       </LogoWrap>
     </BrandItem>
   )

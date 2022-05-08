@@ -1,5 +1,5 @@
 import { Container, Divider, Grid } from "@mui/material";
-import Chapter from "components/Chapter";
+import Chapter from "components/ChapterItem";
 import ContactItem from "components/ContactItem";
 import ContactLine from "components/ContactLine";
 import Map from "components/Map";

@@ -1,47 +1,66 @@
-import Chapter from "components/Chapter"
-import Numbers from "components/Numbers"
+import Chapters from "components/Chapters"
 import PageHeadInside from "components/PageHeadInside"
+import ReferenceItem from "components/ReferenceItem"
+import ScrollingSection from "components/ScrolingSection"
+import { ItemScroll } from "components/ScrolingSection/styled"
+import { IFooter } from "interfaces/footer"
+import { IImage } from "interfaces/image"
+import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
+import {checkColor} from '../utility/checkColor'
 
-const ReferenceFull: NextPage = () => {
-  return(
-    <Page>
-      <PageHeadInside />
-      <Chapter images={[
-        '/assets/blogIn.jpeg',
-      ]} />
-      {/* <Chapter content images={[
-        '/assets/blogIn.jpeg',
-        '/assets/blogIn.jpeg',
-        '/assets/blogIn.jpeg',
-      ]} /> */}
-
-      {/* <Chapter content />
-
-      <Numbers />
-
-      <Chapter content />
-
-      <Chapter images={[
-        '/assets/blogIn.jpeg',
-        '/assets/blogIn.jpeg',
-      ]} />
-
-      <Chapter content />
-
-      <Chapter head items /> */}
-      
-    </Page>
-  )
+interface IReferenceFull {
+  Background: string;
+  categories: any;
+  chapters: [];
+  content: string;
+  footer: IFooter;
+  image: IImage;
+  label: string;
+  materials: any;
+  meta: IMeta;
+  references: any;
+  slug: string;
+  technologies: any;
+  title: string;
 }
 
-export async function getStaticProps() {
-  return {
-    props: { 
-      absoluteHeader: true
-    }
-  };
+const ReferenceFull: NextPage<{data: IReferenceFull}> = ({
+  data
+}) => {
+
+  // @ts-ignore
+  const references = data.references.data.map(item => item.attributes)
+  
+  return(
+    <Page>
+      <PageHeadInside
+        label={data.label}
+        title={data.title}
+        background={data.Background}
+        image={data.image.data.attributes.url}
+        content={data.content}
+        invert={checkColor(data.Background)}
+        tags={{
+          categories: data.categories.data,
+          materials: data.materials.data,
+          technologies: data.technologies.data
+        }}
+      />
+
+      <Chapters data={data.chapters} />
+      
+      <>
+        {!!references.length && <ScrollingSection column={references.length} height="90vh" widthColumn="560px">
+          {/* @ts-ignore */}
+          {references.map((item, index) => <ItemScroll key={index}>
+            <ReferenceItem data={item} />
+          </ItemScroll>)}
+        </ScrollingSection>}
+      </>    
+    </Page>
+  )
 }
 
 export default ReferenceFull

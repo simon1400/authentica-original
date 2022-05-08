@@ -1,25 +1,17 @@
 import { gql } from "@apollo/client";
 
-const referenceQuery = gql`
-  query getReferences($slug: String!) {
-    references(filters: { slug: { eq: $slug } }) {
+const articleQuery = gql`
+  query getArticles($slug: String!) {
+    techArticles(filters: { slug: { eq: $slug } }) {
       data{
         attributes{
           title
           label
           slug
-          Background
           content
           meta{
             title
             description
-          }
-          image{
-            data{
-              attributes{
-                url
-              }
-            }
           }
           chapters{
             ... on ComponentElementHead{
@@ -68,56 +60,10 @@ const referenceQuery = gql`
               type
             }
           }
-          references{
-            data{
-              attributes{
-                logo{
-                  data{
-                    attributes{
-                      url
-                    }
-                  }
-                }
-                image{
-                  data{
-                    attributes{
-                      url
-                    }
-                  }
-                }
-                description
-                Background
-              }
-            }
-          }
           footer{
             title
             link
             subTitle
-          }
-          categories{
-            data{
-              attributes{
-                title
-                slug
-              }
-            }
-          }
-          technologies{
-            data{
-              attributes{
-                title
-                slug
-              }
-            }
-          }
-          materials{
-            data{
-              attributes{
-                title
-                slug
-              }
-            }
           }
         }
       }
@@ -125,4 +71,4 @@ const referenceQuery = gql`
   }
 `
 
-export default referenceQuery
+export default articleQuery
