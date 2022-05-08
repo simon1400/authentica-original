@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 const APP_API = process.env.APP_API
 
 export const httpLink = createHttpLink({
-  uri: `http://localhost:1340/graphql`,
+  uri: `${process.env.APP_API}/graphql`,
 });
 
 export const authLink = setContext((_, { headers }) => {

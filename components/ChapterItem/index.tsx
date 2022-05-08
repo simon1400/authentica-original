@@ -59,10 +59,10 @@ const ChapterItem: FC<ChapterProps> = ({
         <Grid container spacing={10} marginBottom={12} justifyContent="center">
           {images.map((item, index) => <Grid key={index} item xs={column}>
             {column < 12 && <ImageSquare>
-              <img src={"http://localhost:1340"+item.attributes.url} alt="asd" />
+              <img src={process.env.APP_API+item.attributes.url} alt="asd" />
             </ImageSquare>}
             {column === 12 && <BigImage>
-              <img src={"http://localhost:1340"+item.attributes.url} alt="asd" />
+              <img src={process.env.APP_API+item.attributes.url} alt="asd" />
             </BigImage>}
           </Grid>)}
         </Grid>

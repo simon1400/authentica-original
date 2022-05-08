@@ -4,7 +4,7 @@ export const BrandItem = styled.a<{index: number, image: string}>(({theme, index
   width: 100%;
   display: block;
   position: relative;
-  background-image: ${"url('http://localhost:1340"+image+"')"};
+  background-image: url(${process.env.APP_API+image});
   background-size: cover;
   padding-top: 100%;
   ${!!(index % 2) && `margin-top: ${theme.spacing(12)}`};

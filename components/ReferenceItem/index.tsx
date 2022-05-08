@@ -40,7 +40,7 @@ const ReferenceItem: FC<ReferenceItemProps> = ({
         </Logo>}
         {small && <ReferenceHead inverse={checkColor(data.Background)} variant="h3">{data.title}</ReferenceHead>}
         {!small && <Typography color={checkColor(data.Background) ? "white" : "black"} variant="body2"><div dangerouslySetInnerHTML={{__html: data.description}}/></Typography>}
-        <Image small={small} src={"http://localhost:1340"+data.image.data.attributes.url} />
+        <Image small={small} src={process.env.APP_API+data.image.data.attributes.url} />
       </ReferenceItemComponent>
     </Link>
   )
