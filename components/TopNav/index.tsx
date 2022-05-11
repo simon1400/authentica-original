@@ -17,9 +17,6 @@ const TopNav: FC<ITopNav> = ({
   if(!data.length) {
     return null
   }
-
-  console.log(data);
-  
   
   return (
     <Nav>

@@ -8,7 +8,8 @@ let theme = createTheme({
       sm: 640,
       md: 940,
       lg: 1200,
-      xl: 1440
+      xl: 1440,
+      xxl: 1920
     },
   },
   palette: {
@@ -92,11 +93,19 @@ const themeOption: ThemeOptions = {
             minWidth: "300px",
             minHeight: "70px",
             boxShadow: "0 3px 6px 0 rgba(0, 0, 0, 0.16)",
-            transition: 'transform .5s ease',
+            transition: 'transform .3s ease',
             transform: "scale(1)",
+            paddingLeft: "50px",
+            paddingRight: "50px",
+            "span": {
+              transition: 'transform .3s ease',
+            },
             "&:hover": {
               transform: "scale(1.05)",
               backgroundColor: theme.palette.primary.main,
+              "span": {
+                transform: "scale(0.95)"
+              }
             }
           },
         },
@@ -136,16 +145,20 @@ const themeOption: ThemeOptions = {
       }
     },
     h1: {
-      fontSize: "94px",
+      // fontSize: "94px",
+      fontSize: "3.7vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
+      // [theme.breakpoints.down('xxl')]: {
+      //   fontSize: '86px'
+      // },
       [theme.breakpoints.down('sm')]: {
         fontSize: '35px'
       }
     },
     h2: {
-      fontSize: "76px",
+      fontSize: "2.9vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
@@ -154,7 +167,7 @@ const themeOption: ThemeOptions = {
       }
     },
     h3: {
-      fontSize: "45px",
+      fontSize: "1.75vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
@@ -163,7 +176,7 @@ const themeOption: ThemeOptions = {
       }
     },
     h4: {
-      fontSize: "28px",
+      fontSize: "1vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
@@ -172,7 +185,7 @@ const themeOption: ThemeOptions = {
       }
     },
     h5: {
-      fontSize: "20px",
+      fontSize: "0.8vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: .9,
@@ -194,5 +207,16 @@ declare module '@emotion/react' {
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     withIcon: true;
+  }
+}
+
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
+    xxl: true;
   }
 }

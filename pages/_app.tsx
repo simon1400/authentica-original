@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-
+import SymbolSVG from 'components/Symbol'
 import Header from 'layout/Header';
 import Footer from 'layout/Footer';
 
@@ -24,6 +24,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <WithGraphQL>
+          {pageProps?.data?.__typename !== "Reference" && <SymbolSVG type={pageProps?.data?.__typename} />}
           <Header backgroundAbsolute={pageProps.bgHeaderAbsolute} />
           <Component {...pageProps} />
           <Footer />

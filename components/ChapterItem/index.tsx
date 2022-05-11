@@ -93,7 +93,7 @@ const ChapterItem: FC<ChapterProps> = ({
         </Grid>
       </Container>}
       {(button.link && button.text) && <Container>
-        <Button variant={buttonVariant} href={button.link} sx={{marginBottom: "60px"}}>{button.text}</Button>
+        <Button variant={buttonVariant} href={button.link} sx={{marginBottom: "60px"}}><span>{button.text}</span></Button>
       </Container>}
     </section>
   )

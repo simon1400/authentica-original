@@ -10,8 +10,6 @@ interface IDropDownItem {
 const DropDownItem: FC<IDropDownItem> = ({
   data
 }) => {
-  console.log((!!data.subTitle2?.length && !!data.subUrl2?.length));
-  
   return (
     <DropDownItemC>
       <div>

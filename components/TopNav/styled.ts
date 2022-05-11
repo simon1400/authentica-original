@@ -31,9 +31,21 @@ const Nav = styled.nav(({theme}) => `
         }
       }
       &.drop-down-item{
-        &:hover ${DropDownC}{
-          display: block;
-        }
+        a svg{
+          transition: all .2s ease;
+          path{
+            fill: ${theme.palette.primary.main}!important;
+            color: ${theme.palette.primary.main}!important;
+          }
+        } 
+        &:hover{
+          a svg{
+            transform: rotate(-180deg);
+          }
+          ${DropDownC}{
+            display: block;
+          }
+        } 
       }
       a{
         line-height: 1.29;

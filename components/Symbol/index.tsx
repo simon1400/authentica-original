@@ -1,14 +1,21 @@
 import styled from "@emotion/styled";
-import { useEffect, useRef, useState } from "react";
+import { FC } from "react";
 
-const Symbol = () => {
+interface ISymbol {
+  type: string;
+}
+
+const Symbol: FC<ISymbol> = ({
+  type
+}) => {
 
   return (
-    <SymbolC>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 922.48 1079.999" style={{position: "absolute"}}>
+    <SymbolC homepage={type === "Homepage" ? true : false}>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 925 1080" style={{position: "absolute"}}>
         <defs>
           <clipPath id="mask">
-            <path d="M686.154,606.9,310.5,1686.9H504.586l73.566-223.828h389.74l73.568,223.828h192.524L858.328,606.9ZM628.243,1306.55l144-436.7,144,436.7Z" transform="translate(-310.502 -606.902)"/>
+            <path id="b" d="M376.41,0L.76,1080H194.84l73.57-223.83h389.74l73.57,223.83h192.52L548.59,0h-172.17Zm-57.91,699.65l144-436.7,144,436.7H318.5Z"/>
           </clipPath>
         </defs>
         <use fill="#000" filter="url(#prefix__b)" xlinkHref="#prefix__a"/>
@@ -24,19 +31,27 @@ const Symbol = () => {
   )
 }
 
-export const SymbolC = styled.div(({theme}) => `
-  height: calc(100% + 118px);
-  width: 100%;
-  display: block;
+export const SymbolC = styled.div<{homepage: boolean}>(({theme, homepage}) => `
+  height: ${homepage ? "100vh" :"70vh"};
+  width: 100vh;
+  position: absolute;
+  z-index: 100;
+  right: -10vw;
+  display: inline-block;
+  transition: all .5s cubic-bezier(0.7, -0.01, 0.19, 1);
+  @media (max-width: 1440px) {
+    right: -16vw;
+    top: 150px;
+    height: ${homepage ? "calc(100vh - 150px)" : "70vh"};
+  }
   svg, foreignObject{
     fill: ${theme.palette.primary.main};
     color: ${theme.palette.primary.main}; 
-    max-height: 100%;
-    max-width: 830px;
-    width: 830px;
+    max-height: ${homepage ? "100vh" :"70vh"};
     right: 0;
-    @media (max-width: 940px) {
-      left: 0;
+    transition: all .5s cubic-bezier(0.7, -0.01, 0.19, 1);
+    @media (max-width: 1440px) {
+      height: ${homepage ? "calc(100vh - 150px)" : "70vh"};
     }
   }
   foreignObject{
@@ -46,14 +61,15 @@ export const SymbolC = styled.div(({theme}) => `
     div{
       background: ${theme.palette.primary.main};
       mix-blend-mode: multiply;
-      width: 100%;
-      height: 100%;
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
       position: absolute;
       right: 0;
     }
     video{
       position: absolute;
-      right: 0;
+      left: 1px;
+      bottom: 1px;
     }
   }
 `)

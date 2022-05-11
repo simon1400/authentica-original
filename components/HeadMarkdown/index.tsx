@@ -18,10 +18,10 @@ const HeadMarkdown: FC<IHeadMarkdown> = ({title, lavel = "h2", marginBottom = 0}
   )
 }
 
-const Head = styled(Typography)`
+const Head = styled(Typography)(({theme}) => `
   b{
-    color: red;
+    color: ${theme.palette.primary.main};
   }
-`
+`)
 
 export default HeadMarkdown
