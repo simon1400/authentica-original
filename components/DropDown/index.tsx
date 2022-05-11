@@ -5,48 +5,45 @@ import { FC } from "react"
 
 interface DropDownProps {
   shown: number;
+  idx: number;
+  data: any;
   setDropShown: (e: number) => void
 }
 
 const DropDown: FC<DropDownProps> = ({
   shown,
-  setDropShown
+  setDropShown,
+  idx,
+  data
 }) => {
   return (
     <DropDownC 
-      shown={shown} 
-      onMouseEnter={() => setDropShown(1)}
+      shown={shown === idx} 
+      onMouseEnter={() => setDropShown(idx)}
       onMouseLeave={() => setDropShown(-1)}>
       <Container maxWidth="lg">
-        <Grid container spacing={12}>
-          <Grid item xs={3}>
-            <DropDownItem />
-          </Grid>
-          <Grid item xs={3}>
-            <DropDownItem />
-          </Grid>
-          <Grid item xs={3}>
-            <DropDownItem />
-          </Grid>
-          <Grid item xs={3}>
-            <DropDownItem />
-          </Grid>
+        <Grid container justifyContent={"center"} spacing={12}>
+          {/* @ts-ignore */}
+          {data.map((item, index) => <Grid key={index} item xs={12/data.length}>
+            <DropDownItem data={item} />
+          </Grid>)}
         </Grid>
       </Container>
     </DropDownC>
   )
 }
 
-export const DropDownC = styled.div<{shown: number}>(({shown}) => `
+export const DropDownC = styled.div<{shown: boolean}>(({shown}) => `
   padding-top: 200px;
   padding-bottom: 70px;
   width: 100vw;
   left: 0;
-  top: 0;
+  top: ${shown ? 0 : "-1000%"};
   z-index: 2;
   background: white;
   position: absolute;
-  display: ${shown >= 0 ? "block" : "none"};
+  transition: all .5s ease;
+  display: block;
 `)
 
 export default DropDown

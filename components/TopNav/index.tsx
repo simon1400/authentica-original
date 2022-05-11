@@ -17,28 +17,36 @@ const TopNav: FC<ITopNav> = ({
   if(!data.length) {
     return null
   }
+
+  console.log(data);
+  
   
   return (
     <Nav>
       <ul>
-        {data.map((item, index) => <li key={index}>
-          <Link href={item.url}>
-            <a>{item.title}</a>
-          </Link>
-        </li>)}
-        {/* <li><a href="#">some title</a></li>
-        <li 
-          onMouseEnter={() => setDropShown(1)}
-          className="drop-down-item"
-        >
-          <a href="#">some title<DownIcon /></a>
-        </li>
-        <li className="active">
+        {data.map((item, index) => {
+          if(item.subNav.length){
+            return <li 
+              onMouseEnter={() => setDropShown(index)}
+              key={index}
+              className="drop-down-item"
+            >
+              <Link href={item.url}>
+                <a>{item.title}<DownIcon /></a>
+              </Link>
+            </li>
+          }else{
+            return <li key={index}>
+            <Link href={item.url}>
+              <a>{item.title}</a>
+            </Link>
+          </li>
+          }
+          
+        })}
+        {/* <li className="active">
           <a href="#">some title</a>
-        </li>
-        <li><a href="#">some title</a></li>
-        <li><a href="#">some title</a></li>
-        <li><a href="#">some title</a></li> */}
+        </li> */}
       </ul>
     </Nav>
   )

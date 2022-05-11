@@ -1,17 +1,34 @@
 import styled from "@emotion/styled"
 import { Typography } from "@mui/material"
+import Link from "next/link"
+import { FC } from "react"
 
-const DropDownItem = () => {
+interface IDropDownItem {
+  data: any
+}
+
+const DropDownItem: FC<IDropDownItem> = ({
+  data
+}) => {
+  console.log((!!data.subTitle2?.length && !!data.subUrl2?.length));
+  
   return (
     <DropDownItemC>
       <div>
-        <img src="/assets/image1.png" />
+        <img src={`${process.env.APP_API}${data.image.data.attributes.url}`} />
       </div>
       <div>
-        <Typography variant="h5">in store design</Typography>
+        <Typography variant="h5">
+          <Link href={data.url} passHref>
+            <a>{data.title}</a>
+          </Link>
+        </Typography>
         <ul>
-          <li><a href="#">Shop in shop</a></li>
-          <li><a href="#">Shop in shop</a></li>
+          {(!!data.subTitle1?.length && !!data.subUrl1?.length) && <li><Link href={data.subUrl1}><a>{data.subTitle1}</a></Link></li>}
+          {(!!data.subTitle2?.length && !!data.subUrl2?.length) && <li><Link href={data.subUrl2}><a>{data.subTitle2}</a></Link></li>}
+          {(!!data.subTitle3?.length && !!data.subUrl3?.length) && <li><Link href={data.subUrl3}><a>{data.subTitle3}</a></Link></li>}
+          {(!!data.subTitle4?.length && !!data.subUrl4?.length) && <li><Link href={data.subUrl4}><a>{data.subTitle4}</a></Link></li>}
+          {(!!data.subTitle5?.length && !!data.subUrl5?.length) && <li><Link href={data.subUrl5}><a>{data.subTitle5}</a></Link></li>}
         </ul>
       </div>
     </DropDownItemC>
@@ -20,18 +37,23 @@ const DropDownItem = () => {
 
 const DropDownItemC = styled.div(({theme}) => `
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  justify-content: center;
   h5{
-    color: ${theme.palette.primary.main};
+    a{
+      color: ${theme.palette.primary.main}!important;
+      text-decoration: none;
+    }
     margin-bottom: 10px;
   }
   div{
     &:first-child{
       margin-right: 10px;
     }
-    &:last-child{
+    /* &:last-child{
       flex-grow: 1;
-    }
+    } */
   }
   div ul{
     padding-left: 0;

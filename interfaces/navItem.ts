@@ -3,6 +3,7 @@ interface INavItem {
   order: number,
   title: string,
   url: string
+  subNav: any[]
 }
 
 export default INavItem

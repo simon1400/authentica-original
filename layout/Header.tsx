@@ -48,7 +48,19 @@ const Header: FC<HeaderProps> = ({
           <Navigation data={nav} setDropShown={setDropShown} />
         </TopNav>
       </Container>
-      <DropDown shown={dropShown} setDropShown={setDropShown} />
+      {nav.map((item, index) => {
+        if(item.subNav.length) {
+          return <DropDown 
+            key={index} 
+            idx={index} 
+            data={item.subNav} 
+            shown={dropShown} 
+            setDropShown={setDropShown} 
+          />
+        }
+        return null
+      })}
+      
     </HeaderC>
   )
 }
@@ -66,13 +78,14 @@ const HeaderC = styled.header<{backgroundAbsolute: string; dropShown: number}>((
   &:after{
     position: fixed;
     content: '';
-    display: ${dropShown >= 0 ? 'block' : 'none'};
+    display: block;
     width: 100vw;
     height: 100vh;
-    top: 0;
+    transition: background .5s ease;
+    top: ${dropShown >= 0 ? 0 : "-1000%"};
     left: 0;
     z-index: 1;
-    background: rgba(0,0,0, .7);
+    background: ${dropShown >= 0 ? "rgba(0,0,0, .7)" : "transparent"};
   }
 `)
 
