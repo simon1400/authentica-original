@@ -1,5 +1,6 @@
 import { Button, ButtonProps, Container, Grid, Typography } from "@mui/material"
 import CategoryItem from "components/CategoryItem";
+import HeadMarkdown from "components/HeadMarkdown";
 import ReferenceItem from "components/ReferenceItem"
 import { FC, useEffect, useState } from "react"
 import BigImage from "styles/BigImage";
@@ -13,7 +14,7 @@ interface IButtonInfo {
 
 interface ChapterProps {
   content?: string;
-  head?: string | boolean;
+  head?: string;
   items?: any[];
   images?: any[];
   buttonVariant?: ButtonProps['variant'];
@@ -26,7 +27,7 @@ interface ChapterProps {
 
 const ChapterItem: FC<ChapterProps> = ({
   content = "",
-  head = false,
+  head = "",
   items = [],
   images = [],
   button = {},
@@ -49,9 +50,9 @@ const ChapterItem: FC<ChapterProps> = ({
 
   return (
     <section>
-      {(head || content) && <Container>
+      {(!!head.length || content) && <Container>
         <ContentWrap>
-          {head && <Typography variant={smallLevel ? "h3" : "h2"} component="h2" marginBottom={12}>{head}</Typography>}
+          {!!head.length && <HeadMarkdown marginBottom={12} title={head} lavel={smallLevel ? "h3" : "h2"} />}
           {content && <Typography variant={contentBig ? "body1" : "body2"} marginBottom={12}><div dangerouslySetInnerHTML={{__html: content}} /></Typography>}
         </ContentWrap>
       </Container>}

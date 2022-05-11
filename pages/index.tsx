@@ -1,8 +1,7 @@
-import { Container, Modal } from '@mui/material'
+import { Container } from '@mui/material'
 import Page from 'layout/Page'
 import type { NextPage } from 'next'
 import Chapter from 'components/ChapterItem'
-import { Head } from 'styles/Head';
 import BrandItem from 'components/BrandItem';
 import PageHead from 'components/PageHead'
 import ScrollingSection from 'components/ScrolingSection'
@@ -12,6 +11,7 @@ import { ItemScroll } from 'components/ScrolingSection/styled';
 import ReferenceItem from 'components/ReferenceItem';
 import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
+import HeadMarkdown from 'components/HeadMarkdown';
 
 export async function getServerSideProps() {
   const { data } = await client.query({
@@ -30,6 +30,9 @@ const Home: NextPage = ({
   // @ts-ignore
   data
 }) => {
+
+  console.log(data.titlePartners);
+  
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -68,7 +71,7 @@ const Home: NextPage = ({
 
       <>
         {!!data.partners && <Container>
-          <Head variant="h2">{data.titlePartners}</Head>
+          <HeadMarkdown marginBottom={12} title={data.titlePartners} />
         </Container>}
 
         {!!data.partners && <ScrollingSection column={data.partners.length} height="460px" widthColumn="400px">
