@@ -44,6 +44,23 @@ const DropDownItemC = styled.div(({theme}) => `
     a{
       color: ${theme.palette.primary.main}!important;
       text-decoration: none;
+      position: relative;
+      &:after{
+        content: '';
+        display: block;
+        width: 0;
+        transition: all .2s ease;
+        height: 1.5px;
+        background-color: ${theme.palette.primary.main};
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+      }
+      &:hover{
+        &:after{
+          width: 100%;
+        }
+      }
     }
     margin-bottom: 10px;
   }
@@ -73,6 +90,25 @@ const DropDownItemC = styled.div(({theme}) => `
         display: block;
         text-decoration: none;
         font-weight: 300;
+        position: relative;
+        &:after{
+          content: '';
+          display: block;
+          width: 0;
+          transition: all .2s ease;
+          height: 1px;
+          background-color: ${theme.palette.primary.main};
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+        }
+        &:hover{
+          color: ${theme.palette.primary.main}!important;
+          opacity: 1;
+          &:after{
+            width: 100%;
+          }
+        }
       }
     }
   }
