@@ -27,17 +27,17 @@ const Symbol = () => {
 export const SymbolC = styled.div(({theme}) => `
   height: calc(100% + 118px);
   width: 100%;
-  left: -100%;
-  bottom: 0;
-  position: absolute;
   display: block;
-  text-align: right;
   svg, foreignObject{
     fill: ${theme.palette.primary.main};
     color: ${theme.palette.primary.main}; 
     max-height: 100%;
-    max-width: 100%;
+    max-width: 830px;
+    width: 830px;
     right: 0;
+    @media (max-width: 940px) {
+      left: 0;
+    }
   }
   foreignObject{
     width: 100%;

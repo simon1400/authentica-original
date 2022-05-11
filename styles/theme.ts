@@ -29,6 +29,9 @@ const themeOption: ThemeOptions = {
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        html: {
+          overflowX: "hidden",
+        },
         body: {
           overflowX: "hidden",
           position: 'relative',

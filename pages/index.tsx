@@ -31,9 +31,6 @@ const Home: NextPage = ({
   data
 }) => {
 
-  console.log(data.titlePartners);
-  
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -44,7 +41,7 @@ const Home: NextPage = ({
   return (
     <Page>
 
-      <PageHead 
+      <PageHead
         label={data.label}
         head={data.titles}
         openModal={handleOpen}

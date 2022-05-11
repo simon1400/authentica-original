@@ -25,16 +25,18 @@ const PageHeadComponent: FC<PageHeadProps> = ({
 }) => {
 
   return (
-    <Container>
-      <PageHead>
+    <PageHead>
+      <div>
         <SymbolSVG />
+      </div>
+      <div>
         <Typography variant='body1'>{label}</Typography>
         {Array.isArray(head) 
           ? head.map((item, index) => <div key={index}>
             <Link href={"/"+item.article.data.attributes.slug} passHref>
               <Head variant='h1'>{item.Text}</Head>
             </Link>
-          </div>) 
+          </div>)
           : <Head variant='h1'>{head}</Head>
         }
         {buttons && <Grid
@@ -60,8 +62,8 @@ const PageHeadComponent: FC<PageHeadProps> = ({
             </Button>
           </Grid>
         </Grid>}
-      </PageHead>
-    </Container>
+      </div>
+    </PageHead>
   )
 }
 
