@@ -9,7 +9,11 @@ interface IHeadMarkdown {
   marginBottom?: number;
 }
 
-const HeadMarkdown: FC<IHeadMarkdown> = ({title, lavel = "h2", marginBottom = 0}) => {
+const HeadMarkdown: FC<IHeadMarkdown> = ({
+  title, 
+  lavel = "h2",
+  marginBottom = 0
+}) => {
 
   let titleMarkdown = markdown(title)
 

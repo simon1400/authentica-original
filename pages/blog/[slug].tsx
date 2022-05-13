@@ -16,10 +16,17 @@ export async function getServerSideProps(ctx) {
     }
   });
 
+  if(!data?.blogs?.data?.[0]?.attributes) {
+    return {
+      notFound: true
+    }
+  }
+  
+
   return {
     props: {
-      data: data.blogs.data[0].attributes,
-      footer: data.blogs.data[0].attributes.footer
+      data: data.blogs.data[0]?.attributes,
+      footer: data.blogs.data[0]?.attributes.footer
     },
   };
 }

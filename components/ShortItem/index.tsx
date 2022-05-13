@@ -1,4 +1,5 @@
 import { Button, Container, Grid, Typography } from "@mui/material"
+import HeadMarkdown from "components/HeadMarkdown";
 import { IImage } from "interfaces/image";
 import { FC } from "react"
 import ImageSquare from "styles/ImageSquare"
@@ -25,7 +26,7 @@ const ShortItem: FC<IShortItem> = ({
           </ImageSquare>
         </Grid>
         <Grid item xs={8}>
-          <Typography variant="h3" component="h2" marginBottom={8}>{title}</Typography>
+          <HeadMarkdown lavel="h3" marginBottom={8} title={title} />
           <Typography variant="body2" marginBottom={6} component="div" dangerouslySetInnerHTML={{__html: content}} />
           <Button href={`/blog/${slug}`} disableRipple>Zjistěte  více</Button>
         </Grid>

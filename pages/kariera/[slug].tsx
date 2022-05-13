@@ -15,6 +15,12 @@ export async function getServerSideProps(ctx) {
     }
   });
 
+  if(!data?.vacancies?.data?.[0]?.attributes) {
+    return {
+      notFound: true
+    }
+  }
+
   return {
     props: {
       data: data.vacancies.data[0].attributes,
