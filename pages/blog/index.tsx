@@ -7,12 +7,17 @@ import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
 import postsQuery from "queries/posts"
+import postsCategoryQuery from "queries/postsCategory"
 import postsPageQuery from "queries/postsPage"
 import { client } from "utility/graphql"
 
 export async function getServerSideProps() {
   const { data: pageData } = await client.query({
     query: postsPageQuery,
+  });
+  
+  const { data: pageCategory } = await client.query({
+    query: postsCategoryQuery,
   });
   
   
@@ -27,7 +32,8 @@ export async function getServerSideProps() {
       footer: pageData.blogOverview.data.attributes.footer,
       label: pageData.blogOverview.data.attributes.label,
       meta: pageData.blogOverview.data.attributes.meta,
-      posts: posts.blogs.data
+      posts: posts.blogs.data,
+      category: pageCategory.blogCategories.data
     },
   };
 }
@@ -39,6 +45,7 @@ interface IPosts {
   label: string;
   meta: IMeta;
   posts: any[];
+  category: any[];
 }
 
 const Posts: NextPage<IPosts> = ({
@@ -47,11 +54,9 @@ const Posts: NextPage<IPosts> = ({
   label,
   footer,
   meta,
-  posts
+  posts,
+  category
 }) => {
-
-  console.log(posts);
-  
   return (
     <Page>
       <PageHead 
@@ -60,7 +65,7 @@ const Posts: NextPage<IPosts> = ({
 
       <Chapter content={content} contentBig />
 
-      <TabsNav />
+      <TabsNav data={category} />
       
       <>{posts.map((item, index) => <ShortItem key={index} {...item.attributes} />)}</>
 

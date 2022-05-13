@@ -7,12 +7,17 @@ import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
 import cariersQuery from "queries/cariers"
+import cariersCategoryQuery from "queries/cariersCategory"
 import cariersPageQuery from "queries/cariersPage"
 import { client } from "utility/graphql"
 
 export async function getServerSideProps() {
   const { data: pageData } = await client.query({
     query: cariersPageQuery,
+  });
+
+  const { data: pageCategory } = await client.query({
+    query: cariersCategoryQuery,
   });
   
   const { data: posts } = await client.query({
@@ -26,7 +31,8 @@ export async function getServerSideProps() {
       footer: pageData.vacancyOverview.data.attributes.footer,
       label: pageData.vacancyOverview.data.attributes.label,
       meta: pageData.vacancyOverview.data.attributes.meta,
-      posts: posts.vacancies.data
+      posts: posts.vacancies.data,
+      category: pageCategory.vacancyCategories.data
     },
   };
 }
@@ -38,6 +44,7 @@ interface IPosts {
   label: string;
   meta: IMeta;
   posts: any[];
+  category: any[];
 }
 
 const PositionCatalog: NextPage<IPosts> = ({
@@ -46,7 +53,8 @@ const PositionCatalog: NextPage<IPosts> = ({
   label,
   footer,
   meta,
-  posts
+  posts,
+  category
 }) => {
   return (
     <Page>
@@ -56,7 +64,7 @@ const PositionCatalog: NextPage<IPosts> = ({
 
       <Chapter content={content} contentBig />
 
-      <TabsNav />
+      <TabsNav data={category} />
 
       <>{posts.map((item, index) => <ShortItem key={index} {...item.attributes} />)}</>
 

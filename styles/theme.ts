@@ -70,7 +70,7 @@ const themeOption: ThemeOptions = {
         },
         startIcon: {
           marginRight: "11px",
-          transition: 'transform .5s ease',
+          transition: 'all .5s ease',
           transform: "scale(1)",
           width: "40px",
           height: "40px",
@@ -80,6 +80,7 @@ const themeOption: ThemeOptions = {
           "*:nth-of-type(1)": {
             fontSize: '18px',
             margin: "auto",
+            transition: 'all .5s ease',
           },
           "&:hover": {
             transform: "scale(1.1)",
@@ -114,10 +115,16 @@ const themeOption: ThemeOptions = {
           props: { variant: 'withIcon' },
           style: {
             color: theme.palette.primary.main,
-            
             "&:hover": {
-              
               backgroundColor: "transparent",
+              span: {
+                transform: "scale(1.1)",
+                marginRight: "15px",
+                border: "solid 1.5px rgba(228, 0, 43, 1)",
+                svg: {
+                  transform: "scale(0.9)"
+                }
+              }
             }
           },
         },
