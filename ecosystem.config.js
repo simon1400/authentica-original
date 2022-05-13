@@ -2,6 +2,9 @@ module.exports = {
   apps : [{
     name   : "Authentica client",
     script : "yarn start",
+    watch: [".next"],
+    watch_delay: 1000,
+    ignore_watch : ["node_modules"],
     env_production: {}
   }],
 
