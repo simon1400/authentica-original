@@ -38,7 +38,8 @@ export async function getServerSideProps(ctx) {
     return {
       props: {
         data: referenceData.references.data[0].attributes,
-        bgHeaderAbsolute: background
+        bgHeaderAbsolute: background,
+        footer: referenceData.references.data[0].attributes.footer
       }
     }
   }else{

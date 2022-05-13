@@ -24,7 +24,6 @@ const FooterLayout: FC<IFooter> = ({
 
   const footerNav = nav.navigation.data.attributes
   
-  
   return (
     <Footer>
       <Content>

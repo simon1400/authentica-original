@@ -36,7 +36,7 @@ const ReferenceItem: FC<ReferenceItemProps> = ({
     <Link href={router.asPath+"/"+data.slug} passHref>
       <ReferenceItemComponent small={small} bg={data.Background}>
         {!small && <Logo inverse={checkColor(data.Background)}>
-            <Waterdrop />
+          <img src={process.env.APP_API+data.logo.data.attributes.url} />
         </Logo>}
         {small && <ReferenceHead inverse={checkColor(data.Background)} variant="h3">{data.title}</ReferenceHead>}
         {!small && <Typography color={checkColor(data.Background) ? "white" : "black"} variant="body2"><div dangerouslySetInnerHTML={{__html: data.description}}/></Typography>}
