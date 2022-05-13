@@ -41,10 +41,10 @@ export async function getServerSideProps(ctx) {
         bgHeaderAbsolute: background
       }
     }
-  }
-
-  return {
-    notFound: true
+  }else{
+    return {
+      notFound: true
+    }
   }
 }
 
