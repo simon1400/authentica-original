@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material"
+import { Container } from "@mui/material"
 import HeadMarkdown from "components/HeadMarkdown"
 import Page from "layout/Page"
 
