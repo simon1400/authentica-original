@@ -18,7 +18,9 @@ const FooterLayout: FC<IFooter> = ({
 
   const {data: nav, loading, error} = useQuery(footerNavQuery)
 
-  if(loading) {
+  console.log(data)
+
+  if(loading || data === undefined) {
     return null
   }
 

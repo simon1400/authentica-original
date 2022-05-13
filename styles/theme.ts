@@ -37,6 +37,7 @@ const themeOption: ThemeOptions = {
           overflowX: "hidden",
           position: 'relative',
           marginBottom: "100vh",
+          minHeight: "100vh",
           background: "white"
         }
       }
