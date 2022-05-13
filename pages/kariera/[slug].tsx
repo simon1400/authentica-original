@@ -6,6 +6,7 @@ import { NextPage } from "next"
 import carierQuery from "queries/carier";
 import { client } from "utility/graphql";
 
+
 // @ts-ignore
 export async function getServerSideProps(ctx) {
   const { data } = await client.query({
