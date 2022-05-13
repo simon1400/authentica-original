@@ -21,6 +21,7 @@ export async function getServerSideProps() {
   return {
     props: {
       data: data.homepage.data.attributes,
+      footer: data.homepage.data.attributes.footer
     },
  };
 }

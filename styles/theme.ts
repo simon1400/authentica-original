@@ -36,7 +36,7 @@ const themeOption: ThemeOptions = {
         body: {
           overflowX: "hidden",
           position: 'relative',
-          paddingBottom: "100vh",
+          marginBottom: "100vh",
           background: "white"
         }
       }

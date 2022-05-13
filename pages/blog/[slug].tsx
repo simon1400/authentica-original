@@ -18,7 +18,8 @@ export async function getServerSideProps(ctx) {
 
   return {
     props: {
-      data: data.blogs.data[0].attributes
+      data: data.blogs.data[0].attributes,
+      footer: data.blogs.data[0].attributes.footer
     },
   };
 }

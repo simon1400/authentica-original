@@ -13,6 +13,9 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   p {
     margin-bottom: 40px;
     color: rgba(0, 0, 0, 0.7);
+    @media (max-width: 940px) {
+      font-size: 28px;
+    }
   }
   button {
     margin-top: 50px;

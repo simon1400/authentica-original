@@ -17,7 +17,8 @@ export async function getServerSideProps(ctx) {
 
   return {
     props: {
-      data: data.vacancies.data[0].attributes
+      data: data.vacancies.data[0].attributes,
+      footer: data.vacancies.data[0].attributes.footer
     },
   };
 }

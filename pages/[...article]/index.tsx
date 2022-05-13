@@ -21,6 +21,7 @@ export async function getServerSideProps(ctx) {
     return {
       props: {
         data: articleData.techArticles.data[0].attributes,
+        footer: articleData.techArticles.data[0].attributes.footer
       }
     }
   }

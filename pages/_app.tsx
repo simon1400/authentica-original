@@ -27,7 +27,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
           {pageProps?.data?.__typename !== "Reference" && <SymbolSVG type={pageProps?.data?.__typename} />}
           <Header backgroundAbsolute={pageProps.bgHeaderAbsolute} />
           <Component {...pageProps} />
-          <Footer />
+          <Footer data={pageProps.footer}/>
         </WithGraphQL>
       </ThemeProvider>
     </CacheProvider>

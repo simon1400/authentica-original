@@ -17,6 +17,7 @@ export async function getServerSideProps() {
   return {
     props: {
       data: data.contact.data.attributes,
+      footer: data.contact.data.attributes.footer,
     },
   };
 }
