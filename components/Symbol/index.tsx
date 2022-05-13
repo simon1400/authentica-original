@@ -43,12 +43,12 @@ export const SymbolC = styled.div<{homepage: boolean}>(({theme, homepage}) => `
   @media (max-width: 1440px) {
     right: -12vw;
     top: 150px;
-    height: ${homepage ? "calc(100vh - 150px)" : "70vh"};
+    height: ${homepage ? "calc(100vh - 150px)" : "60vh"};
   }
   @media (max-width: 960px) {
     right: -50vw;
     top: 100px;
-    height: ${homepage ? "calc(100vh - 100px)" : "70vh"};
+    height: ${homepage ? "calc(100vh - 100px)" : "60vh"};
   }
   svg, foreignObject{
     fill: ${theme.palette.primary.main};
@@ -57,10 +57,10 @@ export const SymbolC = styled.div<{homepage: boolean}>(({theme, homepage}) => `
     right: 0;
     transition: all .5s cubic-bezier(0.7, -0.01, 0.19, 1);
     @media (max-width: 1440px) {
-      height: ${homepage ? "calc(100vh - 150px)" : "70vh"};
+      height: ${homepage ? "calc(100vh - 150px)" : "60vh"};
     }
     @media (max-width: 960px) {
-      height: ${homepage ? "calc(100vh - 100px)" : "70vh"};
+      height: ${homepage ? "calc(100vh - 100px)" : "60vh"};
     }
   }
   foreignObject{

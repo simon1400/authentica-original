@@ -8,4 +8,7 @@ export const ContactItemC = styled.div`
   h3, h4{
     margin-bottom: 45px;
   }
+  a{
+    color: ${({theme}) => theme.palette.primary.main};
+  }
 `
