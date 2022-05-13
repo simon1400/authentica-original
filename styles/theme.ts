@@ -6,7 +6,7 @@ let theme = createTheme({
     values: {
       xs: 320,
       sm: 640,
-      md: 940,
+      md: 960,
       lg: 1200,
       xl: 1440,
       xxl: 1920
@@ -145,20 +145,26 @@ const themeOption: ThemeOptions = {
       }
     },
     h1: {
-      // fontSize: "94px",
-      fontSize: "3.7vw",
+      fontSize: "94px",
+      // fontSize: "3.7vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
-      // [theme.breakpoints.down('xxl')]: {
-      //   fontSize: '86px'
-      // },
+      [theme.breakpoints.down('xxl')]: {
+        fontSize: '86px'
+      },
+      [theme.breakpoints.down('xl')]: {
+        fontSize: '70px'
+      },
+      [theme.breakpoints.down('md')]: {
+        fontSize: '58px'
+      },
       [theme.breakpoints.down('sm')]: {
         fontSize: '35px'
       }
     },
     h2: {
-      fontSize: "2.9vw",
+      fontSize: "76px",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
@@ -167,7 +173,7 @@ const themeOption: ThemeOptions = {
       }
     },
     h3: {
-      fontSize: "1.75vw",
+      fontSize: "45px",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
@@ -176,7 +182,7 @@ const themeOption: ThemeOptions = {
       }
     },
     h4: {
-      fontSize: "1vw",
+      fontSize: "28px",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
@@ -185,7 +191,7 @@ const themeOption: ThemeOptions = {
       }
     },
     h5: {
-      fontSize: "0.8vw",
+      fontSize: "20px",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: .9,

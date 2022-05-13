@@ -3,15 +3,22 @@ import { Typography } from "@mui/material"
 
 export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   position: relative;
-  padding-top: ${homepage ? "15vw" : "340px"};
+  padding-top: ${homepage ? "250px" : "300px"};
   padding-bottom: 60px;
   min-height: ${homepage ? "100vh" : "50vh"};
-  p{
+  @media (max-width: 1440px) {
+    padding-top: ${homepage ? "100px" : "200px"};
+    padding-bottom: ${homepage ? "60px" : "150px"};
+  }
+  p {
     margin-bottom: 40px;
     color: rgba(0, 0, 0, 0.7);
   }
-  button{
+  button {
     margin-top: 50px;
+    @media (max-width: 720px) and (min-width: 640px) {
+      margin-top: 0px;
+    }
   }
 `)
 
@@ -19,9 +26,6 @@ export const Head = styled(Typography)(({theme}) => `
   position: relative;
   display: inline-block;
   cursor: pointer;
-  @media (max-width: 1440px) {
-    padding-right: 25vw;
-  }
   &:hover{
     color: ${theme.palette.primary.main};
     &:after{

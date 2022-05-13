@@ -1,11 +1,13 @@
 import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
-import { Container } from "@mui/material"
+import { Container, useMediaQuery } from "@mui/material"
 import DropDown from "components/DropDown";
+import Hamburger from "components/Hamburger";
+import ResponseNav from "components/ResponseNav";
 import INavItem from "interfaces/navItem";
 import Link from "next/link";
 import topNavQuery from "queries/topNav";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Logo from "styles/Logo";
 import TopNav from "styles/TopNav";
 import { checkColor } from "utility/checkColor";
@@ -20,9 +22,21 @@ const Header: FC<HeaderProps> = ({
   backgroundAbsolute = "#ffffff"
 }) => {
 
+  const media = useMediaQuery("(max-width:1200px)")
+
   const { loading, error, data } = useQuery(topNavQuery);
-  
+  const [menu, setMenu] = useState(false);
   const [dropShown, setDropShown] = useState<number>(-1)
+
+  useEffect(() => {
+    if(menu) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+    }else{
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+    }
+  }, [menu])
 
   if(loading) {
     return null
@@ -45,10 +59,12 @@ const Header: FC<HeaderProps> = ({
               <LogoIcon />
             </Logo>
           </Link>
-          <Navigation data={nav} setDropShown={setDropShown} />
+          {!media && <Navigation data={nav} setDropShown={setDropShown} />}
+          {media && <Hamburger open={menu} setOpen={setMenu} />}
+          {media && <ResponseNav menu={menu} data={nav} />}
         </TopNav>
       </Container>
-      {nav.map((item, index) => {
+      {!media && nav.map((item, index) => {
         if(item.subNav.length) {
           return <DropDown 
             key={index} 
@@ -60,22 +76,22 @@ const Header: FC<HeaderProps> = ({
         }
         return null
       })}
-      
     </HeaderC>
   )
 }
 
 const HeaderC = styled.header<{backgroundAbsolute: string; dropShown: number}>(({backgroundAbsolute, dropShown}) => `
-  position: ${backgroundAbsolute ? 'absolute' : 'static'};
+  position: 'absolute';
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1002;
   background: ${backgroundAbsolute ? backgroundAbsolute : "#ffffff"};
   * {
     color: ${checkColor(backgroundAbsolute) ? "white" : "black"}!important;
     fill: ${checkColor(backgroundAbsolute) ? "white" : "black"}!important;
   }
-  &:after{
+  &:after {
     position: fixed;
     content: '';
     display: block;
@@ -84,7 +100,7 @@ const HeaderC = styled.header<{backgroundAbsolute: string; dropShown: number}>((
     transition: background .5s ease;
     top: ${dropShown >= 0 ? 0 : "-1000%"};
     left: 0;
-    z-index: 1;
+    z-index: 10;
     background: ${dropShown >= 0 ? "rgba(0,0,0, .7)" : "transparent"};
   }
 `)

@@ -5,7 +5,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import SymbolSVG from 'components/Symbol'
 import Header from 'layout/Header';
 import Footer from 'layout/Footer';
-
+import "node_modules/hamburgers/dist/hamburgers.css"
 import createEmotionCache from 'utility/createEmotionCache';
 import theme from 'styles/theme';
 import { WithGraphQL } from 'utility/graphql';

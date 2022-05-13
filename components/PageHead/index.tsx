@@ -1,10 +1,11 @@
-import { Button, Container, Grid, SvgIcon, Typography } from "@mui/material"
+import { Button, Container, Grid, SvgIcon, Typography, useMediaQuery } from "@mui/material"
 import PlayIcon from 'public/assets/play.svg'
 import { FC } from "react"
 import { Head, PageHead } from "./styles";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
+import HeadMarkdown from "components/HeadMarkdown";
 
 interface IHead {
   Text: string;
@@ -25,6 +26,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
   openModal
 }) => {
 
+  const media = useMediaQuery("(max-width: 720px) and (min-width: 640px)")
   const router = useRouter()
 
   return (
@@ -38,7 +40,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
                 <Head variant='h1'>{item.Text}</Head>
               </Link>
             </div>)
-            : <Head variant='h1'>{head}</Head>
+            : <HeadMarkdown lavel='h1' title={head} />
           }
           {buttons && <Grid
             container
@@ -47,12 +49,12 @@ const PageHeadComponent: FC<PageHeadProps> = ({
             alignItems="center"
             spacing={6}
           >
-            <Grid item md='auto'>
+            <Grid item sm={media ? 12 : "auto"}>
               <Button variant="contained">
                 <span>naše REFERENCE</span>
               </Button>
             </Grid>
-            <Grid item md='auto'>
+            <Grid item sm={media ? 12 : "auto"}>
               <Button 
                 variant="withIcon"
                 onClick={openModal}

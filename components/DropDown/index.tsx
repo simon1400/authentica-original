@@ -39,7 +39,7 @@ export const DropDownC = styled.div<{shown: boolean}>(({shown}) => `
   width: 100vw;
   left: 0;
   top: ${shown ? 0 : "-1000%"};
-  z-index: 2;
+  z-index: 11;
   background: white;
   position: absolute;
   transition: all .5s ease;
