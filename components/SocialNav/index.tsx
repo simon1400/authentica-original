@@ -50,17 +50,17 @@ const SocialNav: FC<SocialNavProps> = ({
       </ul>}
       {social && <ul>
         <li>
-          <a href="/asd">
+          <a href="http://some.com/asd">
             <Facebook />
           </a>
         </li>
          <li>
-          <a href="#">
+          <a href="http://some.com/asd">
             <Instagram />
           </a>
         </li>
         <li>
-          <a href="/asd">
+          <a href="http://some.com/asd">
             <Linkedin />
           </a>
         </li>
