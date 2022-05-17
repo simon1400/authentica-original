@@ -83,6 +83,14 @@ const homepageQuery = gql`
             link
             subTitle
           }
+          meta{
+            title
+            description
+          }
+          topButton {
+            text
+            link
+          }
         }
       }
     }

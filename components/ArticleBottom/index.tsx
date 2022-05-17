@@ -1,23 +1,25 @@
 import { FC } from "react"
 import {Container, Grid, Typography} from '@mui/material'
-import SocialNav from "components/SocialNav"
+import SocialNav, { IShare } from "components/SocialNav"
 import styled from "@emotion/styled"
 
 interface IArticleBottom {
   data: string;
+  share: IShare;
 }
 
 const ArticleBottom: FC<IArticleBottom> = ({
-  data
+  data,
+  share
 }) => {
   return (
     <Container>
-      <Grid container justifyContent="space-between" alignItems="center" marginBottom={30}>
+      <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
           <Publication>{data}</Publication>
         </Grid>
         <Grid item>
-          <SocialNav invert big />
+          <SocialNav share={share} invert big />
         </Grid>
       </Grid>
     </Container>

@@ -1,24 +1,56 @@
-import styled from "@emotion/styled"
+import { useRouter } from "next/router"
 
 import Facebook from 'public/assets/facebook-f.svg'
 import Instagram from 'public/assets/instagram.svg'
 import Linkedin from 'public/assets/linkedin-in.svg'
+import Twitter from 'public/assets/twitter.svg'
 import { FC } from "react"
+import { Social } from "./styled"
 
-interface SocialNavProps {
+const DOMAIN = process.env.APP_DOMAIN
+
+export interface IShare {
+  title: string;
+}
+
+export interface SocialNavProps {
   invert?: boolean;
   big?: boolean;
+  social?: boolean;
+  share?: IShare
 }
 
 const SocialNav: FC<SocialNavProps> = ({
   invert = false,
-  big = false
+  big = false,
+  social = false,
+  share = {}
 }) => {
+
+  const router = useRouter()
+
   return (
     <Social invert={invert} big={big}>
-      <ul>
+      {share && <ul>
         <li>
-          <a href="#">
+          <a href={`https://www.facebook.com/sharer.php?u=${DOMAIN}${router.asPath}`} rel="noreferrer" target="_blank">
+            <Facebook />
+          </a>
+        </li>
+         <li>
+          <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${DOMAIN}${router.asPath}&title=${share.title}&source=${DOMAIN}`}>
+            <Linkedin />
+          </a>
+        </li>
+        <li>
+          <a href={`https://twitter.com/share?url=${DOMAIN}${router.asPath}&amp;text=${share.title}`} rel="noreferrer" target="_blank">
+            <Twitter />
+          </a>
+        </li>
+      </ul>}
+      {social && <ul>
+        <li>
+          <a href="/asd">
             <Facebook />
           </a>
         </li>
@@ -28,53 +60,13 @@ const SocialNav: FC<SocialNavProps> = ({
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/asd">
             <Linkedin />
           </a>
         </li>
-      </ul>
+      </ul>}
     </Social>
   )
 }
-
-const Social = styled.nav<SocialNavProps>(({theme, invert, big}) => `
-  text-align: right;
-  ul{
-    padding-left: 0;
-    margin-bottom: 0;
-    margin-top: 0;
-    li{
-      list-style-type: none;
-      display: inline-block;
-      &:not(:last-child) {
-        margin-right: ${big ? "9px" : "7px"};
-      }
-      a{
-        border: solid 1.5px ${theme.palette.primary.main}${invert ? "" : "50"};
-        display: flex;
-        border-radius: 50%;
-        width: ${big ? "50px" : "40px"};
-        height: ${big ? "50px" : "40px"};
-        transition: all .3s ease;
-        &:after{
-          display: none;
-        }
-        svg{
-          margin: auto;
-          color: ${invert ? "black" : "white"};
-          fill: ${invert ? "black" : "white"};
-          height: ${big ? "20px" : "15px"};
-        }
-        &:hover{
-          background-color: ${invert ? theme.palette.primary.main : "white"};
-          border-color: ${invert ? theme.palette.primary.main : "white"};
-          svg{
-            fill: ${invert ? "white" : theme.palette.primary.main}
-          } 
-        }
-      }
-    }
-  }
-`)
 
 export default SocialNav

@@ -7,11 +7,11 @@ interface StyledTabProps {
 }
 
 export const AntTabs = styled(Tabs)(({theme}) => `
-  border-bottom: '4px solid #e8e8e8';
-  
+  border-bottom: '4px solid #e8e8e810';
   .MuiTabs-indicator {
     background-color: ${theme.palette.primary.main};
     height: 4px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   }
 `);
 
@@ -28,10 +28,12 @@ export const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...p
     letterSpacing: 2.56,
     borderBottom: "2px solid rgba(0, 0, 0, 0.16)",
     '&.Mui-selected': {
-      color: "black"
+      color: "black",
+      
     },
     '&.Mui-focusVisible': {
       backgroundColor: '#d1eaff',
+      
     },
   }),
 );
@@ -39,6 +41,6 @@ export const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...p
 export const TabsWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   margin-bottom: 120px;
 `

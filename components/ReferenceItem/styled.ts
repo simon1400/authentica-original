@@ -1,10 +1,10 @@
 import styled from "@emotion/styled"
-import { Typography } from '@mui/material';
+import { darken, Typography } from '@mui/material';
 
 
 interface AnchorProps {
   small?: boolean;
-  bg?: string;
+  bg: string;
 }
 
 export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
@@ -14,7 +14,14 @@ export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
   position: relative;
   display: block;
   text-decoration: none;
+  transition: all .5s ease;
   text-align: ${small ? 'center' : 'left'};
+  &:hover{
+    background-color: ${darken(bg, .1)};
+    > img {
+      transform: translateX(-50%) rotate(8deg) scale(1.1);
+    }
+  }
 `)
 
 export const ReferenceHead = styled(Typography)<{inverse?: boolean}>(({inverse = false}) => `
@@ -33,6 +40,7 @@ export const Image = styled.img<{small: boolean}>(({small}) => `
   bottom: ${small ? '-50px' : "-100px"};
   left: 50%;
   transform: translateX(-50%);
+  transition: all .5s ease;
 `)
 
 export const LogoReference = styled.div<{inverse?: boolean}>(({inverse = false}) => `

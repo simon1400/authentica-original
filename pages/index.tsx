@@ -31,7 +31,7 @@ const Home: NextPage = ({
   // @ts-ignore
   data
 }) => {
-
+  
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -40,16 +40,20 @@ const Home: NextPage = ({
   const references = data.references.data.map(item => item.attributes)
   
   return (
-    <Page>
+    <Page
+      title={data.meta.title}
+      description={data.meta.description}
+    >
 
       <PageHead
         label={data.label}
         head={data.titles}
         openModal={handleOpen}
-        buttons
+        buttons={data.topButton}
       />
 
       <VideoModal
+        data={data.video.data.attributes.url}
         open={open}
         handleClose={handleClose}
       />

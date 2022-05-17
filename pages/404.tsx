@@ -4,7 +4,10 @@ import Page from "layout/Page"
 
 const NotFound = () => {
   return (
-    <Page>
+    <Page
+      title="Not found"
+      description="Page not found"
+    >
       <Container>
         <div style={{marginTop: "300px"}}>
           <HeadMarkdown lavel="h1" title="*Not* found" />

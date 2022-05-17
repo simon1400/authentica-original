@@ -9,7 +9,6 @@ const carierQuery = gql`
           slug
           label
           content
-          textPublication
           chapters{
             ... on ComponentElementHead{
               title

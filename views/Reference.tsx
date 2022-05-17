@@ -34,7 +34,10 @@ const ReferenceFull: NextPage<{data: IReferenceFull}> = ({
   const references = data.references.data.map(item => item.attributes)
   
   return(
-    <Page>
+    <Page
+      title={data.meta?.title}
+      description={data.meta?.description}
+    >
       <PageHeadInside
         label={data.label}
         title={data.title}

@@ -14,7 +14,7 @@ interface IHead {
 
 interface PageHeadProps {
   head: IHead[] | string;
-  buttons?: boolean;
+  buttons?: any;
   label: string;
   openModal?: () => void
 }
@@ -50,8 +50,8 @@ const PageHeadComponent: FC<PageHeadProps> = ({
             spacing={6}
           >
             <Grid item sm={media ? 12 : "auto"}>
-              <Button variant="contained">
-                <span>naše REFERENCE</span>
+              <Button href={buttons.link} variant="contained">
+                <span>{buttons.text}</span>
               </Button>
             </Grid>
             <Grid item sm={media ? 12 : "auto"}>

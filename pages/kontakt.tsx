@@ -25,9 +25,12 @@ export async function getServerSideProps() {
 const Contact: NextPage = ({
   // @ts-ignore
   data
-}) => {
+}) => {  
   return (
-    <Page>
+    <Page
+      title={data.meta?.title}
+      description={data.meta?.description}
+    >
 
       <PageHead label={data.label} head={data.title} />
 

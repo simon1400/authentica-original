@@ -1,6 +1,7 @@
 import Chapter from "components/ChapterItem"
 import Chapters from "components/Chapters";
 import PageHead from "components/PageHead"
+import { IMeta } from "interfaces/meta";
 import Page from "layout/Page"
 import { NextPage } from "next"
 import carierQuery from "queries/carier";
@@ -36,6 +37,7 @@ interface ICarierData {
   label: string;
   content: string;
   textPublication: string | null;
+  meta: IMeta;
 }
 
 interface ICarier {
@@ -46,7 +48,10 @@ const PositionFull: NextPage<ICarier> = ({
   data
 }) => {
   return(
-    <Page>
+    <Page
+      title={data.meta?.title}
+      description={data.meta?.description}
+    >
       <PageHead 
         head={data.title} 
         label={data.label} />

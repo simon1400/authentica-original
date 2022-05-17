@@ -9,6 +9,7 @@ interface IShortItem {
   image: IImage;
   slug: string;
   title: string;
+  prefix: string;
 }
 
 const ShortItem: FC<IShortItem> = ({
@@ -16,6 +17,7 @@ const ShortItem: FC<IShortItem> = ({
   image,
   slug,
   title,
+  prefix
 }) => {
   return (
     <Container>
@@ -28,7 +30,7 @@ const ShortItem: FC<IShortItem> = ({
         <Grid item xs={8}>
           <HeadMarkdown lavel="h3" marginBottom={8} title={title} />
           <Typography variant="body2" marginBottom={6} component="div" dangerouslySetInnerHTML={{__html: content}} />
-          <Button href={`/blog/${slug}`} disableRipple>Zjistěte  více</Button>
+          <Button href={`/${prefix}/${slug}`} disableRipple>Zjistěte  více</Button>
         </Grid>
       </Grid>
     </Container>

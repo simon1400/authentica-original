@@ -93,7 +93,7 @@ const Page: FC<PageProps> = ({
         {tags && <meta name="article:tag" content={tags} />}
 
       </Head>
-      <main id={id} style={{paddingBottom: "60px", zIndex: "10", background: "white"}} className={className}>{children}</main>
+      <main id={id} style={{paddingBottom: "240px", zIndex: "10", background: "white"}} className={className}>{children}</main>
     </>
   );
 }

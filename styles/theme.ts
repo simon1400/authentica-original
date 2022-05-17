@@ -1,5 +1,5 @@
 import { Theme as MuiTheme, ThemeOptions } from '@mui/material/styles';
-import {createTheme, stepClasses} from '@mui/material'
+import {createTheme} from '@mui/material'
 
 let theme = createTheme({
   breakpoints: {
@@ -54,18 +54,47 @@ const themeOption: ThemeOptions = {
         text: {
           position: "relative",
           padding: "0",
-          "&:after": {
-            content: "''",
-            display: "block",
+          lineHeight: "1.8",
+          overflowX: "hidden",
+          span: {
+            display: "inline-block",
+            transition: "transform .3s cubic-bezier(0.76, 0, 0.24, 1)"
+          },
+          "&:after, &:before": {
+            content: `''`,
             position: "absolute",
             width: "100%",
-            height: "2px",
-            backgroundColor: theme.palette.primary.main,
-            bottom: "-10px",
             left: 0,
+          },
+          "&:before": {
+            backgroundColor: theme.palette.primary.main,
+            height: "2px",
+            bottom: 0,
+            transformOrigin: "100% 50%",
+            transform: "scaleX(0)",
+            transition: "transform .3s cubic-bezier(0.76, 0, 0.24, 1)",
+          },
+          "&:after": {
+            content: "attr(data-replace)",
+            height: "100%",
+            top: 0,
+            transformOrigin: "100% 50%",
+            transform: "translate3d(200%, 0, 0)",
+            transition: "transform .3s cubic-bezier(0.76, 0, 0.24, 1)",
+            color: theme.palette.primary.main,
           },
           "&:hover": {
             backgroundColor: "transparent",
+            span: {
+              transform: "translate3d(-200%, 0, 0)"
+            },
+            "&:before": {
+              transformOrigin: "0% 50%",
+              transform: "scaleX(1)"
+            },
+            "&:after": {
+              transform: "translate3d(0, 0, 0)",
+            }
           },
         },
         startIcon: {
@@ -105,7 +134,7 @@ const themeOption: ThemeOptions = {
             "&:hover": {
               transform: "scale(1.05)",
               backgroundColor: theme.palette.primary.main,
-              "span": {
+              "span:first-of-type": {
                 transform: "scale(0.95)"
               }
             }
@@ -141,6 +170,50 @@ const themeOption: ThemeOptions = {
         fontSize: '19px',
         lineHeight: "1.63"
       },
+      ul: {
+        li: {
+
+        }
+      },
+      p: {
+        a: {
+          position: "relative",
+          color: theme.palette.primary.main,
+          textDecoration: "none",
+          "&:after": {
+            content: `""`,
+            display: "block",
+            position: "absolute",
+            width: "100%",
+            height: "1px",
+            bottom: 0,
+            left: 0,
+            backgroundColor: theme.palette.primary.main,
+          }
+        },
+        ul: {
+          paddingLeft: 0,
+          li: {
+            listStyleType: "none",
+            paddingLeft: "30px",
+            position: "relative",
+            p: {
+              marginTop: 0,
+              marginBottom: 0,
+            },
+            "&:before": {
+              content: `''`,
+              display: "block",
+              position: "absolute",
+              left: 0,
+              top: "28px",
+              width: "15px",
+              height: "2px",
+              backgroundColor: theme.palette.primary.main,
+            }
+          }
+        },
+      },
     },
     body2: {
       color: 'black',
@@ -150,7 +223,46 @@ const themeOption: ThemeOptions = {
       [theme.breakpoints.down('sm')]: {
         fontSize: '16px',
         lineHeight: "1.81"
-      }
+      },
+      p: {
+        a: {
+          position: "relative",
+          color: theme.palette.primary.main,
+          textDecoration: "none",
+          "&:after": {
+            content: `""`,
+            display: "block",
+            position: "absolute",
+            width: "100%",
+            height: "1px",
+            bottom: 0,
+            left: 0,
+            backgroundColor: theme.palette.primary.main,
+          }
+        },
+        ul: {
+          paddingLeft: 0,
+          li: {
+            listStyleType: "none",
+            paddingLeft: "30px",
+            position: "relative",
+            p: {
+              marginTop: 0,
+              marginBottom: 0,
+            },
+            "&:before": {
+              content: `''`,
+              display: "block",
+              position: "absolute",
+              left: 0,
+              top: "23px",
+              width: "15px",
+              height: "2px",
+              backgroundColor: theme.palette.primary.main,
+            }
+          }
+        },
+      },
     },
     h1: {
       fontSize: "94px",

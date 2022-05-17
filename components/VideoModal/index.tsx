@@ -1,10 +1,10 @@
 import { Box, Modal } from "@mui/material"
 import { FC } from "react"
-import { VideoWrap } from "./styled";
 
 interface IVideoModal {
   open: boolean;
   handleClose: () => void;
+  data: string;
 }
 
 const style = {
@@ -12,12 +12,14 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: "60%",
-  height: "auto",
+  width: "auto",
+  height: "80vh",
   bgcolor: 'transparent',
+  overflow: "hidden",
 };
 
 const VideoModal: FC<IVideoModal> = ({
+  data,
   open,
   handleClose
 }) => {
@@ -28,8 +30,8 @@ const VideoModal: FC<IVideoModal> = ({
     aria-describedby="modal-modal-description"
   >
     <Box sx={style}>
-      <video width="100%" autoPlay controls>
-        <source src="/assets/video.mp4" type="video/mp4" />
+      <video height="100%" autoPlay>
+        <source src={process.env.APP_API+data} type="video/mp4" />
       </video>
     </Box>
   </Modal>

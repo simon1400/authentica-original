@@ -57,7 +57,10 @@ const PositionCatalog: NextPage<IPosts> = ({
   category
 }) => {
   return (
-    <Page>
+    <Page
+    title={meta?.title}
+    description={meta?.description}
+    >
       <PageHead 
         head={title} 
         label={label} />
@@ -66,7 +69,7 @@ const PositionCatalog: NextPage<IPosts> = ({
 
       <TabsNav data={category} />
 
-      <>{posts.map((item, index) => <ShortItem key={index} {...item.attributes} />)}</>
+      <>{posts.map((item, index) => <ShortItem key={index} prefix="kariera" {...item.attributes} />)}</>
 
     </Page>
   )
