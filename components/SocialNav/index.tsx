@@ -19,7 +19,7 @@ export interface ISocial {
   invert?: boolean;
   big?: boolean;
   social?: ISocial[];
-  share?: IShare | boolean
+  share?: IShare
 }
 
 const SocialNav: FC<SocialNavProps> = ({
@@ -33,19 +33,19 @@ const SocialNav: FC<SocialNavProps> = ({
 
   return (
     <Social invert={invert} big={big}>
-      {share && <ul>
+      {share?.title && <ul>
         <li>
           <a href={`https://www.facebook.com/sharer.php?u=${DOMAIN}${router.asPath}`} rel="noreferrer" target="_blank">
             <Icons icon="facebook" />
           </a>
         </li>
          <li>
-          <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${DOMAIN}${router.asPath}&title=${share.title}&source=${DOMAIN}`}>
+          <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${DOMAIN}${router.asPath}&title=${share?.title}&source=${DOMAIN}`}>
             <Icons icon="linkedin" />
           </a>
         </li>
         <li>
-          <a href={`https://twitter.com/share?url=${DOMAIN}${router.asPath}&amp;text=${share.title}`} rel="noreferrer" target="_blank">
+          <a href={`https://twitter.com/share?url=${DOMAIN}${router.asPath}&amp;text=${share?.title}`} rel="noreferrer" target="_blank">
             <Icons icon="twitter" />
           </a>
         </li>
