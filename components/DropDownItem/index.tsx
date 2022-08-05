@@ -13,7 +13,7 @@ const DropDownItem: FC<IDropDownItem> = ({
   return (
     <DropDownItemC>
       <div>
-        <img src={`${process.env.APP_API}${data.image.data.attributes.url}`} />
+        <img src={`${process.env.APP_API}${data.image.data.attributes.url}?format=webp&height=100`} />
       </div>
       <div>
         <Typography variant="h5">

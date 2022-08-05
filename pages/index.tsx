@@ -36,13 +36,12 @@ const Home: NextPage = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // @ts-ignore
-  const references = data.references.data.map(item => item.attributes)
+  const references = data.references.data.map((item: any) => item.attributes)
   
   return (
     <Page
-      title={data.meta.title}
-      description={data.meta.description}
+      title={data.meta?.title}
+      description={data.meta?.description}
     >
 
       <PageHead
@@ -62,8 +61,7 @@ const Home: NextPage = ({
 
       <>
         {!!references.length && <ScrollingSection column={references.length} height="90vh" widthColumn="560px">
-          {/* @ts-ignore */}
-          {references.map((item, index) => <ItemScroll key={index}>
+          {references.map((item: any, index: number) => <ItemScroll key={index}>
             <ReferenceItem data={item} />
           </ItemScroll>)}
         </ScrollingSection>}
@@ -77,8 +75,7 @@ const Home: NextPage = ({
         </Container>}
 
         {!!data.partners && <ScrollingSection column={data.partners.length} height="460px" widthColumn="400px">
-          {/* @ts-ignore */}
-          {data.partners.map((item, index) => <ItemScroll key={index}>
+          {data.partners.map((item: any, index: number) => <ItemScroll key={index}>
             <BrandItem data={item} index={index} />
           </ItemScroll>)}
         </ScrollingSection>}

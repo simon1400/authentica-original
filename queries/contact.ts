@@ -11,13 +11,7 @@ const contactQuery = gql`
           contactItem{
             text
             link
-            icon{
-              data{
-                attributes{
-                  url
-                }
-              }
-            }
+            icon
           }
           headquarters{
             title

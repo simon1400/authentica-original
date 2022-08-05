@@ -1,9 +1,6 @@
+import Icons from "components/Icons"
 import { useRouter } from "next/router"
 
-import Facebook from 'public/assets/facebook-f.svg'
-import Instagram from 'public/assets/instagram.svg'
-import Linkedin from 'public/assets/linkedin-in.svg'
-import Twitter from 'public/assets/twitter.svg'
 import { FC } from "react"
 import { Social } from "./styled"
 
@@ -13,18 +10,23 @@ export interface IShare {
   title: string;
 }
 
-export interface SocialNavProps {
+export interface ISocial {
+  url: string;
+  icon: string;
+}
+
+ export interface SocialNavProps {
   invert?: boolean;
   big?: boolean;
-  social?: boolean;
-  share?: IShare
+  social?: ISocial[];
+  share?: IShare | boolean
 }
 
 const SocialNav: FC<SocialNavProps> = ({
   invert = false,
   big = false,
-  social = false,
-  share = {}
+  social = [],
+  share
 }) => {
 
   const router = useRouter()
@@ -34,36 +36,26 @@ const SocialNav: FC<SocialNavProps> = ({
       {share && <ul>
         <li>
           <a href={`https://www.facebook.com/sharer.php?u=${DOMAIN}${router.asPath}`} rel="noreferrer" target="_blank">
-            <Facebook />
+            <Icons icon="facebook" />
           </a>
         </li>
          <li>
           <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${DOMAIN}${router.asPath}&title=${share.title}&source=${DOMAIN}`}>
-            <Linkedin />
+            <Icons icon="linkedin" />
           </a>
         </li>
         <li>
           <a href={`https://twitter.com/share?url=${DOMAIN}${router.asPath}&amp;text=${share.title}`} rel="noreferrer" target="_blank">
-            <Twitter />
+            <Icons icon="twitter" />
           </a>
         </li>
       </ul>}
-      {social && <ul>
-        <li>
-          <a href="http://some.com/asd">
-            <Facebook />
+      {!!social.length && <ul>
+        {social.map((item: ISocial, idx) => <li key={idx}>
+          <a href={item.url}>
+            <Icons icon={item.icon} />
           </a>
-        </li>
-         <li>
-          <a href="http://some.com/asd">
-            <Instagram />
-          </a>
-        </li>
-        <li>
-          <a href="http://some.com/asd">
-            <Linkedin />
-          </a>
-        </li>
+        </li>)}
       </ul>}
     </Social>
   )

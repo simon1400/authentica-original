@@ -50,6 +50,7 @@ const themeOption: ThemeOptions = {
           letterSpacing: "2.56px",
           lineHeight: "1",
           fontWeight: 600,
+          WebkitTapHighlightColor: "transparent"
         },
         text: {
           position: "relative",

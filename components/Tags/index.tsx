@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import Link from "next/link";
 import { FC } from "react";
+import { removeMarkdown } from "utility/removeMarkdown";
 
 interface ITags {
   title: string;
@@ -16,8 +17,8 @@ const Tags: FC<ITags> = ({
       <label>{title}</label>
       <ul>
         {data.map((item ,index) => <li key={index}>
-          <Link href={item.attributes.slug}>
-            <a>{item.attributes.title}</a>
+          <Link href={'/'+item.attributes.slug} passHref>
+            <a>{removeMarkdown(item.attributes.title)}</a>
           </Link>
         </li>)}
       </ul>

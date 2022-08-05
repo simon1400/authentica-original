@@ -39,6 +39,5 @@ export const client = new ApolloClient({
 
 // @ts-ignore
 export const WithGraphQL = ({ children }) => {
-  
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };

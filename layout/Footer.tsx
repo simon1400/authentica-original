@@ -28,7 +28,7 @@ const FooterLayout: FC<IFooter> = ({
     <Footer>
       <Content>
         <Typography color="white" variant="body2" marginBottom={12}>{data.subTitle}</Typography>
-        <Link href={data.link}>
+        <Link href={'mailto:'+data.link}>
           <a className="" target="_blank">
             <Head color="white" variant="h2">{data.title}</Head>
           </a>
@@ -49,7 +49,7 @@ const FooterLayout: FC<IFooter> = ({
                 <div dangerouslySetInnerHTML={{__html: footerNav.footer3}} />
               </Grid>
               <Grid item xs={12} md={2}>
-                <SocialNav />
+                <SocialNav social={footerNav.socNav} />
               </Grid>
             </Grid>
           </Container>

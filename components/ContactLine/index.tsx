@@ -1,8 +1,7 @@
-import styled from "@emotion/styled"
 import { Container, Grid } from "@mui/material"
 import { FC } from "react"
-import Envelope from 'public/assets/envelope.svg'
 import { ContactItem, Icon } from "./styled";
+import Icons from "components/Icons";
 
 interface IContactItem {
   text: string;
@@ -22,7 +21,7 @@ const ContactLine: FC<IContactLine> = ({
         {data.map((item, index) => <Grid key={index} item xs={4}>
             <ContactItem>
               <Icon>
-                <Envelope />
+                <Icons icon={item.icon} />
               </Icon>
               <span>{item.text}</span>
             </ContactItem>

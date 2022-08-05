@@ -8,6 +8,11 @@ const footerNavQuery = gql`
           footer1
           footer2
           footer3
+          socNav {
+            title
+            url
+            icon
+          }
         }
       }
     }

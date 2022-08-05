@@ -48,10 +48,10 @@ export const Bottom = styled.div`
   p{
     color: white;
     font-size: 19px;
-    &:first-child{
+    &:first-of-type{
       margin-top: 0;
     }
-    &:last-child{
+    &:last-of-type{
       margin-bottom: 0;
     }
     a{

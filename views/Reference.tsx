@@ -30,8 +30,7 @@ const ReferenceFull: NextPage<{data: IReferenceFull}> = ({
   data
 }) => {
 
-  // @ts-ignore
-  const references = data.references.data.map(item => item.attributes)
+  const references = data.references.data.map((item: any) => item.attributes)
   
   return(
     <Page
@@ -56,8 +55,7 @@ const ReferenceFull: NextPage<{data: IReferenceFull}> = ({
       
       <>
         {!!references.length && <ScrollingSection column={references.length} height="90vh" widthColumn="560px">
-          {/* @ts-ignore */}
-          {references.map((item, index) => <ItemScroll key={index}>
+          {references.map((item: any, index: number) => <ItemScroll key={index}>
             <ReferenceItem data={item} />
           </ItemScroll>)}
         </ScrollingSection>}

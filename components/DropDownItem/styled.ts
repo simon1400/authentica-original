@@ -30,7 +30,7 @@ export const DropDownItemC = styled.div(({theme}) => `
     margin-bottom: 10px;
   }
   div{
-    &:first-child{
+    &:first-of-type{
       margin-right: 10px;
     }
     /* &:last-child{

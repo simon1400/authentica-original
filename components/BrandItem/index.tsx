@@ -17,7 +17,7 @@ const BrandItemComponent: FC<BrandItemProps> = ({
   data
 }) => {
   return (
-    <BrandItem href={data.link} index={index} image={data.image.data.attributes.url}>
+    <BrandItem href={'/'+data.link} index={index} image={data.image.data.attributes.url+'?format=webp'}>
       <LogoWrap>
         <Logo src={`${process.env.APP_API}${data.logo.data.attributes.url}`} />
       </LogoWrap>

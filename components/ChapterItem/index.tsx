@@ -53,7 +53,7 @@ const ChapterItem: FC<ChapterProps> = ({
       {(!!head.length || content) && <Container>
         <ContentWrap>
           {!!head.length && <HeadMarkdown marginBottom={12} title={head} lavel={smallLevel ? "h3" : "h2"} />}
-          {content && <Typography variant={contentBig ? "body1" : "body2"} marginBottom={12}><div dangerouslySetInnerHTML={{__html: content}} /></Typography>}
+          {content && <Typography variant={contentBig ? "body1" : "body2"} component="div" marginBottom={12}><div dangerouslySetInnerHTML={{__html: content}} /></Typography>}
         </ContentWrap>
       </Container>}
       {!!images.length && <Container maxWidth="xl">
@@ -86,9 +86,8 @@ const ChapterItem: FC<ChapterProps> = ({
       </Container>}
       {!!items.length && <Container maxWidth="xl">
         <Grid container spacing={10} marginBottom={24}>
-          {/* @ts-ignore */}
-          {items.map((item, index) => <Grid key={index} item xs={4}>
-            <ReferenceItem small={smallReference} data={item.attributes} bg="#e61e2c" />
+          {items.map((item: any, index: number) => <Grid key={index} item xs={4}>
+            <ReferenceItem small={smallReference} data={item.attributes} />
           </Grid>)}
         </Grid>
       </Container>}

@@ -1,0 +1,1 @@
+export const removeMarkdown = (title: string): string => title.replace(/\*/g, '')

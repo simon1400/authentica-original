@@ -10,10 +10,10 @@ const Nav = styled.nav(({theme}) => `
       display: inline-block;
       list-style-type: none;
       line-height: 1;
-      &:not(:last-child) {
+      &:not(:last-of-type) {
         padding-right: 25px;
       }
-      &:not(:first-child) {
+      &:not(:first-of-type) {
         padding-left: 25px;
       }
       &.active{
