@@ -1,3 +1,4 @@
+import { useLazyQuery } from "@apollo/client"
 import Chapter from "components/ChapterItem"
 import PageHead from "components/PageHead"
 import ShortItem from "components/ShortItem"
@@ -6,9 +7,13 @@ import { IFooter } from "interfaces/footer"
 import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
-import postsQuery from "queries/posts"
-import postsCategoryQuery from "queries/postsCategory"
-import postsPageQuery from "queries/postsPage"
+import {
+  postsQuery, 
+  postsCategoryQuery, 
+  postsPageQuery,
+  postsFilterQuery
+} from "queries/posts"
+import { useState } from "react"
 import { client } from "utility/graphql"
 
 export async function getServerSideProps() {
@@ -52,11 +57,28 @@ const Posts: NextPage<IPosts> = ({
   title,
   content,
   label,
-  footer,
   meta,
   posts,
   category
 }) => {
+
+  const [filterPosts, setFilterPosts] = useState(posts)
+
+  const [getPosts] = useLazyQuery(postsFilterQuery)
+
+  const handleFilter = async (slug: string) => {
+    if(slug === 'all') {
+      setFilterPosts(posts)
+    }else{
+      const res = await getPosts({
+        variables: {
+          category: slug
+        }
+      })
+      setFilterPosts(res.data.blogs.data)      
+    }
+  }
+
   return (
     <Page
       title={meta?.title}
@@ -68,9 +90,12 @@ const Posts: NextPage<IPosts> = ({
 
       <Chapter content={content} contentBig />
 
-      <TabsNav data={category} />
+      <TabsNav data={category} handle={handleFilter} />
       
-      <>{posts.map((item, index) => <ShortItem key={index} prefix="blog" {...item.attributes} />)}</>
+      <>
+        {filterPosts.map((item, index) => 
+          <ShortItem key={index} prefix="blog" {...item.attributes} />)}
+      </>
 
     </Page>
   )

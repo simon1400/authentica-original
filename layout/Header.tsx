@@ -6,6 +6,7 @@ import Hamburger from "components/Hamburger";
 import ResponseNav from "components/ResponseNav";
 import INavItem from "interfaces/navItem";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import topNavQuery from "queries/topNav";
 import { FC, useEffect, useState } from "react";
 import Logo from "styles/Logo";
@@ -23,8 +24,14 @@ const Header: FC<HeaderProps> = ({
 }) => {
 
   const media = useMediaQuery("(max-width:1200px)")
+  const route = useRouter()
 
-  const { loading, error, data } = useQuery(topNavQuery);
+  const { loading, error, data } = useQuery(topNavQuery, {
+    variables: {
+      locale: route.locale
+    }
+  });
+  
   const [menu, setMenu] = useState(false);
   const [dropShown, setDropShown] = useState<number>(-1)
 

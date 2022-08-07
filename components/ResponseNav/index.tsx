@@ -30,8 +30,7 @@ const ResponseNav: FC<IResponseNav> = ({
           <Link href={item.url}>
             <a>
               {item.title}
-              {/* @ts-ignore */}
-              {!!item.subNav.length && <DownIcon onClick={(e) => handleDropDown(e, dropDown === index ? -1 : index)} />}
+              {!!item.subNav.length && <DownIcon onClick={(e: any) => handleDropDown(e, dropDown === index ? -1 : index)} />}
             </a>
           </Link>
           {!!item.subNav.length && <ul className={dropDown === index ? "open-drop" : ""}>

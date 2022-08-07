@@ -4,7 +4,7 @@ import PageHead from "components/PageHead"
 import { IMeta } from "interfaces/meta";
 import Page from "layout/Page"
 import { NextPage } from "next"
-import carierQuery from "queries/carier";
+import {carierQuery} from "queries/cariers";
 import { client } from "utility/graphql";
 
 

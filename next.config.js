@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
+const { i18n } = require('./next-i18next.config');
 const nextConfig = {
   reactStrictMode: true,
+  i18n,
   env: {
     // APP_API: process.env.NODE_ENV === "production" ? "http://authentica-strapi.hardart.cz" : "http://localhost:1340",
     APP_API: process.env.NODE_ENV === "production" ? "http://authentica-strapi.hardart.cz" : "http://authentica-strapi.hardart.cz",

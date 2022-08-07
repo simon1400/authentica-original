@@ -26,6 +26,7 @@
     "js-cookie": "^3.0.1",
     "js-cookies": "^1.0.4",
     "next": "12.1.4",
+    "next-i18next": "^11.3.0",
     "qs": "^6.10.3",
     "react": "17",
     "react-dom": "17"

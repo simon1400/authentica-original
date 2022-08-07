@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const footerNavQuery = gql`
-  query FooterNav {
-    navigation {
+  query FooterNav($locale: I18NLocaleCode!) {
+    navigation(locale: $locale) {
       data{
         attributes{
           footer1

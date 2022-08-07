@@ -171,16 +171,15 @@ const themeOption: ThemeOptions = {
         fontSize: '19px',
         lineHeight: "1.63"
       },
-      ul: {
-        li: {
-
-        }
+      "&::selection": {
+        backgroundColor: theme.palette.primary.main,
       },
       p: {
         a: {
           position: "relative",
-          color: theme.palette.primary.main,
+          color: "inherit",
           textDecoration: "none",
+          transition: "all .2s ease",
           "&:after": {
             content: `""`,
             display: "block",
@@ -190,6 +189,13 @@ const themeOption: ThemeOptions = {
             bottom: 0,
             left: 0,
             backgroundColor: theme.palette.primary.main,
+            transition: "all .2s ease",
+          },
+          "&:hover": {
+            color: theme.palette.primary.main,
+            "&:after": {
+              bottom: "3px"
+            }
           }
         },
         ul: {
@@ -225,11 +231,15 @@ const themeOption: ThemeOptions = {
         fontSize: '16px',
         lineHeight: "1.81"
       },
+      "&::selection": {
+        backgroundColor: theme.palette.primary.main,
+      },
       p: {
         a: {
           position: "relative",
-          color: theme.palette.primary.main,
+          color: "inherit",
           textDecoration: "none",
+          transition: "all .2s ease",
           "&:after": {
             content: `""`,
             display: "block",
@@ -239,6 +249,13 @@ const themeOption: ThemeOptions = {
             bottom: 0,
             left: 0,
             backgroundColor: theme.palette.primary.main,
+            transition: "all .2s ease",
+          },
+          "&:hover": {
+            color: theme.palette.primary.main,
+            "&:after": {
+              bottom: "3px"
+            }
           }
         },
         ul: {
@@ -282,7 +299,10 @@ const themeOption: ThemeOptions = {
       },
       [theme.breakpoints.down('sm')]: {
         fontSize: '35px'
-      }
+      },
+      "&::selection": {
+        backgroundColor: theme.palette.primary.main,
+      },
     },
     h2: {
       fontSize: "76px",
@@ -291,7 +311,10 @@ const themeOption: ThemeOptions = {
       lineHeight: 1,
       [theme.breakpoints.down('sm')]: {
         fontSize: '30px'
-      }
+      },
+      "&::selection": {
+        backgroundColor: theme.palette.primary.main,
+      },
     },
     h3: {
       fontSize: "45px",
@@ -300,7 +323,10 @@ const themeOption: ThemeOptions = {
       lineHeight: 1,
       [theme.breakpoints.down('sm')]: {
         fontSize: '25px'
-      }
+      },
+      "&::selection": {
+        backgroundColor: theme.palette.primary.main,
+      },
     },
     h4: {
       fontSize: "28px",
@@ -309,7 +335,10 @@ const themeOption: ThemeOptions = {
       lineHeight: 1,
       [theme.breakpoints.down('sm')]: {
         fontSize: '20px'
-      }
+      },
+      "&::selection": {
+        backgroundColor: theme.palette.primary.main,
+      },
     },
     h5: {
       fontSize: "20px",
@@ -318,7 +347,10 @@ const themeOption: ThemeOptions = {
       lineHeight: .9,
       [theme.breakpoints.down('sm')]: {
         fontSize: '16px'
-      }
+      },
+      "&::selection": {
+        backgroundColor: theme.palette.primary.main,
+      },
     },
   },
 }

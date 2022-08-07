@@ -13,8 +13,7 @@ const Numbers: FC<INumbers> = ({
   return (
     <Container>
       <Grid container marginBottom={6}>
-        {/* @ts-ignore */}
-        {data.map((item, index) => <Grid key={index} item xs={12 / data.length}>
+        {data.map((item: any, index: number) => <Grid key={index} item xs={12 / data.length}>
           <Number>
             <span>{item.number}</span>
             <span>{item.description}</span>

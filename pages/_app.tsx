@@ -9,6 +9,8 @@ import "node_modules/hamburgers/dist/hamburgers.css"
 import createEmotionCache from 'utility/createEmotionCache';
 import theme from 'styles/theme';
 import { WithGraphQL } from 'utility/graphql';
+import { appWithTranslation } from 'next-i18next';
+
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -34,4 +36,4 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);

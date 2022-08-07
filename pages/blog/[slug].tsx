@@ -5,7 +5,7 @@ import PageHead from "components/PageHead"
 import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
-import postQuery from "queries/post"
+import {postQuery} from "queries/posts"
 import { client } from "utility/graphql"
 
 // @ts-ignore

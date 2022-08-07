@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const referenceQuery = gql`
-  query getReferences($slug: String!) {
-    references(filters: { slug: { eq: $slug } }) {
+  query getReferences($slug: String!, $locale: I18NLocaleCode!) {
+    references(filters: { slug: { eq: $slug } }, locale: $locale) {
       data{
         attributes{
           title

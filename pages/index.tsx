@@ -12,10 +12,17 @@ import ReferenceItem from 'components/ReferenceItem';
 import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
 import HeadMarkdown from 'components/HeadMarkdown';
+// import { useTranslation } from 'next-i18next'
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-export async function getServerSideProps() {
+// @ts-ignore
+export async function getServerSideProps({locale}) {
+
   const { data } = await client.query({
-    query: homepageQuery
+    query: homepageQuery,
+    variables: {
+      locale
+    }
   });
 
   return {
@@ -23,7 +30,8 @@ export async function getServerSideProps() {
       data: data.homepage.data.attributes,
       footer: data.homepage.data.attributes.footer
     },
- };
+  };
+  
 }
 
 
@@ -31,6 +39,8 @@ const Home: NextPage = ({
   // @ts-ignore
   data
 }) => {
+
+  // const { t } = useTranslation('common')
   
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

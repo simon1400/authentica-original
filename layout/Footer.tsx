@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client"
 import { Container, Grid, Typography } from "@mui/material"
 import SocialNav from "components/SocialNav"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import footerNavQuery from "queries/footerNav"
 import { FC } from "react"
 import ContentWrap from "styles/ContentWrap"
@@ -16,7 +17,13 @@ const FooterLayout: FC<IFooter> = ({
   data
 }) => {
 
-  const {data: nav, loading, error} = useQuery(footerNavQuery)
+  const router = useRouter()
+
+  const {data: nav, loading, error} = useQuery(footerNavQuery, {
+    variables: {
+      locale: router.locale
+    }
+  })
 
   if(loading || data === undefined) {
     return null

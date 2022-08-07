@@ -1,14 +1,18 @@
+import { useLazyQuery } from "@apollo/client"
 import Chapter from "components/ChapterItem"
 import PageHead from "components/PageHead"
 import ShortItem from "components/ShortItem"
 import TabsNav from "components/TabsNav"
-import { IFooter } from "interfaces/footer"
 import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
-import cariersQuery from "queries/cariers"
-import cariersCategoryQuery from "queries/cariersCategory"
-import cariersPageQuery from "queries/cariersPage"
+import {
+  cariersQuery, 
+  cariersCategoryQuery, 
+  cariersPageQuery, 
+  cariersFilterQuery
+} from "queries/cariers"
+import { useState } from "react"
 import { client } from "utility/graphql"
 
 export async function getServerSideProps() {
@@ -40,7 +44,6 @@ export async function getServerSideProps() {
 interface IPosts {
   title: string;
   content: string;
-  footer: IFooter;
   label: string;
   meta: IMeta;
   posts: any[];
@@ -51,11 +54,29 @@ const PositionCatalog: NextPage<IPosts> = ({
   title,
   content,
   label,
-  footer,
   meta,
   posts,
   category
 }) => {
+
+  const [filterPosts, setFilterPosts] = useState(posts)
+
+  const [getPosts] = useLazyQuery(cariersFilterQuery)
+
+  const handleFilter = async (slug: string) => {
+    if(slug === 'all') {
+      setFilterPosts(posts)
+    }else{
+      const res = await getPosts({
+        variables: {
+          category: slug
+        }
+      })
+      setFilterPosts(res.data.vacancies.data)      
+    }
+  }
+
+
   return (
     <Page
     title={meta?.title}
@@ -67,9 +88,12 @@ const PositionCatalog: NextPage<IPosts> = ({
 
       <Chapter content={content} contentBig />
 
-      <TabsNav data={category} />
+      <TabsNav data={category} handle={handleFilter} />
 
-      <>{posts.map((item, index) => <ShortItem key={index} prefix="kariera" {...item.attributes} />)}</>
+      <>
+        {filterPosts.map((item, index) => 
+          <ShortItem key={index} prefix="kariera" {...item.attributes} />)}
+      </>
 
     </Page>
   )
