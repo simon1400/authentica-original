@@ -7,13 +7,13 @@ import { NextPage } from "next"
 import {carierQuery} from "queries/cariers";
 import { client } from "utility/graphql";
 
-
 // @ts-ignore
 export async function getServerSideProps(ctx) {
   const { data } = await client.query({
     query: carierQuery,
     variables: {
-      slug: ctx.query.slug
+      slug: ctx.query.slug,
+      locale: ctx.locale
     }
   });
 

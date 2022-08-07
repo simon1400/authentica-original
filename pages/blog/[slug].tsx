@@ -13,7 +13,8 @@ export async function getServerSideProps(ctx) {
   const { data } = await client.query({
     query: postQuery,
     variables: {
-      slug: ctx.query.slug
+      slug: ctx.query.slug,
+      locale: ctx.locale
     }
   });
 

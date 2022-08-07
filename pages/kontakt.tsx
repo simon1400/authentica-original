@@ -9,9 +9,13 @@ import { NextPage } from "next";
 import contactQuery from "queries/contact";
 import { client } from "utility/graphql";
 
-export async function getServerSideProps() {
+// @ts-ignore
+export async function getServerSideProps({locale}) {
   const { data } = await client.query({
-    query: contactQuery
+    query: contactQuery,
+    variables: {
+      locale
+    }
   });
 
   return {

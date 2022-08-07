@@ -13,7 +13,8 @@ export async function getServerSideProps(ctx) {
   const { data: articleData } = await client.query({
     query: articleQuery,
     variables: {
-      slug: ctx.query.article[lnArticleSlug - 1]
+      slug: ctx.query.article[lnArticleSlug - 1],
+      locale: ctx.locale
     }
   });
 
@@ -29,7 +30,8 @@ export async function getServerSideProps(ctx) {
   const { data: referenceData } = await client.query({
     query: referenceQuery,
     variables: {
-      slug: ctx.query.article[lnArticleSlug - 1]
+      slug: ctx.query.article[lnArticleSlug - 1],
+      locale: ctx.locale
     }
   });
 

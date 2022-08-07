@@ -15,17 +15,23 @@ import {
 import { useState } from "react"
 import { client } from "utility/graphql"
 
-export async function getServerSideProps() {
+// @ts-ignore
+export async function getServerSideProps({locale}) {
   const { data: pageData } = await client.query({
     query: cariersPageQuery,
+    variables: {
+      locale
+    }
   });
 
   const { data: pageCategory } = await client.query({
     query: cariersCategoryQuery,
+    variables: { locale }
   });
   
   const { data: posts } = await client.query({
     query: cariersQuery,
+    variables: { locale }
   });
 
   return {
@@ -36,7 +42,8 @@ export async function getServerSideProps() {
       label: pageData.vacancyOverview.data.attributes.label,
       meta: pageData.vacancyOverview.data.attributes.meta,
       posts: posts.vacancies.data,
-      category: pageCategory.vacancyCategories.data
+      category: pageCategory.vacancyCategories.data,
+      locale: locale
     },
   };
 }
@@ -48,6 +55,7 @@ interface IPosts {
   meta: IMeta;
   posts: any[];
   category: any[];
+  locale: string
 }
 
 const PositionCatalog: NextPage<IPosts> = ({
@@ -56,7 +64,8 @@ const PositionCatalog: NextPage<IPosts> = ({
   label,
   meta,
   posts,
-  category
+  category,
+  locale
 }) => {
 
   const [filterPosts, setFilterPosts] = useState(posts)
@@ -69,7 +78,8 @@ const PositionCatalog: NextPage<IPosts> = ({
     }else{
       const res = await getPosts({
         variables: {
-          category: slug
+          category: slug,
+          locale
         }
       })
       setFilterPosts(res.data.vacancies.data)      

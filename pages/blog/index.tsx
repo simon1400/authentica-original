@@ -16,18 +16,22 @@ import {
 import { useState } from "react"
 import { client } from "utility/graphql"
 
-export async function getServerSideProps() {
+// @ts-ignore
+export async function getServerSideProps({locale}) {
   const { data: pageData } = await client.query({
     query: postsPageQuery,
+    variables: { locale }
   });
   
   const { data: pageCategory } = await client.query({
     query: postsCategoryQuery,
+    variables: { locale }
   });
   
   
   const { data: posts } = await client.query({
     query: postsQuery,
+    variables: { locale }
   });
 
   return {
@@ -38,7 +42,8 @@ export async function getServerSideProps() {
       label: pageData.blogOverview.data.attributes.label,
       meta: pageData.blogOverview.data.attributes.meta,
       posts: posts.blogs.data,
-      category: pageCategory.blogCategories.data
+      category: pageCategory.blogCategories.data,
+      locale: locale
     },
   };
 }
@@ -51,6 +56,7 @@ interface IPosts {
   meta: IMeta;
   posts: any[];
   category: any[];
+  locale: string;
 }
 
 const Posts: NextPage<IPosts> = ({
@@ -59,7 +65,8 @@ const Posts: NextPage<IPosts> = ({
   label,
   meta,
   posts,
-  category
+  category,
+  locale
 }) => {
 
   const [filterPosts, setFilterPosts] = useState(posts)
@@ -72,7 +79,8 @@ const Posts: NextPage<IPosts> = ({
     }else{
       const res = await getPosts({
         variables: {
-          category: slug
+          category: slug,
+          locale
         }
       })
       setFilterPosts(res.data.blogs.data)      
