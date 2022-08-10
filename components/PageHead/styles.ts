@@ -6,16 +6,19 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   padding-top: ${homepage ? "250px" : "300px"};
   padding-bottom: 60px;
   min-height: ${homepage ? "100vh" : "50vh"};
+  max-width: 60vw;
   @media (max-width: 1440px) {
     padding-top: ${homepage ? "100px" : "200px"};
     padding-bottom: ${homepage ? "60px" : "150px"};
   }
+  @media (max-width: 640px) {
+    padding-top: ${homepage ? "100px" : "200px"};
+    padding-bottom: ${homepage ? "60px" : "150px"};
+    max-width: 95vw;
+  }
   p {
     margin-bottom: 40px;
     color: rgba(0, 0, 0, 0.7);
-    @media (max-width: 940px) {
-      font-size: 28px;
-    }
   }
   button {
     margin-top: 50px;
@@ -44,6 +47,7 @@ export const Head = styled(Typography)(({theme}) => `
     transition: all 3s ease;
     height: 60px;
     background: url('/assets/head-lines.svg');
+    transform: skewX(-20deg);
     top: 20px;
     left: 102%;
     background-repeat: repeat-x;

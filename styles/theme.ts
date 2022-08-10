@@ -165,11 +165,14 @@ const themeOption: ThemeOptions = {
   typography: {
     body1: {
       color: 'black',
-      fontSize: "32px",
+      fontSize: "28px",
       lineHeight: "1.5",
       fontFamily: theme.typography.fontFamily,
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '24px',
+      },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '19px',
+        fontSize: '19px!important',
         lineHeight: "1.63"
       },
       "&::selection": {
@@ -228,6 +231,9 @@ const themeOption: ThemeOptions = {
       fontSize: "23px",
       lineHeight: "1.83",
       fontFamily: theme.typography.fontFamily,
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '20px',
+      },
       [theme.breakpoints.down('sm')]: {
         fontSize: '16px',
         lineHeight: "1.81"
@@ -284,46 +290,73 @@ const themeOption: ThemeOptions = {
       },
     },
     h1: {
-      fontSize: "94px",
-      // fontSize: "3.7vw",
+      // fontSize: "84px",
+      fontSize: "3vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
       [theme.breakpoints.down('xxl')]: {
-        fontSize: '86px'
+        fontSize: '4vw'
       },
       [theme.breakpoints.down('xl')]: {
-        fontSize: '70px'
+        fontSize: '5vw'
+      },
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '5.5vw'
       },
       [theme.breakpoints.down('md')]: {
-        fontSize: '58px'
+        fontSize: '6vw'
       },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '35px'
+        fontSize: '7vw'
       },
       "&::selection": {
         backgroundColor: theme.palette.primary.main,
       },
     },
     h2: {
-      fontSize: "76px",
+      fontSize: "2vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
+      [theme.breakpoints.down('xxl')]: {
+        fontSize: '3vw'
+      },
+      [theme.breakpoints.down('xl')]: {
+        fontSize: '4vw'
+      },
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '4.5vw'
+      },
+      [theme.breakpoints.down('md')]: {
+        fontSize: '5vw'
+      },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '30px'
+        fontSize: '6vw'
       },
       "&::selection": {
         backgroundColor: theme.palette.primary.main,
       },
     },
     h3: {
-      fontSize: "45px",
+      fontSize: "1.5vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
       lineHeight: 1,
+      [theme.breakpoints.down('xxl')]: {
+        fontSize: '2vw'
+      },
+      [theme.breakpoints.down('xl')]: {
+        fontSize: '3vw'
+      },
+      [theme.breakpoints.down('lg')]: {
+        fontSize: '3.5vw'
+      },
+      [theme.breakpoints.down('md')]: {
+        fontSize: '4vw'
+      },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '25px'
+        fontSize: '5vw'
       },
       "&::selection": {
         backgroundColor: theme.palette.primary.main,

@@ -37,9 +37,6 @@ export const SNav = styled.div(({theme}) => `
       a{
         text-decoration: none;
         display: inline-block;
-        letter-spacing: 2.24px;
-        text-transform: uppercase;
-        font-weight: 600;
         color: white!important;
         transition: all .2s ease;
         &:hover{
@@ -54,6 +51,7 @@ export const LeftMenu = styled.ul`
   li{
     a{
       font-size: 84px;
+      font-weight: 600;
       &:hover{
         color: ${({theme}) => theme.palette.primary.main}!important;
       }
@@ -64,7 +62,7 @@ export const LeftMenu = styled.ul`
 export const RightMenu = styled.ul`
   li{
     text-align: right;
-    margin-bottom: 27px;
+    margin-bottom: 13px;
     a {
       font-size: 25px;
     }

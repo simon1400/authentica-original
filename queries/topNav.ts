@@ -8,17 +8,6 @@ const topNavQuery = gql`
           topNav{
             title
             url
-            subNav{
-              title
-              url
-              image{
-                data{
-                  attributes{
-                    url
-                  }
-                }
-              }
-            }
           }
           headNav {
             title
