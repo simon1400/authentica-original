@@ -32,18 +32,20 @@ const Symbol: FC<ISymbol> = ({
 }
 
 export const SymbolC = styled.div<{homepage: boolean}>(({theme, homepage}) => `
-  height: ${homepage ? "100vh" :"70vh"};
+  /* height: ${homepage ? "100vh" :"70vh"}; */
   width: 100vh;
   position: absolute;
-  z-index: 100;
-  right: -10vw;
+  /* right: -10vw; */
+  right: -12vw;
+  top: 150px;
+  height: ${homepage ? "calc(100vh - 150px)" : "60vh"};
   z-index: 10;
   display: inline-block;
   transition: all .5s cubic-bezier(0.7, -0.01, 0.19, 1);
   @media (max-width: 1440px) {
-    right: -12vw;
+    /* right: -12vw;
     top: 150px;
-    height: ${homepage ? "calc(100vh - 150px)" : "60vh"};
+    height: ${homepage ? "calc(100vh - 150px)" : "60vh"}; */
   }
   @media (max-width: 960px) {
     right: -50vw;
