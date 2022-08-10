@@ -18,17 +18,11 @@ const topNavQuery = gql`
                   }
                 }
               }
-              subTitle1
-              subUrl1
-              subTitle2
-              subUrl2
-              subTitle3
-              subUrl3
-              subTitle4
-              subUrl4
-              subTitle5
-              subUrl5
             }
+          }
+          headNav {
+            title
+            url
           }
         }
       }

@@ -29,6 +29,7 @@ export const Head = styled(Typography)(({theme}) => `
   position: relative;
   display: inline-block;
   cursor: pointer;
+  z-index: 99;
   &:hover{
     color: ${theme.palette.primary.main};
     &:after{

@@ -1,18 +1,20 @@
 import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { Container, useMediaQuery } from "@mui/material"
-import DropDown from "components/DropDown";
+// import DropDown from "components/DropDown";
 import Hamburger from "components/Hamburger";
-import ResponseNav from "components/ResponseNav";
+import Lang from "components/Lang";
+import Nav from "components/Nav";
 import INavItem from "interfaces/navItem";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import topNavQuery from "queries/topNav";
 import { FC, useEffect, useState } from "react";
+import { Grow } from "styles/Grow";
 import Logo from "styles/Logo";
 import TopNav from "styles/TopNav";
 import { checkColor } from "utility/checkColor";
-import Navigation from "../components/TopNav"
+// import Navigation from "../components/TopNav"
 import LogoIcon from '../public/assets/logo.svg'
 
 interface HeaderProps {
@@ -31,8 +33,13 @@ const Header: FC<HeaderProps> = ({
       locale: route.locale
     }
   });
+
+  const [menu, setMenu] = useState(false)
+
+  const handleMenuOpen = (value: boolean) => {
+    setMenu(value)
+  }
   
-  const [menu, setMenu] = useState(false);
   const [dropShown, setDropShown] = useState<number>(-1)
 
   useEffect(() => {
@@ -54,6 +61,7 @@ const Header: FC<HeaderProps> = ({
   }
 
   let topNav = data.navigation.data.attributes.topNav
+  let headNav = data.navigation.data.attributes.headNav
 
   const nav: INavItem[] = topNav
 
@@ -62,27 +70,16 @@ const Header: FC<HeaderProps> = ({
       <Container maxWidth="xl">
         <TopNav>
           <Link href="/" passHref>
-            <Logo>
+            <Logo menu={menu}>
               <LogoIcon />
             </Logo>
           </Link>
-          {!media && <Navigation data={nav} setDropShown={setDropShown} />}
-          {media && <Hamburger open={menu} setOpen={setMenu} />}
-          {media && <ResponseNav menu={menu} data={nav} />}
+          <Grow />
+          <Lang menu={menu} />
+          <Hamburger open={menu} setOpen={handleMenuOpen} />
+          <Nav menu={menu} data={nav} headNav={headNav} />
         </TopNav>
       </Container>
-      {!media && nav.map((item, index) => {
-        if(item.subNav.length) {
-          return <DropDown 
-            key={index} 
-            idx={index} 
-            data={item.subNav} 
-            shown={dropShown} 
-            setDropShown={setDropShown} 
-          />
-        }
-        return null
-      })}
     </HeaderC>
   )
 }

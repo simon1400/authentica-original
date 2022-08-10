@@ -25,10 +25,12 @@ export async function getServerSideProps({locale}) {
     }
   });
 
+  const homepage = data.homepage.data.attributes
+
   return {
     props: {
-      data: data.homepage.data.attributes,
-      footer: data.homepage.data.attributes.footer
+      data: homepage,
+      footer: homepage.footer
     },
   };
   
