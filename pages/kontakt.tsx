@@ -52,8 +52,7 @@ const Contact: NextPage = ({
         </Grid>
         {!!data.adresses.length && <Divider />}
         {!!data.adresses.length && <Grid container marginTop={12} justifyContent="center">
-          {/* @ts-ignore */}
-          {data.adresses.map((item, index) => <Grid key={index} item xs={6}>
+          {data.adresses.map((item: any, index: number) => <Grid key={index} item xs={6}>
             <ContactItem data={item} />
           </Grid>)}
         </Grid>}

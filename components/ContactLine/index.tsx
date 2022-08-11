@@ -15,11 +15,15 @@ interface IContactLine {
 const ContactLine: FC<IContactLine> = ({
   data
 }) => {
+
+  console.log(data);
+  
+
   return (
     <Container>
       <Grid container spacing={10}>
         {data.map((item, index) => <Grid key={index} item xs={4}>
-            <ContactItem>
+            <ContactItem href={item.link}>
               <Icon>
                 <Icons icon={item.icon} />
               </Icon>

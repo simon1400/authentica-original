@@ -29,7 +29,7 @@ const FooterLayout: FC<IFooter> = ({
     return null
   }
 
-  const footerNav = nav.navigation.data.attributes
+  const footerNav = nav.navigation.data?.attributes
   
   return (
     <Footer>
@@ -47,16 +47,16 @@ const FooterLayout: FC<IFooter> = ({
           <Container maxWidth="xl">
             <Grid container spacing={4} alignItems="center">
               <Grid item xs={12} md={2}>
-                <div dangerouslySetInnerHTML={{__html: footerNav.footer1}} />
+                <div dangerouslySetInnerHTML={{__html: footerNav?.footer1}} />
               </Grid>
               <Grid item xs={12} md={2}>
-                <div dangerouslySetInnerHTML={{__html: footerNav.footer2}} />
+                <div dangerouslySetInnerHTML={{__html: footerNav?.footer2}} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <div dangerouslySetInnerHTML={{__html: footerNav.footer3}} />
+                <div dangerouslySetInnerHTML={{__html: footerNav?.footer3}} />
               </Grid>
               <Grid item xs={12} md={2}>
-                <SocialNav social={footerNav.socNav} />
+                <SocialNav social={footerNav?.socNav} />
               </Grid>
             </Grid>
           </Container>

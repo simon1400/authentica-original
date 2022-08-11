@@ -36,17 +36,19 @@ const PageHeadComponent: FC<PageHeadProps> = ({
           <Typography variant='body1'>{label}</Typography>
           {Array.isArray(head) 
             ? head.map((item, index) => <div key={index}>
-              <Link href={"/"+item.article.data.attributes.slug} passHref>
+              <Link href={"/"+item.article.data?.attributes?.slug} passHref>
                 <Head variant='h1'>{item.Text}</Head>
               </Link>
             </div>)
             : <HeadMarkdown lavel='h1' title={head} />
           }
+
           {buttons && <Grid
             container
             direction="row"
             justifyContent="start"
             alignItems="center"
+            marginTop={5}
             spacing={6}
           >
             <Grid item sm={media ? 12 : "auto"}>

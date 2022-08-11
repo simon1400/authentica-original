@@ -8,45 +8,55 @@ interface AnchorProps {
 }
 
 export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
-  height: ${small ? '442px' : '80vh'};
+  height: ${small ? '442px' : '900px'};
   background-color: ${bg};
   padding: ${small ? '40px 50px' : '60px'};
+  margin: ${small ? '0' : '0 60px'};
   position: relative;
   display: block;
   text-decoration: none;
   transition: all .5s ease;
   text-align: ${small ? 'center' : 'left'};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: visible;
   &:hover{
     background-color: ${darken(bg, .1)};
     > img {
-      transform: translateX(-50%) rotate(8deg) scale(1.1);
+      transform: rotate(8deg) scale(1.1);
     }
   }
 `)
 
 export const ReferenceHead = styled(Typography)<{inverse?: boolean}>(({inverse = false}) => `
-  font-size: 27px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 1.3;
   color: ${inverse ? "white" : "black"};
 `)
 
 export const Image = styled.img<{small: boolean}>(({small}) => `
-  position: absolute;
   max-width: 100%;
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  max-height: 50vh;
-  bottom: ${small ? '-50px' : "-100px"};
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  z-index: 100;
+  margin-bottom: ${small ? '-90px' : "-160px"};
+  max-height: 100%;
   transition: all .5s ease;
 `)
 
 export const LogoReference = styled.div<{inverse?: boolean}>(({inverse = false}) => `
+  width: 50%;
+  height: 80px;
   svg, img{
     margin-bottom: 50px;
-    width: 210px;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-position: left center;
     fill: ${inverse ? "white" : "black"};
     color: ${inverse ? "white" : "black"};
   }

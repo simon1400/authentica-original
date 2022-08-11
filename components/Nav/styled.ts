@@ -5,10 +5,11 @@ export const SNavWrap = styled.div<{menu: boolean}>(({theme, menu}) => `
   background-color: black;
   height: ${menu ? "100vh" : 0};
   width: 100vw;
-  transition: all .2s ease;
+  transition: opacity .5s ease;
   top: 0;
   left: 0;
   z-index: 100;
+  opacity: ${menu ? 1 : 0};
   padding-left: 15px;
   padding-right: 15px;
   overflow-y: scroll;

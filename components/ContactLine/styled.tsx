@@ -21,9 +21,11 @@ export const Icon = styled.div(({theme}) => `
   }
 `)
 
-export const ContactItem = styled.div`
+export const ContactItem = styled.a`
   text-align: center;
   margin-bottom: 120px;
+  display: block;
+  text-decoration: none;
   &:hover{
     > div {
       transform: scale(1.1);

@@ -55,53 +55,29 @@ const themeOption: ThemeOptions = {
         },
         text: {
           position: "relative",
-          padding: "0",
-          lineHeight: "1.8",
-          overflowX: "hidden",
-          span: {
-            display: "inline-block",
-            transition: "transform .3s cubic-bezier(0.76, 0, 0.24, 1)"
-          },
-          "&:after, &:before": {
-            content: `''`,
-            position: "absolute",
-            width: "100%",
-            left: 0,
-          },
-          "&:before": {
-            backgroundColor: theme.palette.primary.main,
-            height: "2px",
-            bottom: 0,
-            transformOrigin: "100% 50%",
-            transform: "scaleX(0)",
-            transition: "transform .3s cubic-bezier(0.76, 0, 0.24, 1)",
-          },
+          padding: "10px 0",
           "&:after": {
-            content: "attr(data-replace)",
-            height: "100%",
-            top: 0,
-            transformOrigin: "100% 50%",
-            transform: "translate3d(200%, 0, 0)",
-            transition: "transform .3s cubic-bezier(0.76, 0, 0.24, 1)",
-            color: theme.palette.primary.main,
+            content: '""',
+            display: "block",
+            width: "100%",
+            height: "1px",
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+            transform: "scale(1)",
+            backgroundColor: theme.palette.primary.main,
+            transition: "all .2s ease"
           },
           "&:hover": {
             backgroundColor: "transparent",
-            span: {
-              transform: "translate3d(-200%, 0, 0)"
-            },
-            "&:before": {
-              transformOrigin: "0% 50%",
-              transform: "scaleX(1)"
-            },
             "&:after": {
-              transform: "translate3d(0, 0, 0)",
+              transform: "scale(1.1)",
             }
           },
         },
         startIcon: {
           marginRight: "11px",
-          transition: 'all .5s ease',
+          transition: 'all .2s ease',
           transform: "scale(1)",
           width: "40px",
           height: "40px",

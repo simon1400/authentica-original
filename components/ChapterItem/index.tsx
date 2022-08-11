@@ -60,10 +60,10 @@ const ChapterItem: FC<ChapterProps> = ({
         <Grid container spacing={10} marginBottom={12} justifyContent="center">
           {images.map((item, index) => <Grid key={index} item xs={column}>
             {column < 12 && <ImageSquare>
-              <img src={process.env.APP_API+item.attributes.url} alt="asd" />
+              <img src={process.env.APP_API+item.attributes.url+'?format=webp&resize=440x440'} alt="asd" />
             </ImageSquare>}
             {column === 12 && <BigImage>
-              <img src={process.env.APP_API+item.attributes.url} alt="asd" />
+              <img src={process.env.APP_API+item.attributes.url+'?format=webp&width=1500'} alt="asd" />
             </BigImage>}
           </Grid>)}
         </Grid>
@@ -92,7 +92,7 @@ const ChapterItem: FC<ChapterProps> = ({
         </Grid>
       </Container>}
       {(button.link && button.text) && <Container>
-        <Button variant={buttonVariant} href={button.link} disableRipple={buttonVariant !== 'contained'} sx={{marginBottom: "120px"}} data-replace={button.text}><span>{button.text}</span></Button>
+        <Button variant={buttonVariant} href={button.link} disableRipple={buttonVariant !== 'contained'} sx={{marginBottom: "180px"}} data-replace={button.text}><span>{button.text}</span></Button>
       </Container>}
     </section>
   )

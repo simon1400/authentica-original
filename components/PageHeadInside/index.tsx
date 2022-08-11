@@ -33,7 +33,7 @@ const PageHeadInside: FC<IPageHeadeInside> = ({
             </Grid>
             <Grid item xs={4}>
               <WrapPageImg>
-                <img src={process.env.APP_API+image} />
+                <img src={process.env.APP_API+image+'?format=webp&width=400'} />
               </WrapPageImg>
             </Grid>
           </Grid>

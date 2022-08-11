@@ -20,6 +20,8 @@
     "@svgr/webpack": "^6.2.1",
     "@types/js-cookie": "^3.0.2",
     "@types/qs": "^6.9.7",
+    "@types/react-modal-video": "^1.2.0",
+    "@types/react-slick": "^0.23.10",
     "axios": "^0.27.2",
     "graphql": "^16.4.0",
     "hamburgers": "^1.2.1",
@@ -27,9 +29,14 @@
     "js-cookies": "^1.0.4",
     "next": "12.1.4",
     "next-i18next": "^11.3.0",
+    "node-sass": "^7.0.1",
     "qs": "^6.10.3",
     "react": "17",
-    "react-dom": "17"
+    "react-dom": "17",
+    "react-modal-video": "^1.2.10",
+    "react-slick": "^0.29.0",
+    "sass": "^1.54.4",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "17.0.23",

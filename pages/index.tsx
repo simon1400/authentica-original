@@ -12,6 +12,7 @@ import ReferenceItem from 'components/ReferenceItem';
 import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
 import HeadMarkdown from 'components/HeadMarkdown';
+import SectionSlider from 'components/Slider';
 // import { useTranslation } from 'next-i18next'
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -71,13 +72,19 @@ const Home: NextPage = ({
 
       <Chapter button={data.cta} content={data.content} contentBig />
 
-      <>
-        {!!references.length && <ScrollingSection column={references.length} height="90vh" widthColumn="560px">
+      {/* <>
+        {!!references.length && <ScrollingSection column={references.length} height="auto" widthColumn="560px">
           {references.map((item: any, index: number) => <ItemScroll key={index}>
             <ReferenceItem data={item} />
           </ItemScroll>)}
         </ScrollingSection>}
-      </>
+      </> */}
+
+      <SectionSlider>
+        {references.map((item: any, index: number) => <div style={{width: '30vw', height: "800px"}} key={index}>
+          <ReferenceItem data={item} />
+        </div>)}
+      </SectionSlider>
 
       <Chapter buttonVariant='contained' button={data.refCta} content={data.contentReference} contentBig />
 
@@ -86,11 +93,12 @@ const Home: NextPage = ({
           <HeadMarkdown marginBottom={12} title={data.titlePartners} />
         </Container>}
 
-        {!!data.partners && <ScrollingSection column={data.partners.length} height="460px" widthColumn="400px">
-          {data.partners.map((item: any, index: number) => <ItemScroll key={index}>
+        <SectionSlider infinite>
+          {!!data.partners && data.partners.map((item: any, index: number) => <div key={index}>
             <BrandItem data={item} index={index} />
-          </ItemScroll>)}
-        </ScrollingSection>}
+          </div>
+          )}
+        </SectionSlider>
       </>
       
     </Page>

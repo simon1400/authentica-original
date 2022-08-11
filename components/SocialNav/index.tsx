@@ -40,7 +40,7 @@ const SocialNav: FC<SocialNavProps> = ({
           </a>
         </li>
          <li>
-          <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${DOMAIN}${router.asPath}&title=${share?.title}&source=${DOMAIN}`}>
+          <a href={`http://www.linkedin.com/shareArticle?mini=true&url=${DOMAIN}${router.asPath}&title=${share?.title}&source=${DOMAIN}`} rel="noreferrer" target="_blank">
             <Icons icon="linkedin" />
           </a>
         </li>
@@ -52,7 +52,7 @@ const SocialNav: FC<SocialNavProps> = ({
       </ul>}
       {!!social.length && <ul>
         {social.map((item: ISocial, idx) => <li key={idx}>
-          <a href={item.url}>
+          <a href={item.url} target="_blank" rel="noreferrer">
             <Icons icon={item.icon} />
           </a>
         </li>)}

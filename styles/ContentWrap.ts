@@ -28,6 +28,7 @@ const ContentWrap = styled.div(({theme}) => `
         display: block;
         position: absolute;
         left: 0;
+        top: 21px;
         width: 15px;
         height: 2px;
         background-color: ${theme.palette.primary.main};

@@ -60,8 +60,8 @@ const Header: FC<HeaderProps> = ({
     console.log("Erorr with header nav -", error);
   }
 
-  let topNav = data.navigation.data.attributes.topNav
-  let headNav = data.navigation.data.attributes.headNav
+  let topNav = data.navigation.data?.attributes?.topNav
+  let headNav = data.navigation.data?.attributes?.headNav
 
   const nav: INavItem[] = topNav
 
@@ -77,7 +77,7 @@ const Header: FC<HeaderProps> = ({
           <Grow />
           <Lang menu={menu} />
           <Hamburger open={menu} setOpen={handleMenuOpen} />
-          <Nav menu={menu} data={nav} headNav={headNav} />
+          <Nav menu={menu} data={nav} headNav={headNav} handleMenuOpen={handleMenuOpen} />
         </TopNav>
       </Container>
     </HeaderC>

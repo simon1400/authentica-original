@@ -24,7 +24,7 @@ const ShortItem: FC<IShortItem> = ({
       <Grid container spacing={16} marginBottom={12}>
         <Grid item xs={4}>
           <ImageSquare>
-            <img src={process.env.APP_API+image.data.attributes.url} alt="asd" />
+            <img src={process.env.APP_API+image.data.attributes.url+'?format=webp&resize=337x337'} alt="asd" />
           </ImageSquare>
         </Grid>
         <Grid item xs={8}>

@@ -20,12 +20,12 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
     margin-bottom: 40px;
     color: rgba(0, 0, 0, 0.7);
   }
-  button {
-    margin-top: 50px;
-    @media (max-width: 720px) and (min-width: 640px) {
+  /* button { */
+    /* margin-top: 50px; */
+    /* @media (max-width: 720px) and (min-width: 640px) {
       margin-top: 0px;
-    }
-  }
+    } */
+  /* } */
 `)
 
 export const Head = styled(Typography)(({theme}) => `
@@ -33,6 +33,7 @@ export const Head = styled(Typography)(({theme}) => `
   display: inline-block;
   cursor: pointer;
   z-index: 99;
+  font-size: 84px!important;
   &:hover{
     color: ${theme.palette.primary.main};
     &:after{

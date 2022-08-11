@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useMediaQuery } from "@mui/material";
 import { FC } from "react";
 
 interface ISymbol {
@@ -8,6 +9,8 @@ interface ISymbol {
 const Symbol: FC<ISymbol> = ({
   type
 }) => {
+
+  const media = useMediaQuery("(max-width: 720px)")
 
   return (
     <SymbolC homepage={type === "Homepage" ? true : false}>
@@ -22,7 +25,8 @@ const Symbol: FC<ISymbol> = ({
 
         <foreignObject clipPath="url(#mask)">
           <video width="auto" height="100%" autoPlay muted loop>
-            <source src="/assets/video.mp4" type="video/mp4" />
+            {media && <source src="/assets/video-hq.mp4" type="video/mp4" />}
+            {!media && <source src="/assets/video-lq.mp4" type="video/mp4" />}
           </video>
           <div></div>
         </foreignObject>
@@ -35,7 +39,6 @@ export const SymbolC = styled.div<{homepage: boolean}>(({theme, homepage}) => `
   /* height: ${homepage ? "100vh" :"70vh"}; */
   width: 100vh;
   position: absolute;
-  /* right: -10vw; */
   right: -12vw;
   top: 150px;
   height: ${homepage ? "calc(100vh - 150px)" : "60vh"};
@@ -55,7 +58,7 @@ export const SymbolC = styled.div<{homepage: boolean}>(({theme, homepage}) => `
   svg, foreignObject{
     fill: ${theme.palette.primary.main};
     color: ${theme.palette.primary.main}; 
-    max-height: ${homepage ? "100vh" :"70vh"};
+    max-height: ${homepage ? "calc(100vh - 150px)" :"70vh"};
     right: 0;
     transition: all .5s cubic-bezier(0.7, -0.01, 0.19, 1);
     @media (max-width: 1440px) {

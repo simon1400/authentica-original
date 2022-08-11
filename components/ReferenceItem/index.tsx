@@ -3,9 +3,9 @@ import { FC } from "react"
 import { Typography } from "@mui/material"
 import { Image, LogoReference as Logo, ReferenceHead, ReferenceItemComponent } from "./styled"
 import Link from "next/link"
-import Waterdrop from 'public/assets/waterdrop.svg'
 import { useRouter } from "next/router"
 import { checkColor } from "utility/checkColor"
+import { Grow } from "styles/Grow"
 
 interface IReferenceData {
   Background: string;
@@ -36,6 +36,7 @@ const ReferenceItem: FC<ReferenceItemProps> = ({
         </Logo>}
         {small && <ReferenceHead inverse={checkColor(data.Background)} variant="h3">{data.title}</ReferenceHead>}
         {!small && <Typography color={checkColor(data.Background) ? "white" : "black"} component="div" variant="body2"><div dangerouslySetInnerHTML={{__html: data.description}}/></Typography>}
+        <Grow />
         <Image small={small} src={process.env.APP_API+data.image.data.attributes.url+'?format=webp&width=450'} />
       </ReferenceItemComponent>
     </Link>
