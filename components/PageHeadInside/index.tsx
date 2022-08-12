@@ -1,5 +1,6 @@
 import { Container, Grid, Typography } from "@mui/material"
 import Tags from "components/Tags"
+import { useTranslation } from "next-i18next";
 import { FC } from "react"
 import { Bottom, Top, WrapPageImg } from "./styles"
 
@@ -22,6 +23,9 @@ const PageHeadInside: FC<IPageHeadeInside> = ({
   tags,
   invert
 }) => {
+
+  const { t } = useTranslation("common")
+
   return (
     <section>
       <Top background={background} invert={invert}>
@@ -46,9 +50,9 @@ const PageHeadInside: FC<IPageHeadeInside> = ({
               <Typography variant='body1' component="div"><div dangerouslySetInnerHTML={{__html: content}}/></Typography>
             </Grid>
             <Grid item xs={12} sm={4}>
-              {!!tags.categories.length && <Tags title="Kategorie" data={tags.categories} />}
-              {!!tags.technologies.length && <Tags title="Technologie" data={tags.technologies} />}
-              {!!tags.materials.length && <Tags title="Materialy" data={tags.materials} />}
+              {!!tags.categories.length && <Tags title={t("category")} data={tags.categories} />}
+              {!!tags.technologies.length && <Tags title={t("technology")} data={tags.technologies} />}
+              {!!tags.materials.length && <Tags title={t("materials")} data={tags.materials} />}
             </Grid>
           </Grid>
         </Container>

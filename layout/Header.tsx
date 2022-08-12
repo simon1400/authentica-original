@@ -67,8 +67,8 @@ const Header: FC<HeaderProps> = ({
     <HeaderC backgroundAbsolute={backgroundAbsolute} dropShown={dropShown}>
       <Container maxWidth="xl">
         <TopNav>
-          <div>
-            <Link href="/" passHref>
+          <div onClick={e => handleMenuOpen(false)}>
+            <Link href="/" passHref >
               <Logo menu={menu}>
                 <LogoIcon />
               </Logo>

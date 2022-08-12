@@ -1,5 +1,4 @@
 import { Button, ButtonProps, Container, Grid, Typography, useMediaQuery } from "@mui/material"
-import CategoryItem from "components/CategoryItem";
 import HeadMarkdown from "components/HeadMarkdown";
 import ReferenceItem from "components/ReferenceItem"
 import { FC, useEffect, useState } from "react"
@@ -68,22 +67,6 @@ const ChapterItem: FC<ChapterProps> = ({
               <img src={process.env.APP_API+item.attributes.url+'?format=webp&width=1500'} alt="asd" />
             </BigImage>}
           </Grid>)}
-        </Grid>
-      </Container>}
-      {categoryItems && <Container maxWidth="xl">
-        <Grid container spacing={10} marginBottom={12}>
-          <Grid item xs={4}>
-            <CategoryItem />
-          </Grid>
-          <Grid item xs={4}>
-            <CategoryItem />
-          </Grid>
-          <Grid item xs={4}>
-            <CategoryItem />
-          </Grid>
-          <Grid item xs={4}>
-            <CategoryItem />
-          </Grid>
         </Grid>
       </Container>}
       {!!items.length && <Container maxWidth="xl">

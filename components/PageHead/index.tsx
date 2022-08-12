@@ -6,6 +6,7 @@ import { Head, PageHead } from "./styles";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import HeadMarkdown from "components/HeadMarkdown";
+import useTranslation from 'next-translate/useTranslation';
 
 interface IHead {
   Text: string;
@@ -26,7 +27,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
   openModal
 }) => {
 
-  const mediaSm = useMediaQuery("max-width: 720px")
+  const { t } = useTranslation("common")
   const router = useRouter()
 
   return (
@@ -65,7 +66,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
                   <PlayIcon />
                 </SvgIcon>}
               >
-                spustit video
+                {t("runVideo")}
               </Button>
             </Grid>
           </Grid>}

@@ -2,6 +2,7 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { Container } from '@mui/material';
 import { AntTab, AntTabs, TabsWrap } from './styled';
+import { useTranslation } from 'next-i18next';
 
 interface ITabsNav {
   data: any[];
@@ -12,6 +13,8 @@ const TabsNav: FC<ITabsNav> = ({
   data,
   handle
 }) => {
+
+  const { t } = useTranslation("common")
   
   const [value, setValue] = useState(0);
   
@@ -28,7 +31,7 @@ const TabsNav: FC<ITabsNav> = ({
     <Container>
       <TabsWrap>
         <AntTabs value={value} onChange={handleChange} aria-label="Ant example" variant="scrollable" scrollButtons={false}>
-          <AntTab label="Všechny" />
+          <AntTab label={t("all")} />
           {data.map((item, index) => <AntTab key={index} label={item.attributes.title} />)}
         </AntTabs>
       </TabsWrap>

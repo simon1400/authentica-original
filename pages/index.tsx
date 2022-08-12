@@ -11,7 +11,6 @@ import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
 import HeadMarkdown from 'components/HeadMarkdown';
 import SectionSlider from 'components/Slider';
-// import { useTranslation } from 'next-i18next'
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 // @ts-ignore
@@ -40,8 +39,6 @@ const Home: NextPage = ({
   // @ts-ignore
   data
 }) => {
-
-  // const { t } = useTranslation('common')
   
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
