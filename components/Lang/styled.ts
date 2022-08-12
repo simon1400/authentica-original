@@ -43,6 +43,19 @@ const Nav = styled.div<{menu: boolean}>(({theme, menu}) => `
       }
     }
   }
+  @media (max-width: 640px) {
+    margin-right: 15px;
+    ul{
+      li{
+        &:not(:last-of-type) {
+          padding-right: 5px;
+        }
+        &:not(:first-of-type) {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
 `)
 
 export default Nav

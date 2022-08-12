@@ -27,6 +27,11 @@ export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
       transform: rotate(8deg) scale(1.1);
     }
   }
+  @media(max-width: 640px) {
+    height: ${small ? '442px' : '540px'};
+    margin: ${small ? '0' : '0 20px'};
+    padding: ${small ? '40px 50px' : '30px'};
+  }
 `)
 
 export const ReferenceHead = styled(Typography)<{inverse?: boolean}>(({inverse = false}) => `
@@ -46,6 +51,9 @@ export const Image = styled.img<{small: boolean}>(({small}) => `
   margin-bottom: ${small ? '-90px' : "-160px"};
   max-height: 100%;
   transition: all .5s ease;
+  @media(max-width: 640px) {
+    margin-bottom: ${small ? '-90px' : "-100px"};
+  }
 `)
 
 export const LogoReference = styled.div<{inverse?: boolean}>(({inverse = false}) => `

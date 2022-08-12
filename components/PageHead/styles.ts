@@ -12,20 +12,15 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
     padding-bottom: ${homepage ? "60px" : "150px"};
   }
   @media (max-width: 640px) {
-    padding-top: ${homepage ? "100px" : "200px"};
+    padding-top: ${homepage ? "67px" : "200px"};
     padding-bottom: ${homepage ? "60px" : "150px"};
+    min-height: auto;
     max-width: 95vw;
   }
   p {
     margin-bottom: 40px;
     color: rgba(0, 0, 0, 0.7);
   }
-  /* button { */
-    /* margin-top: 50px; */
-    /* @media (max-width: 720px) and (min-width: 640px) {
-      margin-top: 0px;
-    } */
-  /* } */
 `)
 
 export const Head = styled(Typography)(({theme}) => `
@@ -53,6 +48,9 @@ export const Head = styled(Typography)(({theme}) => `
     left: 102%;
     background-repeat: repeat-x;
     background-size: auto 100%;
+  }
+  @media(max-width: 640px) {
+    font-size: 40px!important;
   }
 `)
 

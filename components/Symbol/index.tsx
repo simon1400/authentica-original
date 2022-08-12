@@ -11,6 +11,11 @@ const Symbol: FC<ISymbol> = ({
 }) => {
 
   const media = useMediaQuery("(max-width: 720px)")
+  const mediaXS = useMediaQuery("(max-width: 640px)")
+
+  if(mediaXS) {
+    return <></>
+  }
 
   return (
     <SymbolC homepage={type === "Homepage" ? true : false}>

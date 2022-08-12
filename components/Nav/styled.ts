@@ -15,6 +15,10 @@ export const SNavWrap = styled.div<{menu: boolean}>(({theme, menu}) => `
   overflow-y: scroll;
   display: flex;
   align-items: center;
+  @media(max-width: 640px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 `)
 
 
@@ -34,7 +38,6 @@ export const SNav = styled.div(({theme}) => `
       line-height: 1;
       display: block;
       font-size: 14px;
-      
       a{
         text-decoration: none;
         display: inline-block;
@@ -44,6 +47,13 @@ export const SNav = styled.div(({theme}) => `
           color: ${theme.palette.primary.main}!important;
         }
       }
+    }
+  }
+  @media(max-width: 640px) {
+    flex-direction: column;
+    justify-content: center;
+    ul{
+      padding: 0;
     }
   }
 `)
@@ -58,6 +68,16 @@ export const LeftMenu = styled.ul`
       }
     }
   }
+  @media(max-width: 640px) {
+    margin-bottom: 50px!important;
+    li{
+      text-align: right !important;
+      margin-bottom: 10px;
+      a{
+        font-size: 30px;
+      }
+    }
+  }
 `
 
 export const RightMenu = styled.ul`
@@ -66,6 +86,14 @@ export const RightMenu = styled.ul`
     margin-bottom: 13px;
     a {
       font-size: 25px;
+    }
+  }
+  @media(max-width: 640px) {
+    li{
+      margin-bottom: 10px;
+      a{
+        font-size: 22px;
+      }
     }
   }
 `

@@ -29,13 +29,15 @@ const ReferenceItem: FC<ReferenceItemProps> = ({
   const router = useRouter()
 
   return (
-    <Link href={router.asPath+data.slug} passHref>
+    <Link href={router.asPath+'/'+data.slug} passHref>
       <ReferenceItemComponent small={small} bg={data.Background}>
         {!small && <Logo inverse={checkColor(data.Background)}>
           <img src={process.env.APP_API+data.logo.data.attributes.url+'?format=webp&width=210'} />
         </Logo>}
         {small && <ReferenceHead inverse={checkColor(data.Background)} variant="h3">{data.title}</ReferenceHead>}
-        {!small && <Typography color={checkColor(data.Background) ? "white" : "black"} component="div" variant="body2"><div dangerouslySetInnerHTML={{__html: data.description}}/></Typography>}
+        {!small && <Typography color={checkColor(data.Background) ? "white" : "black"} component="div" variant="body2">
+          <div dangerouslySetInnerHTML={{__html: data.description}}/>
+        </Typography>}
         <Grow />
         <Image small={small} src={process.env.APP_API+data.image.data.attributes.url+'?format=webp&width=450'} />
       </ReferenceItemComponent>

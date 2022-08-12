@@ -26,7 +26,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
   openModal
 }) => {
 
-  const media = useMediaQuery("(max-width: 720px) and (min-width: 640px)")
+  const mediaSm = useMediaQuery("max-width: 720px")
   const router = useRouter()
 
   return (
@@ -51,12 +51,12 @@ const PageHeadComponent: FC<PageHeadProps> = ({
             marginTop={5}
             spacing={6}
           >
-            <Grid item sm={media ? 12 : "auto"}>
+            <Grid item xs={12} sm>
               <Button href={buttons.link} variant="contained">
                 <span>{buttons.text}</span>
               </Button>
             </Grid>
-            <Grid item sm={media ? 12 : "auto"}>
+            <Grid item xs={12} sm>
               <Button 
                 variant="withIcon"
                 onClick={openModal}

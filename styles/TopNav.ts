@@ -9,6 +9,9 @@ const TopNav = styled.div(({theme}) => `
   @media(max-width:1200px) {
     padding-top: 50px;
   }
+  @media(max-width:640px) {
+    padding-top: 22px;
+  }
 `)
 
 export default TopNav

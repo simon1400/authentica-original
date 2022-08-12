@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 import { Container, useMediaQuery } from "@mui/material"
-// import DropDown from "components/DropDown";
 import Hamburger from "components/Hamburger";
 import Lang from "components/Lang";
 import Nav from "components/Nav";
@@ -14,7 +13,6 @@ import { Grow } from "styles/Grow";
 import Logo from "styles/Logo";
 import TopNav from "styles/TopNav";
 import { checkColor } from "utility/checkColor";
-// import Navigation from "../components/TopNav"
 import LogoIcon from '../public/assets/logo.svg'
 
 interface HeaderProps {
@@ -69,11 +67,13 @@ const Header: FC<HeaderProps> = ({
     <HeaderC backgroundAbsolute={backgroundAbsolute} dropShown={dropShown}>
       <Container maxWidth="xl">
         <TopNav>
-          <Link href="/" passHref>
-            <Logo menu={menu}>
-              <LogoIcon />
-            </Logo>
-          </Link>
+          <div>
+            <Link href="/" passHref>
+              <Logo menu={menu}>
+                <LogoIcon />
+              </Logo>
+            </Link>
+          </div>
           <Grow />
           <Lang menu={menu} />
           <Hamburger open={menu} setOpen={handleMenuOpen} />

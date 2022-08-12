@@ -1,6 +1,10 @@
 .baseSlider{
   margin-bottom: 120px;
   padding-bottom: 100px;
+  .reference-item-slide{
+    width: 30vw!important;
+    height: 800px!important;
+  }
   .slick-next{
     right: 20px;
     z-index: 100;
@@ -20,6 +24,9 @@
       height: 35px;
       position: relative;
       top: 18px;
+    }
+    @media(max-width: 640px) {
+      display: none!important;
     }
   }
   
@@ -43,10 +50,17 @@
       position: relative;
       top: 18px;
     }
+    @media(max-width: 640px) {
+      display: none!important;
+    }
   }
   
   .slick-list{
     overflow: visible;
+  }
+  @media(max-width: 640px) {
+    margin-bottom: 0;
+    padding-bottom: 100px;
   }
 }
 
@@ -54,5 +68,12 @@
 .infiniteSlider{
   .slick-slide > div{
     margin: 30px;
+    @media(max-width: 640px) {
+      margin: 10px;
+      img{
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+    }
   }
 }

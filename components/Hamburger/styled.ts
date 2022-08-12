@@ -55,6 +55,9 @@ export const BurgerWrap = styled.div<{menu: boolean}>(({theme, menu}) => `
     margin-right: 17px;
     transition: all .2s ease;
     color: ${menu ? "white" : 'black'}!important;
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
   div{
     background: ${menu ? "white" : 'black'}!important;

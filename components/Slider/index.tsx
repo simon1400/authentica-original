@@ -2,6 +2,7 @@ import { FC, ReactChild } from "react";
 import Slider from "react-slick";
 import ChevronRight from 'public/assets/chevron-right.svg'
 import ChevronLeft from 'public/assets/chevron-left.svg'
+import { useMediaQuery } from "@mui/material";
 
 interface ISectionSlider {
   children: ReactChild | ReactChild[];
@@ -13,6 +14,8 @@ const SectionSlider: FC<ISectionSlider> = ({
   infinite = false
 }) => {
 
+  const mediaXs = useMediaQuery("(max-width: 640px)")
+
   const settingsInfinite = {
     infinite: true,
     className: "infiniteSlider",
@@ -22,7 +25,16 @@ const SectionSlider: FC<ISectionSlider> = ({
     autoplay: true,
     // autoplaySpeed: 9000,
     speed: 9000,
-    cssEase: "linear"
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 2
+        }
+      },
+    ]
   };
   
   const settingsBase = {
@@ -32,14 +44,25 @@ const SectionSlider: FC<ISectionSlider> = ({
     slidesToScroll: 1,
     variableWidth: true,
     nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          variableWidth: false,
+        }
+      },
+    ]
   };
 
   const settings = infinite ? settingsInfinite : settingsBase
 
   return (
     <Slider {...settings}>
-      {!infinite && <div style={{width: "25vw"}}></div>}
+      {!infinite && !mediaXs && <div style={{width: "25vw"}}></div>}
       {children}
     </Slider>
   )

@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Container, Grid, Typography } from "@mui/material"
+import { Button, ButtonProps, Container, Grid, Typography, useMediaQuery } from "@mui/material"
 import CategoryItem from "components/CategoryItem";
 import HeadMarkdown from "components/HeadMarkdown";
 import ReferenceItem from "components/ReferenceItem"
@@ -39,6 +39,8 @@ const ChapterItem: FC<ChapterProps> = ({
 }) => {
 
   const [column, setColumn] = useState(0)
+
+  const mediaXs = useMediaQuery("(max-width: 640px)")
 
   useEffect(() => {
     if(images.length < 4) {
@@ -92,7 +94,15 @@ const ChapterItem: FC<ChapterProps> = ({
         </Grid>
       </Container>}
       {(button.link && button.text) && <Container>
-        <Button variant={buttonVariant} href={button.link} disableRipple={buttonVariant !== 'contained'} sx={{marginBottom: "180px"}} data-replace={button.text}><span>{button.text}</span></Button>
+        <Button 
+          variant={buttonVariant} 
+          href={button.link} 
+          disableRipple={buttonVariant !== 'contained'} 
+          sx={{marginBottom: mediaXs ? "80px" : "180px"}} 
+          data-replace={button.text}
+        >
+            <span>{button.text}</span>
+        </Button>
       </Container>}
     </section>
   )

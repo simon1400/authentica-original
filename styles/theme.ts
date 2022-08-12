@@ -51,7 +51,10 @@ const themeOption: ThemeOptions = {
           letterSpacing: "2.56px",
           lineHeight: "1",
           fontWeight: 600,
-          WebkitTapHighlightColor: "transparent"
+          WebkitTapHighlightColor: "transparent",
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '12px!important',
+          },
         },
         text: {
           position: "relative",
@@ -106,6 +109,12 @@ const themeOption: ThemeOptions = {
             transform: "scale(1)",
             paddingLeft: "50px",
             paddingRight: "50px",
+            [theme.breakpoints.down('sm')]: {
+              minWidth: "209px",
+              minHeight: "49px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
+            },
             "span": {
               transition: 'transform .3s ease',
             },
@@ -122,6 +131,7 @@ const themeOption: ThemeOptions = {
           props: { variant: 'withIcon' },
           style: {
             color: theme.palette.primary.main,
+            whiteSpace: "nowrap",
             "&:hover": {
               backgroundColor: "transparent",
               span: {

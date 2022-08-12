@@ -12,6 +12,9 @@ export const Footer = styled.footer`
   a{
     text-decoration: none;
   }
+  @media(max-width: 640px) {
+    display: block;
+  }
 `
 
 export const Content = styled.div`
@@ -27,6 +30,9 @@ export const Content = styled.div`
         color: ${({theme}) => theme.palette.primary.main};
       }
     }
+  }
+  @media(max-width: 640px) {
+    display: block;
   }
 `
 

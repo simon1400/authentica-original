@@ -1,13 +1,11 @@
-import { Container } from '@mui/material'
+import { Container, useMediaQuery } from '@mui/material'
 import Page from 'layout/Page'
 import type { NextPage } from 'next'
 import Chapter from 'components/ChapterItem'
 import BrandItem from 'components/BrandItem';
 import PageHead from 'components/PageHead'
-import ScrollingSection from 'components/ScrolingSection'
 import homepageQuery from 'queries/homepage';
 import { client } from 'utility/graphql';
-import { ItemScroll } from 'components/ScrolingSection/styled';
 import ReferenceItem from 'components/ReferenceItem';
 import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
@@ -49,6 +47,8 @@ const Home: NextPage = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const mediaXs = useMediaQuery("(max-width: 640px)")
+
   const references = data.references.data.map((item: any) => item.attributes)
   
   return (
@@ -72,16 +72,8 @@ const Home: NextPage = ({
 
       <Chapter button={data.cta} content={data.content} contentBig />
 
-      {/* <>
-        {!!references.length && <ScrollingSection column={references.length} height="auto" widthColumn="560px">
-          {references.map((item: any, index: number) => <ItemScroll key={index}>
-            <ReferenceItem data={item} />
-          </ItemScroll>)}
-        </ScrollingSection>}
-      </> */}
-
       <SectionSlider>
-        {references.map((item: any, index: number) => <div style={{width: '30vw', height: "800px"}} key={index}>
+        {references.map((item: any, index: number) => <div style={{width: mediaXs ? '100vw' : "30vw", height: "800px"}} key={index}>
           <ReferenceItem data={item} />
         </div>)}
       </SectionSlider>

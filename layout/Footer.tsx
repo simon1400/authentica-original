@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client"
-import { Container, Grid, Typography } from "@mui/material"
+import { Container, Grid, Typography, useMediaQuery } from "@mui/material"
 import SocialNav from "components/SocialNav"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -17,6 +17,8 @@ const FooterLayout: FC<IFooter> = ({
   data
 }) => {
 
+  const mediaXs = useMediaQuery("(max-width: 640px)")
+
   const router = useRouter()
 
   const {data: nav, loading, error} = useQuery(footerNavQuery, {
@@ -30,11 +32,11 @@ const FooterLayout: FC<IFooter> = ({
   }
 
   const footerNav = nav.navigation.data?.attributes
-  
+
   return (
     <Footer>
       <Content>
-        <Typography color="white" variant="body2" marginBottom={12}>{data.subTitle}</Typography>
+        <Typography color="white" variant="body2" marginBottom={mediaXs ? 6 : 12}>{data.subTitle}</Typography>
         <Link href={'mailto:'+data.link}>
           <a className="" target="_blank">
             <Head color="white" variant="h2">{data.title}</Head>
