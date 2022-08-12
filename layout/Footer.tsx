@@ -48,13 +48,13 @@ const FooterLayout: FC<IFooter> = ({
         <ContentWrap>
           <Container maxWidth="xl">
             <Grid container spacing={4} alignItems="center">
-              <Grid item xs={12} md={2}>
+              <Grid item xs={12} md={3}>
                 <div dangerouslySetInnerHTML={{__html: footerNav?.footer1}} />
               </Grid>
-              <Grid item xs={12} md={2}>
+              <Grid item xs={12} md={3}>
                 <div dangerouslySetInnerHTML={{__html: footerNav?.footer2}} />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={4}>
                 <div dangerouslySetInnerHTML={{__html: footerNav?.footer3}} />
               </Grid>
               <Grid item xs={12} md={2}>

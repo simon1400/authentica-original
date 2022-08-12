@@ -1,8 +1,10 @@
+import { useMediaQuery } from "@mui/material"
 import Chapters from "components/Chapters"
 import PageHeadInside from "components/PageHeadInside"
 import ReferenceItem from "components/ReferenceItem"
 import ScrollingSection from "components/ScrolingSection"
 import { ItemScroll } from "components/ScrolingSection/styled"
+import SectionSlider from "components/Slider"
 import { IFooter } from "interfaces/footer"
 import { IImage } from "interfaces/image"
 import { IMeta } from "interfaces/meta"
@@ -29,7 +31,7 @@ interface IReferenceFull {
 const ReferenceFull: NextPage<{data: IReferenceFull}> = ({
   data
 }) => {
-
+  const mediaXs = useMediaQuery("(max-width: 960px)")
   const references = data.references.data.map((item: any) => item.attributes)
   
   return(
@@ -54,11 +56,11 @@ const ReferenceFull: NextPage<{data: IReferenceFull}> = ({
       <Chapters data={data.chapters} />
       
       <>
-        {!!references.length && <ScrollingSection column={references.length} height="110vh" widthColumn="560px">
-          {references.map((item: any, index: number) => <ItemScroll key={index}>
+        {!!references.length && <SectionSlider count={references.length}>
+          {references.map((item: any, index: number) => <div style={{width: mediaXs ? '100vw' : "30vw", height: "800px"}} key={index}>
             <ReferenceItem data={item} />
-          </ItemScroll>)}
-        </ScrollingSection>}
+          </div>)}
+        </SectionSlider>}
       </>    
     </Page>
   )

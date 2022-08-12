@@ -8,7 +8,7 @@ export const SNavWrap = styled.div<{menu: boolean}>(({theme, menu}) => `
   transition: opacity .5s ease;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 101;
   opacity: ${menu ? 1 : 0};
   padding-left: 15px;
   padding-right: 15px;
