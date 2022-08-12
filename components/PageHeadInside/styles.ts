@@ -10,6 +10,9 @@ export const Top = styled.div<{background: string; invert: boolean}>(({backgroun
   p{
     margin-bottom: 30px;
   }
+  @media(max-width: 960px) {
+    padding-top: 100px;
+  }
 `)
 
 export const Bottom = styled.div`
@@ -26,5 +29,11 @@ export const WrapPageImg = styled.div`
     max-width: 100%;
     left: 0;
     bottom: -60px;
+  }
+  @media(max-width: 640px) {
+    img{
+      position: relative;
+      margin-bottom: -60px;
+    }
   }
 `

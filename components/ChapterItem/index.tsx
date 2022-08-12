@@ -60,7 +60,7 @@ const ChapterItem: FC<ChapterProps> = ({
       </Container>}
       {!!images.length && <Container maxWidth="xl">
         <Grid container spacing={10} marginBottom={12} justifyContent="center">
-          {images.map((item, index) => <Grid key={index} item xs={column}>
+          {images.map((item, index) => <Grid key={index} item sm={6} md={column} xs={12}>
             {column < 12 && <ImageSquare>
               <img src={process.env.APP_API+item.attributes.url+'?format=webp&resize=440x440'} alt="asd" />
             </ImageSquare>}
@@ -88,7 +88,7 @@ const ChapterItem: FC<ChapterProps> = ({
       </Container>}
       {!!items.length && <Container maxWidth="xl">
         <Grid container spacing={10} marginBottom={24}>
-          {items.map((item: any, index: number) => <Grid key={index} item xs={4}>
+          {items.map((item: any, index: number) => <Grid key={index} item xs={12} sm={6} md={4}>
             <ReferenceItem small={smallReference} data={item.attributes} />
           </Grid>)}
         </Grid>

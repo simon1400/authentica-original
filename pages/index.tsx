@@ -47,7 +47,7 @@ const Home: NextPage = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const mediaXs = useMediaQuery("(max-width: 640px)")
+  const mediaXs = useMediaQuery("(max-width: 960px)")
 
   const references = data.references.data.map((item: any) => item.attributes)
   
@@ -72,7 +72,7 @@ const Home: NextPage = ({
 
       <Chapter button={data.cta} content={data.content} contentBig />
 
-      <SectionSlider>
+      <SectionSlider count={references.length}>
         {references.map((item: any, index: number) => <div style={{width: mediaXs ? '100vw' : "30vw", height: "800px"}} key={index}>
           <ReferenceItem data={item} />
         </div>)}

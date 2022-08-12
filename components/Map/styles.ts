@@ -7,4 +7,7 @@ export const SMap = styled.div`
   iframe{
     margin-top: -61px;
   }
+  @media(max-width: 640px) {
+    margin-top: 60px;
+  }
 `

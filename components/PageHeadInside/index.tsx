@@ -27,11 +27,11 @@ const PageHeadInside: FC<IPageHeadeInside> = ({
       <Top background={background} invert={invert}>
         <Container>
           <Grid container justifyContent="space-between">
-            <Grid item xs={8}>
+            <Grid item xs={12} sm={8}>
               <Typography variant='body1'>{label}</Typography>
               <Typography variant='h1'>{title}</Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
               <WrapPageImg>
                 <img src={process.env.APP_API+image+'?format=webp&width=400'} />
               </WrapPageImg>
@@ -42,10 +42,10 @@ const PageHeadInside: FC<IPageHeadeInside> = ({
       <Bottom>
         <Container>
           <Grid container spacing={18}>
-            <Grid item xs={8}>
+            <Grid item xs={12} sm={8}>
               <Typography variant='body1' component="div"><div dangerouslySetInnerHTML={{__html: content}}/></Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
               {!!tags.categories.length && <Tags title="Kategorie" data={tags.categories} />}
               {!!tags.technologies.length && <Tags title="Technologie" data={tags.technologies} />}
               {!!tags.materials.length && <Tags title="Materialy" data={tags.materials} />}

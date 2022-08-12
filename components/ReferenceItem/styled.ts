@@ -26,10 +26,13 @@ export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
       transform: rotate(8deg) scale(1.1);
     }
   }
+  @media(max-width: 1200px) {
+    height: ${small ? '310px' : '600px'};
+    margin: ${small ? '10px 0px' : '0 20px'};
+    padding: ${small ? '30px 40px' : '30px'};
+  }
   @media(max-width: 640px) {
-    height: ${small ? '442px' : '540px'};
-    margin: ${small ? '0' : '0 20px'};
-    padding: ${small ? '40px 50px' : '30px'};
+    height: ${small ? '310px' : '540px'};
   }
 `)
 
@@ -38,6 +41,9 @@ export const ReferenceHead = styled(Typography)<{inverse?: boolean}>(({inverse =
   font-weight: bold;
   line-height: 1.3;
   color: ${inverse ? "white" : "black"};
+  @media(max-width: 1400px) {
+    font-size: 24px;
+  }
 `)
 
 export const Image = styled.img<{small: boolean}>(({small}) => `

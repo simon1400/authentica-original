@@ -21,13 +21,13 @@ const ShortItem: FC<IShortItem> = ({
 }) => {
   return (
     <Container>
-      <Grid container spacing={16} marginBottom={12}>
-        <Grid item xs={4}>
+      <Grid container rowSpacing={{xs: 4, md: 16}} columnSpacing={{xs: 4, md: 16}} marginBottom={12}>
+        <Grid item xs={12} sm={4}>
           <ImageSquare>
             <img src={process.env.APP_API+image.data.attributes.url+'?format=webp&resize=337x337'} alt="asd" />
           </ImageSquare>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={8}>
           <HeadMarkdown lavel="h3" marginBottom={8} title={title} />
           <Typography variant="body2" marginBottom={6} component="div" dangerouslySetInnerHTML={{__html: content}} />
           <Button href={`/${prefix}/${slug}`} disableRipple>Zjistěte  více</Button>

@@ -12,8 +12,8 @@ const Numbers: FC<INumbers> = ({
 
   return (
     <Container>
-      <Grid container marginBottom={6}>
-        {data.map((item: any, index: number) => <Grid key={index} item xs={12 / data.length}>
+      <Grid container justifyContent="center" marginBottom={6}>
+        {data.map((item: any, index: number) => <Grid key={index} item xs={12} sm={4} md={12 / data.length}>
           <Number>
             <span>{item.number}</span>
             <span>{item.description}</span>

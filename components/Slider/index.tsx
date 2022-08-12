@@ -1,4 +1,4 @@
-import { FC, ReactChild } from "react";
+import { FC, ReactChild, useState } from "react";
 import Slider from "react-slick";
 import ChevronRight from 'public/assets/chevron-right.svg'
 import ChevronLeft from 'public/assets/chevron-left.svg'
@@ -7,14 +7,18 @@ import { useMediaQuery } from "@mui/material";
 interface ISectionSlider {
   children: ReactChild | ReactChild[];
   infinite?: boolean;
+  count?: number;
 }
 
 const SectionSlider: FC<ISectionSlider> = ({
   children,
-  infinite = false
+  infinite = false,
+  count
 }) => {
 
-  const mediaXs = useMediaQuery("(max-width: 640px)")
+  const [active, setActive] = useState(0)
+
+  const mediaXs = useMediaQuery("(max-width: 960px)")
 
   const settingsInfinite = {
     infinite: true,
@@ -23,10 +27,16 @@ const SectionSlider: FC<ISectionSlider> = ({
     slidesToScroll: 10,
     centerMode: true,
     autoplay: true,
-    // autoplaySpeed: 9000,
     speed: 9000,
     cssEase: "linear",
     responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 6
+        }
+      },
       {
         breakpoint: 640,
         settings: {
@@ -43,18 +53,26 @@ const SectionSlider: FC<ISectionSlider> = ({
     infinite: false,
     slidesToScroll: 1,
     variableWidth: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow active={count !== undefined ? active !== (count - 2) : true} />,
+    prevArrow: <PrevArrow active={active > 1} />,
+    beforeChange: (current: number, next: number) => setActive(next),
     responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          variableWidth: false,
+        }
+      },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1,
           variableWidth: false,
         }
-      },
+      }
     ]
   };
 
@@ -69,7 +87,12 @@ const SectionSlider: FC<ISectionSlider> = ({
 }
 
 const NextArrow = (props: any) => {
-  const { className, style, onClick } = props;
+  const { className, style, onClick, active } = props;
+
+  if(!active) {
+    return <></>
+  }
+
   return (
     <div
       className={className}
@@ -82,7 +105,12 @@ const NextArrow = (props: any) => {
 }
 
 const PrevArrow = (props: any) => {
-  const { className, style, onClick } = props;
+  const { className, style, onClick, active } = props;
+
+  if(!active) {
+    return <></>
+  }
+
   return (
     <div
       className={className}

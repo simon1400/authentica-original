@@ -42,6 +42,8 @@ export const ContactItem = styled.a`
     letter-spacing: 1.4px;
     display: block;
   }
-  
+  @media(max-width: 640px) {
+    margin-bottom: 0px;
+  }
 `
 

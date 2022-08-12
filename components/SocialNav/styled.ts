@@ -3,6 +3,10 @@ import { SocialNavProps } from ".";
 
 export const Social = styled.nav<SocialNavProps>(({theme, invert, big}) => `
   text-align: right;
+  @media(max-width: 640px) {
+    margin-top: 20px;
+    text-align: left;
+  }
   ul{
     padding-left: 0;
     margin-bottom: 0;

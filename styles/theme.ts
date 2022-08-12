@@ -159,7 +159,14 @@ const themeOption: ThemeOptions = {
       },
       [theme.breakpoints.down('sm')]: {
         fontSize: '19px!important',
-        lineHeight: "1.63"
+        lineHeight: "1.63",
+        ul: {
+          li: {
+            "&:before": {
+              top: "13px"
+            }
+          }
+        }
       },
       "&::selection": {
         backgroundColor: theme.palette.primary.main,
@@ -207,6 +214,7 @@ const themeOption: ThemeOptions = {
               width: "15px",
               height: "2px",
               backgroundColor: theme.palette.primary.main,
+              
             }
           }
         },
@@ -222,7 +230,14 @@ const themeOption: ThemeOptions = {
       },
       [theme.breakpoints.down('sm')]: {
         fontSize: '16px',
-        lineHeight: "1.81"
+        lineHeight: "1.81",
+        ul: {
+          li: {
+            "&:before": {
+              top: "13px"
+            }
+          }
+        }
       },
       "&::selection": {
         backgroundColor: theme.palette.primary.main,

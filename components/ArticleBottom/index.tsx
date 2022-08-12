@@ -15,10 +15,10 @@ const ArticleBottom: FC<IArticleBottom> = ({
   return (
     <Container>
       <Grid container justifyContent="space-between" alignItems="center">
-        <Grid item>
+        <Grid item xs={12} sm={6}>
           <Publication>{data}</Publication>
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={6}>
           <SocialNav share={share} invert big />
         </Grid>
       </Grid>

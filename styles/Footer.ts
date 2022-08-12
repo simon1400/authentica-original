@@ -14,6 +14,8 @@ export const Footer = styled.footer`
   }
   @media(max-width: 640px) {
     display: block;
+    height: auto;
+    min-height: 100vh;
   }
 `
 
@@ -33,6 +35,13 @@ export const Content = styled.div`
   }
   @media(max-width: 640px) {
     display: block;
+    margin-top: 70px;
+    a{
+      h2{
+        font-size: 35px;
+        margin-bottom: 30px;
+      }
+    }
   }
 `
 
@@ -63,11 +72,18 @@ export const Bottom = styled.div`
     a{
       color: white;
     }
+    @media(max-width: 640px) {
+      text-align: center;
+    }
   }
   ul{
     padding-left: 0;
     margin-bottom: 0;
     margin-top: 0;
+    @media(max-width: 640px) {
+      text-align: center;
+      margin-top: 40px;
+    }
     li{
       list-style-type: none;
       line-height: 1;
@@ -75,6 +91,7 @@ export const Bottom = styled.div`
       font-size: 19px;
       line-height: 1.58;
       color: white;
+      display: inline-block;
       &:before{
         display: none;
       }

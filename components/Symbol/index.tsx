@@ -51,13 +51,13 @@ export const SymbolC = styled.div<{homepage: boolean}>(({theme, homepage}) => `
   display: inline-block;
   transition: all .5s cubic-bezier(0.7, -0.01, 0.19, 1);
   @media (max-width: 1440px) {
-    /* right: -12vw;
-    top: 150px;
-    height: ${homepage ? "calc(100vh - 150px)" : "60vh"}; */
+    top: 130px;
+  }
+  @media (max-width: 1200px) {
+    top: 100px;
   }
   @media (max-width: 960px) {
-    right: -50vw;
-    top: 100px;
+    right: ${homepage ? "-50vw" : "-35vw"};
     height: ${homepage ? "calc(100vh - 100px)" : "60vh"};
   }
   svg, foreignObject{
