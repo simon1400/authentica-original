@@ -87,6 +87,7 @@ const referenceQuery = gql`
                 }
                 description
                 Background
+                slug
               }
             }
           }
