@@ -11,7 +11,6 @@ export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
   height: ${small ? '442px' : '900px'};
   background-color: ${bg};
   padding: ${small ? '40px 50px' : '60px'};
-  margin: ${small ? '0' : '0 60px'};
   position: relative;
   display: block;
   text-decoration: none;

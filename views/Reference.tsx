@@ -54,7 +54,7 @@ const ReferenceFull: NextPage<{data: IReferenceFull}> = ({
       <Chapters data={data.chapters} />
       
       <>
-        {!!references.length && <ScrollingSection column={references.length} height="90vh" widthColumn="560px">
+        {!!references.length && <ScrollingSection column={references.length} height="110vh" widthColumn="560px">
           {references.map((item: any, index: number) => <ItemScroll key={index}>
             <ReferenceItem data={item} />
           </ItemScroll>)}

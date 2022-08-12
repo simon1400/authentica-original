@@ -4,6 +4,7 @@ export const ContainerScroll = styled.div<{height: string}>(({height}) => `
   height: ${height};
   width: 100%;
   overflow: hidden;
+  padding-bottom: 100px;
   position: relative;
 `)
 

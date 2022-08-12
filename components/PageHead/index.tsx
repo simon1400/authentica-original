@@ -51,12 +51,12 @@ const PageHeadComponent: FC<PageHeadProps> = ({
             marginTop={5}
             spacing={6}
           >
-            <Grid item xs={12} sm>
+            <Grid item xs={12} sm="auto">
               <Button href={buttons.link} variant="contained">
                 <span>{buttons.text}</span>
               </Button>
             </Grid>
-            <Grid item xs={12} sm>
+            <Grid item xs={12} sm="auto">
               <Button 
                 variant="withIcon"
                 onClick={openModal}
