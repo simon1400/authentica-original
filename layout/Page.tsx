@@ -23,11 +23,11 @@ const Page: FC<PageProps> = ({
 
   const router = useRouter()
   const global = {
-    site_url: process.env.NODE_ENV === 'development' ? 'http://localhost:3004' : 'https://authentica.com',
+    site_url: process.env.APP_DOMAIN,
     facebook_app_id: '',
     defaultTitle: 'Authentica',
     defaultDescription: 'Authentica',
-    defaultImage: `${process.env.NODE_ENV === 'development' ? 'http://localhost:3004' : 'https://authentica.com'}`,
+    defaultImage: process.env.APP_DOMAIN,
     defaultTwitter: '@cereallarceny',
     defaultSep: ' | ',
     gtm: ''
