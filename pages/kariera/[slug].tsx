@@ -23,10 +23,17 @@ export async function getServerSideProps(ctx) {
     }
   }
 
+  const vacancy = data.vacancies.data[0].attributes
+  const localizations = [
+    {slug: '/kariera/'+ctx.query.slug, locale: ctx.locale}
+  ];
+  vacancy.localizations.data.map((item: any) => localizations.push({slug: '/kariera/'+item.attributes.slug, locale: item.attributes.locale}))
+
   return {
     props: {
-      data: data.vacancies.data[0].attributes,
-      footer: data.vacancies.data[0].attributes.footer
+      data: vacancy,
+      footer: vacancy.footer,
+      localizations
     },
   };
 }
@@ -47,6 +54,8 @@ interface ICarier {
 const PositionFull: NextPage<ICarier> = ({
   data
 }) => {
+  console.log(data);
+  
   return(
     <Page
       title={data.meta?.title}

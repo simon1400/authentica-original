@@ -118,6 +118,14 @@ export const postQuery = gql`
             link
             subTitle
           }
+          localizations{
+            data{
+							attributes{
+                locale
+                slug
+              }
+            }
+          }
         }
       }
     }
@@ -153,6 +161,13 @@ export const postsPageQuery = gql`
             title
             link
             subTitle
+          }
+          localizations{
+            data{
+							attributes{
+                locale
+              }
+            }
           }
         }
       }

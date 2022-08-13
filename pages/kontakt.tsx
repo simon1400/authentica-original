@@ -18,10 +18,17 @@ export async function getServerSideProps({locale}) {
     }
   });
 
+  const contact = data.contact.data.attributes
+
+  const localizations = contact.localizations.data.map((item: any) => ({locale: item.attributes.locale}))
+  localizations.push({locale})
+  localizations.map((item: any) => item.slug = "/kontakt")
+
   return {
     props: {
-      data: data.contact.data.attributes,
-      footer: data.contact.data.attributes.footer,
+      data: contact,
+      footer: contact,
+      localizations
     },
   };
 }

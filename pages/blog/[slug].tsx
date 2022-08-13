@@ -23,12 +23,19 @@ export async function getServerSideProps(ctx) {
       notFound: true
     }
   }
+
+  const post = data.blogs.data[0]?.attributes
+  const localizations = [
+    {slug: '/blog/'+ctx.query.slug, locale: ctx.locale}
+  ]
+  post.localizations.data.map((item: any) => localizations.push({slug: '/blog/'+item.attributes.slug, locale: item.attributes.locale}))
   
 
   return {
     props: {
-      data: data.blogs.data[0]?.attributes,
-      footer: data.blogs.data[0]?.attributes.footer
+      data: post,
+      footer: post.footer,
+      localizations
     },
   };
 }

@@ -120,6 +120,14 @@ const referenceQuery = gql`
               }
             }
           }
+          localizations{
+            data{
+							attributes{
+                slug,
+                locale
+              }
+            }
+          }
         }
       }
     }

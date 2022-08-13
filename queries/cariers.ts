@@ -118,6 +118,14 @@ export const carierQuery = gql`
             link
             subTitle
           }
+          localizations{
+            data{
+							attributes{
+                slug,
+                locale
+              }
+            }
+          }
         }
       }
     }
@@ -153,6 +161,13 @@ export const cariersPageQuery = gql`
             title
             link
             subTitle
+          }
+          localizations{
+            data{
+							attributes{
+                locale
+              }
+            }
           }
         }
       }

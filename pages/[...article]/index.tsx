@@ -10,6 +10,10 @@ export async function getServerSideProps(ctx) {
 
   const lnArticleSlug = ctx.query.article.length
 
+  let localizations = [
+    {slug: '/'+ctx.query.article[lnArticleSlug - 1], locale: ctx.locale}
+  ]
+
   const { data: articleData } = await client.query({
     query: articleQuery,
     variables: {
@@ -19,10 +23,14 @@ export async function getServerSideProps(ctx) {
   });
 
   if(articleData.techArticles.data.length) {
+    const article = articleData.techArticles.data[0].attributes
+    article.localizations.data.map((item: any) => localizations.push({slug: '/'+item.attributes.slug, locale: item.attributes.locale}))
+
     return {
       props: {
-        data: articleData.techArticles.data[0].attributes,
-        footer: articleData.techArticles.data[0].attributes.footer
+        data: article,
+        footer: article.footer,
+        localizations
       }
     }
   }
@@ -36,12 +44,17 @@ export async function getServerSideProps(ctx) {
   });
 
   if(referenceData.references.data.length) {
-    const background = referenceData.references.data[0].attributes.Background
+    const reference = referenceData.references.data[0].attributes
+    const background = reference.Background
+    
+    reference.localizations.data.map((item: any) => localizations.push({slug: '/'+item.attributes.slug, locale: item.attributes.locale}))
+
     return {
       props: {
-        data: referenceData.references.data[0].attributes,
+        data: reference,
         bgHeaderAbsolute: background,
-        footer: referenceData.references.data[0].attributes.footer
+        footer: reference.footer,
+        localizations
       }
     }
   }else{

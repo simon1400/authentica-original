@@ -45,9 +45,6 @@ const Page: FC<PageProps> = ({
   const theDescription = meta.description ? meta.description : global.defaultDescription;
   const theImage = image ? image : global.defaultImage;
 
-  console.log(router);
-  
-
   return (
     <>
       <Head>

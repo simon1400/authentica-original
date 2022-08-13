@@ -11,7 +11,7 @@ import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
 import HeadMarkdown from 'components/HeadMarkdown';
 import SectionSlider from 'components/Slider';
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head';
 
 // @ts-ignore
 export async function getServerSideProps({locale}) {
@@ -25,10 +25,15 @@ export async function getServerSideProps({locale}) {
 
   const homepage = data.homepage.data.attributes
 
+  const localizations = homepage.localizations.data.map((item: any) => ({locale: item.attributes.locale}))
+  localizations.push({locale})
+  localizations.map((item: any) => item.slug = "")
+
   return {
     props: {
       data: homepage,
-      footer: homepage.footer
+      footer: homepage.footer,
+      localizations
     },
   };
   

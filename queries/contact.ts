@@ -30,6 +30,13 @@ const contactQuery = gql`
             title
             description
           }
+          localizations{
+            data{
+							attributes{
+                locale
+              }
+            }
+          }
         }
       }
     }

@@ -91,6 +91,13 @@ const homepageQuery = gql`
             text
             link
           }
+          localizations{
+            data{
+							attributes{
+                locale
+              }
+            }
+          }
         }
       }
     }

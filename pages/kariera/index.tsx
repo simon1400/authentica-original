@@ -24,6 +24,12 @@ export async function getServerSideProps({locale}) {
     }
   });
 
+  const vacancy = pageData.vacancyOverview.data.attributes
+
+  const localizations = vacancy.localizations.data.map((item: any) => ({locale: item.attributes.locale}))
+  localizations.push({locale})
+  localizations.map((item: any) => item.slug = "/kariera")
+
   const { data: pageCategory } = await client.query({
     query: cariersCategoryQuery,
     variables: { locale }
@@ -36,14 +42,15 @@ export async function getServerSideProps({locale}) {
 
   return {
     props: {
-      title: pageData.vacancyOverview.data.attributes.title,
-      content: pageData.vacancyOverview.data.attributes.content,
-      footer: pageData.vacancyOverview.data.attributes.footer,
-      label: pageData.vacancyOverview.data.attributes.label,
-      meta: pageData.vacancyOverview.data.attributes.meta,
+      title: vacancy.title,
+      content: vacancy.content,
+      footer: vacancy.footer,
+      label: vacancy.label,
+      meta: vacancy.meta,
       posts: posts.vacancies.data,
       category: pageCategory.vacancyCategories.data,
-      locale: locale
+      locale: locale,
+      localizations
     },
   };
 }

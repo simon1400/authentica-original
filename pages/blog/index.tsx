@@ -22,6 +22,11 @@ export async function getServerSideProps({locale}) {
     query: postsPageQuery,
     variables: { locale }
   });
+
+  const blog = pageData.blogOverview.data.attributes
+  const localizations = blog.localizations.data.map((item: any) => ({locale: item.attributes.locale}))
+  localizations.push({locale})
+  localizations.map((item: any) => item.slug = "/blog")
   
   const { data: pageCategory } = await client.query({
     query: postsCategoryQuery,
@@ -36,14 +41,15 @@ export async function getServerSideProps({locale}) {
 
   return {
     props: {
-      title: pageData.blogOverview.data.attributes.title,
-      content: pageData.blogOverview.data.attributes.content,
-      footer: pageData.blogOverview.data.attributes.footer,
-      label: pageData.blogOverview.data.attributes.label,
-      meta: pageData.blogOverview.data.attributes.meta,
+      title: blog.title,
+      content: blog.content,
+      footer: blog.footer,
+      label: blog.label,
+      meta: blog.meta,
       posts: posts.blogs.data,
       category: pageCategory.blogCategories.data,
-      locale: locale
+      locale: locale,
+      localizations
     },
   };
 }

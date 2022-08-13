@@ -65,6 +65,14 @@ const articleQuery = gql`
             link
             subTitle
           }
+          localizations{
+            data{
+							attributes{
+                slug,
+                locale
+              }
+            }
+          }
         }
       }
     }
