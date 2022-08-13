@@ -45,6 +45,9 @@ const Page: FC<PageProps> = ({
   const theDescription = meta.description ? meta.description : global.defaultDescription;
   const theImage = image ? image : global.defaultImage;
 
+  console.log(router);
+  
+
   return (
     <>
       <Head>
@@ -67,7 +70,7 @@ const Page: FC<PageProps> = ({
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{theTitle}</title>
-        <link rel="canonical" href={global.site_url+router.asPath} />
+        <link rel="canonical" href={`${global.site_url}${router.locale !== 'cs' ? '/'+router.locale : ''}${router.asPath}`} />
         <meta itemProp="name" content={theTitle} />
         <meta itemProp="description" content={theDescription} />
         <meta itemProp="image" content={theImage} />
