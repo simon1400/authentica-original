@@ -41,7 +41,6 @@ export const SNav = styled.div(({theme}) => `
       a{
         text-decoration: none;
         display: inline-block;
-        color: white!important;
         transition: all .2s ease;
         &:hover{
           color: ${theme.palette.primary.main}!important;
@@ -63,9 +62,6 @@ export const LeftMenu = styled.ul`
     a{
       font-size: 84px;
       font-weight: 600;
-      &:hover{
-        color: ${({theme}) => theme.palette.primary.main}!important;
-      }
     }
   }
   @media(max-width: 640px) {
@@ -97,3 +93,9 @@ export const RightMenu = styled.ul`
     }
   }
 `
+
+export const NavItem = styled.li<{active: boolean}>(({theme, active}) => `
+  a{
+    color: ${active ? theme.palette.primary.main : "white"}!important;
+  }
+`)

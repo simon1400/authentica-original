@@ -38,6 +38,15 @@ const Number = styled.div`
     &:last-of-type{
       font-size: 23px;
     }
+    @media(max-width: 640px) {
+      &:first-of-type{
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      &:last-of-type{
+        font-size: 18px;
+      }
+    }
   }
 `
 

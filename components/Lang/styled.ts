@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const Nav = styled.div<{menu: boolean}>(({theme, menu}) => `
+const Nav = styled.div(({theme}) => `
   font-size: 14px;
   margin-right: 65px;
   position: relative;
@@ -34,7 +34,6 @@ const Nav = styled.div<{menu: boolean}>(({theme, menu}) => `
         position: relative;
         z-index: 100;
         transition: all .2s ease;
-        color: ${menu ? "white" : "black"}!important;
         opacity: .4;
         &:hover{
           color: ${theme.palette.primary.main}!important;

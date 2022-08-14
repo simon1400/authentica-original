@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const Logo = styled.a<{menu: boolean}>`
+const Logo = styled.a`
   height: 42px;
   display: flex;
   position: relative;
@@ -8,10 +8,7 @@ const Logo = styled.a<{menu: boolean}>`
   align-items: center;
   svg{
     height: 100%;
-    path{
-      transition: all .2s ease;
-      fill: ${({menu}) => menu ? "white" : "black"}!important;
-    }
+    transition: all .2s ease;
   }
   @media (max-width: 640px) {
     svg{

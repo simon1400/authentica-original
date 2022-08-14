@@ -53,9 +53,7 @@ interface ICarier {
 
 const PositionFull: NextPage<ICarier> = ({
   data
-}) => {
-  console.log(data);
-  
+}) => {  
   return(
     <Page
       title={data.meta?.title}

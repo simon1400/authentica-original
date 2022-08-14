@@ -67,7 +67,7 @@ const Page: FC<PageProps> = ({
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{theTitle}</title>
-        <link rel="canonical" href={`${global.site_url}${router.locale !== 'cs' ? '/'+router.locale : ''}${router.asPath}`} />
+        <link rel="canonical" href={`${global.site_url}${router.locale !== 'cs' ? '/'+router.locale : ''}${router.asPath !== '/' ? router.asPath : ''}`} />
         <meta itemProp="name" content={theTitle} />
         <meta itemProp="description" content={theDescription} />
         <meta itemProp="image" content={theImage} />

@@ -64,19 +64,19 @@ const Header: FC<HeaderProps> = ({
   const nav: INavItem[] = topNav
 
   return (
-    <HeaderC backgroundAbsolute={backgroundAbsolute} dropShown={dropShown}>
+    <HeaderC backgroundAbsolute={backgroundAbsolute} menu={menu}>
       <Container maxWidth="xl">
         <TopNav>
           <div onClick={e => handleMenuOpen(false)}>
-            <Link href="/" passHref >
-              <Logo menu={menu}>
+            <Link href="/" passHref>
+              <Logo>
                 <LogoIcon />
               </Logo>
             </Link>
           </div>
           <Grow />
-          <Lang menu={menu} />
-          <Hamburger open={menu} setOpen={handleMenuOpen} />
+          <Lang />
+          <Hamburger open={menu} background={backgroundAbsolute} setOpen={handleMenuOpen} />
           <Nav menu={menu} data={nav} headNav={headNav} handleMenuOpen={handleMenuOpen} />
         </TopNav>
       </Container>
@@ -84,7 +84,7 @@ const Header: FC<HeaderProps> = ({
   )
 }
 
-const HeaderC = styled.header<{backgroundAbsolute: string; dropShown: number}>(({backgroundAbsolute, dropShown}) => `
+const HeaderC = styled.header<{backgroundAbsolute: string; menu: boolean}>(({backgroundAbsolute, menu}) => `
   position: 'absolute';
   top: 0;
   left: 0;
@@ -92,20 +92,8 @@ const HeaderC = styled.header<{backgroundAbsolute: string; dropShown: number}>((
   z-index: 1002;
   background: ${backgroundAbsolute ? backgroundAbsolute : "#ffffff"};
   * {
-    color: ${checkColor(backgroundAbsolute) ? "white" : "black"}!important;
-    fill: ${checkColor(backgroundAbsolute) ? "white" : "black"}!important;
-  }
-  &:after {
-    position: fixed;
-    content: '';
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    transition: background .5s ease;
-    top: ${dropShown >= 0 ? 0 : "-1000%"};
-    left: 0;
-    z-index: 10;
-    background: ${dropShown >= 0 ? "rgba(0,0,0, .7)" : "transparent"};
+    color: ${checkColor(backgroundAbsolute) || menu ? "white" : "black"}!important;
+    fill: ${checkColor(backgroundAbsolute) || menu ? "white" : "black"}!important;
   }
 `)
 

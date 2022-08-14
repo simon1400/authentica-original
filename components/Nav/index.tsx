@@ -3,7 +3,7 @@ import INavItem from "interfaces/navItem"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { FC } from "react"
-import { LeftMenu, RightMenu, SNav, SNavWrap } from "./styled"
+import { LeftMenu, NavItem, RightMenu, SNav, SNavWrap } from "./styled"
 
 interface INav {
   data: INavItem[];
@@ -32,14 +32,14 @@ const Nav: FC<INav> = ({
       <Container>
         <SNav>
           <LeftMenu>
-            {!!headNav?.length && headNav.map((item, idx) => <li key={idx}>
+            {!!headNav?.length && headNav.map((item, idx) => <NavItem active={item.url === router.asPath} key={idx}>
               <a href={item.url} onClick={e => handleClick(e, item.url)}>{item.title}</a>
-            </li>)}
+            </NavItem>)}
           </LeftMenu>
           <RightMenu>
-            {!!data?.length && data.map((item, index) => <li key={index}>
+            {!!data?.length && data.map((item, index) => <NavItem active={item.url === router.asPath} key={index}>
               <a href={item.url} onClick={e => handleClick(e, item.url)}>{item.title}</a>
-            </li>)}
+            </NavItem>)}
           </RightMenu>
         </SNav>
       </Container>

@@ -9,14 +9,12 @@ const lang = [
   {label: "de", value: 'de'},
 ]
 
-const Lang: FC<{menu: boolean}> = ({
-  menu
-}) => {
+const Lang: FC = () => {
 
   const router = useRouter()  
   
   return (
-    <Nav menu={menu}>
+    <Nav>
       <ul>
         {lang.map((item, idx) => 
           <li key={idx} className={router.locale === item.value ? 'active' : undefined}>

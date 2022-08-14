@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { checkColor } from "utility/checkColor";
 
-export const StyledBurger = styled.button<{open: boolean}>(({open}) => `
+export const StyledBurger = styled.button<{open: boolean; background: string;}>(({open, background}) => `
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -18,9 +19,9 @@ export const StyledBurger = styled.button<{open: boolean}>(({open}) => `
   div {
     width: 35px;
     height: 2px;
-    background: black;
     border-radius: 10px;
     transition: all 0.3s linear;
+    background: ${checkColor(background) || open ? "white" : "black"}!important;
     position: relative;
     transform-origin: 5px;
 
@@ -54,13 +55,9 @@ export const BurgerWrap = styled.div<{menu: boolean}>(({theme, menu}) => `
     display: block;
     margin-right: 17px;
     transition: all .2s ease;
-    color: ${menu ? "white" : 'black'}!important;
     @media (max-width: 640px) {
       display: none;
     }
-  }
-  div{
-    background: ${menu ? "white" : 'black'}!important;
   }
   &:hover{
     span{
