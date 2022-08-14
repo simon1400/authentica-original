@@ -38,7 +38,7 @@ export const Content = styled.div`
     margin-top: 70px;
     a{
       h2{
-        font-size: 35px;
+        font-size: 27px;
         margin-bottom: 30px;
       }
     }
@@ -52,6 +52,9 @@ export const Label = styled.label(({theme}) => `
   line-height: 1;
   font-weight: bold;
   margin-top: ${theme.spacing(6)};
+  @media(max-width: 640px) {
+    font-size: 12px;
+  }
 `);
 
 export const Bottom = styled.div`
@@ -74,6 +77,7 @@ export const Bottom = styled.div`
     }
     @media(max-width: 640px) {
       text-align: center;
+      font-size: 16px;
     }
   }
   ul{

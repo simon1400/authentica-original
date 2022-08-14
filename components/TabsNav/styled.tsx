@@ -21,6 +21,10 @@ export const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...p
     [theme.breakpoints.up('sm')]: {
       minWidth: 0,
     },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: "13px",
+      marginRight: "10px"
+    },
     fontWeight: "bold",
     marginRight: theme.spacing(6),
     textTransform: "uppercase",
@@ -33,14 +37,16 @@ export const AntTab = styled((props: StyledTabProps) => <Tab disableRipple {...p
     },
     '&.Mui-focusVisible': {
       backgroundColor: '#d1eaff',
-      
     },
+
   }),
 );
 
 export const TabsWrap = styled.div`
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   margin-bottom: 120px;
+  @media(max-width: 640px) {
+    margin-bottom: 55px;
+  }
 `

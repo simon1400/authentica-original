@@ -291,7 +291,6 @@ const themeOption: ThemeOptions = {
       },
     },
     h1: {
-      // fontSize: "84px",
       fontSize: "3vw",
       fontFamily: theme.typography.fontFamily,
       fontWeight: 600,
@@ -309,7 +308,7 @@ const themeOption: ThemeOptions = {
         fontSize: '6vw'
       },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '7vw'
+        fontSize: '9vw'
       },
       "&::selection": {
         backgroundColor: theme.palette.primary.main,
@@ -333,7 +332,7 @@ const themeOption: ThemeOptions = {
         fontSize: '5vw'
       },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '6vw'
+        fontSize: '7vw'
       },
       "&::selection": {
         backgroundColor: theme.palette.primary.main,

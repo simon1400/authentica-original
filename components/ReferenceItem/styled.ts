@@ -41,8 +41,8 @@ export const ReferenceHead = styled(Typography)<{inverse?: boolean}>(({inverse =
   font-weight: bold;
   line-height: 1.3;
   color: ${inverse ? "white" : "black"};
-  @media(max-width: 1400px) {
-    font-size: 24px;
+  @media(max-width: 640px) {
+    font-size: 20px;
   }
 `)
 

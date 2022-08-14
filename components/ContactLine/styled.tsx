@@ -44,6 +44,9 @@ export const ContactItem = styled.a`
   }
   @media(max-width: 640px) {
     margin-bottom: 0px;
+    span{
+      font-size: 17px;
+    }
   }
 `
 

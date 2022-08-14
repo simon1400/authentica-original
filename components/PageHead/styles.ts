@@ -16,6 +16,9 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
     padding-bottom: ${homepage ? "60px" : "150px"};
     min-height: auto;
     max-width: 95vw;
+    p{
+      font-size: 15px!important;
+    }
   }
   p {
     margin-bottom: 40px;

@@ -41,7 +41,8 @@ const SectionSlider: FC<ISectionSlider> = ({
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 2
+          slidesToScroll: 2,
+          speed: 6000,
         }
       },
     ]
