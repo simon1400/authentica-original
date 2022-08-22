@@ -34,23 +34,6 @@ export const Head = styled(Typography)(({theme}) => `
   font-size: 84px!important;
   &:hover{
     color: ${theme.palette.primary.main};
-    &:after{
-      width: 60vw;
-    }
-  }
-  &:after {
-    content: '';
-    display: block;
-    width: 0;
-    position: absolute;
-    transition: all 3s ease;
-    height: 60px;
-    background: url('/assets/head-lines.svg');
-    transform: skewX(-20deg);
-    top: 20px;
-    left: 102%;
-    background-repeat: repeat-x;
-    background-size: auto 100%;
   }
   @media(max-width: 640px) {
     font-size: 40px!important;

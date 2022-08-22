@@ -1,12 +1,13 @@
-import { Button, Container, Grid, SvgIcon, Typography, useMediaQuery } from "@mui/material"
+import { Button, Container, Grid, SvgIcon, Typography } from "@mui/material"
 import PlayIcon from 'public/assets/play.svg'
 import { FC } from "react"
-import { Head, PageHead } from "./styles";
+import { PageHead } from "./styles";
 
-import Link from "next/link";
 import { useRouter } from "next/router";
 import HeadMarkdown from "components/HeadMarkdown";
 import useTranslation from 'next-translate/useTranslation';
+import AnimLink from "components/AnimLink";
+
 
 interface IHead {
   Text: string;
@@ -36,11 +37,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
         <div>
           <Typography variant='body1'>{label}</Typography>
           {Array.isArray(head) 
-            ? head.map((item, index) => <div key={index}>
-              <Link href={"/"+item.article.data?.attributes?.slug} passHref>
-                <Head variant='h1'>{item.Text}</Head>
-              </Link>
-            </div>)
+            ? head.map((item, idx) => <AnimLink key={idx} item={item} />)
             : <HeadMarkdown lavel='h1' title={head} />
           }
 
