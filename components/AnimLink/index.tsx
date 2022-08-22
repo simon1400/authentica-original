@@ -1,9 +1,9 @@
 import Link from "next/link"
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useState } from "react";
 import Lottie from "react-lottie";
-// import lottie from "lottie-web";
 import { Head } from "./styles";
 import animationData from 'public/assets/lottie-link.json';
+import { useMediaQuery } from "@mui/material";
 
 interface IAnimLink {
   item: any;
@@ -13,6 +13,8 @@ const AnimLink: FC<IAnimLink> = ({item}) => {
 
   const [direction, setDirection] = useState(1)
   const [pause, setPause] = useState(true)
+
+  const mediaXs = useMediaQuery("(max-width: 640px)")
 
   const options = {
     loop: false,
@@ -36,12 +38,12 @@ const AnimLink: FC<IAnimLink> = ({item}) => {
       <Link href={"/"+item.article.data?.attributes?.slug} passHref>
         <Head variant='h1'>
           <span>{item.Text}</span>
-          <Lottie 
+          {!mediaXs && <Lottie 
             options={options}
             direction={direction}
             isPaused={pause}
             width={1000}
-          />
+          />}
         </Head>
       </Link>
       

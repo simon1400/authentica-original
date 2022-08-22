@@ -27,7 +27,7 @@ export async function getServerSideProps({locale}) {
   return {
     props: {
       data: contact,
-      footer: contact,
+      footer: contact.footer,
       localizations
     },
   };

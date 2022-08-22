@@ -3,7 +3,6 @@ import { FC } from "react"
 import { Typography } from "@mui/material"
 import { Image, LogoReference as Logo, ReferenceHead, ReferenceItemComponent } from "./styled"
 import Link from "next/link"
-import { useRouter } from "next/router"
 import { checkColor } from "utility/checkColor"
 import { Grow } from "styles/Grow"
 
@@ -25,8 +24,6 @@ const ReferenceItem: FC<ReferenceItemProps> = ({
   small = false,
   data
 }) => {  
-
-  const router = useRouter()
 
   return (
     <Link href={data.slug} passHref>
