@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import HeadMarkdown from "components/HeadMarkdown";
 import useTranslation from 'next-translate/useTranslation';
 import AnimLink from "components/AnimLink";
+import SymbolSVG from "components/Symbol";
 
 
 interface IHead {
@@ -68,6 +69,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
             </Grid>
           </Grid>}
         </div>
+        <SymbolSVG />
       </PageHead>
     </Container>
   )

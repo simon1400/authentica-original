@@ -23,25 +23,26 @@ const SectionSlider: FC<ISectionSlider> = ({
   const settingsInfinite = {
     infinite: true,
     className: "infiniteSlider",
-    slidesToShow: 5,
-    slidesToScroll: 10,
+    slidesToShow: 6,
+    // slidesToScroll: 10,
     centerMode: true,
     autoplay: true,
     speed: 9000,
+    autoplaySpeed: 0,
     cssEase: "linear",
     responsive: [
       {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 6
+          // slidesToScroll: 6
         }
       },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 2,
+          // slidesToScroll: 2,
           speed: 6000,
         }
       },

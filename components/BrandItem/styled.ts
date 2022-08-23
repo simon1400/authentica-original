@@ -22,14 +22,18 @@ export const LogoWrap = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  /* display: flex; */
   &:hover {
     opacity: .1;
   }
 `
 
-export const Logo = styled.img`
-  margin: auto;
-  max-width: 210px;
-  width: 100%;
+export const Logo = styled.div`
+  display: flex;
+  height: 100%;
+  img{
+    margin: auto;
+    max-width: 210px;
+    width: 100%;
+  }
 `

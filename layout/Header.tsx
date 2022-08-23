@@ -90,6 +90,7 @@ const HeaderC = styled.header<{backgroundAbsolute: string; menu: boolean}>(({bac
   left: 0;
   width: 100%;
   z-index: 1002;
+  margin-bottom: -1px;
   background: ${backgroundAbsolute ? backgroundAbsolute : "#ffffff"};
   * {
     color: ${checkColor(backgroundAbsolute) || menu ? "white" : "black"}!important;

@@ -49,7 +49,6 @@ const MyApp: FC<MyAppProps> = (props) => {
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-W9NKJGR');`}
           </Script>
-          {pageProps?.data?.__typename !== "Reference" && <SymbolSVG type={pageProps?.data?.__typename} />}
           <Header backgroundAbsolute={pageProps.bgHeaderAbsolute} />
           <Component {...pageProps} />
           <Footer data={pageProps.footer}/>

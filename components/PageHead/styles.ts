@@ -3,17 +3,25 @@ import { Typography } from "@mui/material"
 
 export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   position: relative;
-  padding-top: ${homepage ? "250px" : "300px"};
-  padding-bottom: 60px;
-  min-height: ${homepage ? "100vh" : "50vh"};
+  padding-top: ${homepage ? "0" : "30vh"};
+  padding-bottom: ${homepage ? "0" : "30vh"};
+  min-height: ${homepage ? "calc(100vh - 112px)" : "80vh"};
+  display: ${homepage ? "flex" : "block"};
+  align-items: center;
   max-width: 60vw;
   @media (max-width: 1440px) {
     padding-top: ${homepage ? "100px" : "200px"};
-    padding-bottom: ${homepage ? "60px" : "150px"};
+    padding-bottom: ${homepage ? "60px" : "100px"};
+    min-height: 75vh;
+  }
+  @media (max-width: 900px) {
+    padding-top: ${homepage ? "100px" : "100px"};
+    padding-bottom: ${homepage ? "60px" : "50px"};
+    min-height: auto;
   }
   @media (max-width: 640px) {
-    padding-top: ${homepage ? "67px" : "200px"};
-    padding-bottom: ${homepage ? "60px" : "150px"};
+    /* padding-top: ${homepage ? "67px" : "200px"};
+    padding-bottom: ${homepage ? "60px" : "150px"}; */
     min-height: auto;
     max-width: 95vw;
     p{
