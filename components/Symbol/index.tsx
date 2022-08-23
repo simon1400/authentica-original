@@ -1,15 +1,15 @@
 import { useMediaQuery } from "@mui/material";
+import { FC } from "react";
 import { Symbol } from "./styles";
 
-const SymbolSVG = () => {
+const SymbolSVG: FC<{homepage: boolean}> = ({homepage}) => {
 
   const media = useMediaQuery("(max-width: 720px)")
   const mediaXS = useMediaQuery("(min-width: 900px)")
 
   if(mediaXS) {
     return (
-      <Symbol homepage={false}>
-        
+      <Symbol homepage={homepage}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 925 1080" style={{position: "absolute"}}>
           <defs>
             <clipPath id="mask">

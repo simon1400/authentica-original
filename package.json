@@ -39,6 +39,7 @@
     "react-lottie": "^1.2.3",
     "react-modal-video": "^1.2.10",
     "react-slick": "^0.29.0",
+    "react-spring": "^9.5.2",
     "sass": "^1.54.4",
     "slick-carousel": "^1.8.1"
   },

@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 
-export const SNavWrap = styled.div<{menu: boolean}>(({theme, menu}) => `
+import { animated } from 'react-spring'
+
+export const SNavWrap = styled.div<{menu: boolean}>(({menu}) => `
   position: fixed;
   background-color: black;
   height: ${menu ? "100vh" : 0};
@@ -22,7 +24,7 @@ export const SNavWrap = styled.div<{menu: boolean}>(({theme, menu}) => `
 `)
 
 
-export const SNav = styled.div(({theme}) => `
+export const SNav = styled.div<{menu: boolean}>(({theme, menu}) => `
   display: flex;
   justify-content: space-between;
   ul{

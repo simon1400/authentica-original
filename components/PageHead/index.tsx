@@ -9,6 +9,8 @@ import useTranslation from 'next-translate/useTranslation';
 import AnimLink from "components/AnimLink";
 import SymbolSVG from "components/Symbol";
 
+import { animated, useSpring } from 'react-spring'
+
 
 interface IHead {
   Text: string;
@@ -32,13 +34,28 @@ const PageHeadComponent: FC<PageHeadProps> = ({
   const { t } = useTranslation("common")
   const router = useRouter()
 
+  const props = useSpring({
+    from: {
+      opacity: 0,
+      transform: "translateY(10px)"
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0)"
+    },
+    delay: 500,
+    config: { duration: 500 },
+  })
+
   return (
     <Container>
       <PageHead homepage={router.asPath === "/" ? true : false}>
         <div>
-          <Typography variant='body1'>{label}</Typography>
+          <animated.div style={props}>
+            <Typography variant='body1'>{label}</Typography>
+          </animated.div>
           {Array.isArray(head) 
-            ? head.map((item, idx) => <AnimLink key={idx} item={item} />)
+            ? head.map((item, idx) => <AnimLink key={idx} idx={idx} item={item} />)
             : <HeadMarkdown lavel='h1' title={head} />
           }
 
@@ -69,7 +86,7 @@ const PageHeadComponent: FC<PageHeadProps> = ({
             </Grid>
           </Grid>}
         </div>
-        <SymbolSVG />
+        <SymbolSVG homepage={Array.isArray(head)} />
       </PageHead>
     </Container>
   )

@@ -9,6 +9,9 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   display: ${homepage ? "flex" : "block"};
   align-items: center;
   max-width: 60vw;
+  > div{
+    max-width: 80%;
+  }
   @media (max-width: 1440px) {
     padding-top: ${homepage ? "100px" : "200px"};
     padding-bottom: ${homepage ? "60px" : "100px"};
@@ -18,10 +21,11 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
     padding-top: ${homepage ? "100px" : "100px"};
     padding-bottom: ${homepage ? "60px" : "50px"};
     min-height: auto;
+    > div{
+      max-width: none;
+    }
   }
   @media (max-width: 640px) {
-    /* padding-top: ${homepage ? "67px" : "200px"};
-    padding-bottom: ${homepage ? "60px" : "150px"}; */
     min-height: auto;
     max-width: 95vw;
     p{
