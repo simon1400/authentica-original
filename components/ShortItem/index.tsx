@@ -1,5 +1,6 @@
 import { Button, Container, Grid, Typography } from "@mui/material"
 import HeadMarkdown from "components/HeadMarkdown";
+import Image from "components/Image";
 import { IImage } from "interfaces/image";
 import { FC } from "react"
 import ImageSquare from "styles/ImageSquare"
@@ -24,7 +25,7 @@ const ShortItem: FC<IShortItem> = ({
       <Grid container rowSpacing={{xs: 4, md: 16}} columnSpacing={{xs: 4, md: 16}} marginBottom={12}>
         <Grid item xs={12} sm={4}>
           <ImageSquare>
-            <img src={process.env.APP_API+image.data.attributes.url+'?format=webp&resize=337x337'} alt="asd" />
+            <Image image={image.data} format="&resize=337x337" alt="" />
           </ImageSquare>
         </Grid>
         <Grid item xs={12} sm={8}>

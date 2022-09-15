@@ -1,5 +1,6 @@
 import { Button, ButtonProps, Container, Grid, Typography, useMediaQuery } from "@mui/material"
 import HeadMarkdown from "components/HeadMarkdown";
+import Image from "components/Image";
 import ReferenceItem from "components/ReferenceItem"
 import { FC, useEffect, useState } from "react"
 import BigImage from "styles/BigImage";
@@ -61,10 +62,10 @@ const ChapterItem: FC<ChapterProps> = ({
         <Grid container spacing={10} marginBottom={12} justifyContent="center">
           {images.map((item, index) => <Grid key={index} item sm={6} md={column} xs={12}>
             {column < 12 && <ImageSquare>
-              <img src={process.env.APP_API+item.attributes.url+'?format=webp&resize=440x440'} alt="asd" />
+              <Image image={item} format="&resize=440x440" alt="" />
             </ImageSquare>}
             {column === 12 && <BigImage>
-              <img src={process.env.APP_API+item.attributes.url+'?format=webp&width=1500'} alt="asd" />
+              <Image image={item} format="&width=1500" alt="" />
             </BigImage>}
           </Grid>)}
         </Grid>

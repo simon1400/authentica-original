@@ -37,8 +37,6 @@ const Header: FC<HeaderProps> = ({
   const handleMenuOpen = (value: boolean) => {
     setMenu(value)
   }
-  
-  const [dropShown, setDropShown] = useState<number>(-1)
 
   useEffect(() => {
     if(menu) {
@@ -76,8 +74,18 @@ const Header: FC<HeaderProps> = ({
           </div>
           <Grow />
           <Lang />
-          <Hamburger open={menu} background={backgroundAbsolute} setOpen={handleMenuOpen} />
-          <Nav menu={menu} data={nav} headNav={headNav} handleMenuOpen={handleMenuOpen} />
+
+          <Hamburger 
+            open={menu} 
+            background={backgroundAbsolute} 
+            setOpen={handleMenuOpen} />
+
+          <Nav 
+            menu={menu} 
+            data={nav} 
+            headNav={headNav} 
+            handleMenuOpen={handleMenuOpen} />
+
         </TopNav>
       </Container>
     </HeaderC>

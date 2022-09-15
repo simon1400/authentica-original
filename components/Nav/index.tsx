@@ -23,7 +23,8 @@ const Nav: FC<INav> = ({
   const handleClick = (e: any, link: string) => {
     e.preventDefault()
     handleMenuOpen(false)
-    router.push(link)
+    // router.push(link)
+    window.location.href = link
   }
 
   return (

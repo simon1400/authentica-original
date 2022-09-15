@@ -1,13 +1,11 @@
 import styled from "@emotion/styled";
 
-import { animated } from 'react-spring'
-
 export const SNavWrap = styled.div<{menu: boolean}>(({menu}) => `
   position: fixed;
   background-color: black;
   height: ${menu ? "100vh" : 0};
   width: 100vw;
-  transition: opacity .5s ease;
+  transition: opacity .5s ease 0s, height 0s linear ${menu ? "0s" : ".5s"};
   top: 0;
   left: 0;
   z-index: 101;

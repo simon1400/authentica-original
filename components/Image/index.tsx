@@ -8,13 +8,15 @@ interface ImageProps {
   svg?: boolean
   url?: string
   format?: string
+  alt?: string
 }
 
 const Image: FC<ImageProps> = ({ 
   image = undefined, 
   url = '/assets/placeholder.svg', 
   svg = false,
-  format = ''
+  format = '',
+  alt = ''
 }) => {
 
   let altText = '', caption = ''
