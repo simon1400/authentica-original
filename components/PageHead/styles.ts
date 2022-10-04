@@ -4,18 +4,18 @@ import { Typography } from "@mui/material"
 export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   position: relative;
   padding-top: ${homepage ? "0" : "30vh"};
-  padding-bottom: ${homepage ? "0" : "30vh"};
-  min-height: ${homepage ? "calc(100vh - 112px)" : "80vh"};
+  padding-bottom: ${homepage ? "0" : "15vh"};
+  min-height: ${homepage ? "calc(100vh - 112px)" : "50vh"};
   display: ${homepage ? "flex" : "block"};
   align-items: center;
   max-width: 60vw;
   > div{
-    max-width: 80%;
+    max-width: 90%;
   }
   @media (max-width: 1440px) {
     padding-top: ${homepage ? "100px" : "200px"};
     padding-bottom: ${homepage ? "60px" : "100px"};
-    min-height: 75vh;
+    min-height: 55vh;
   }
   @media (max-width: 900px) {
     padding-top: ${homepage ? "100px" : "100px"};

@@ -12,7 +12,7 @@ export const Symbol = styled.div<{homepage: boolean}>(({theme, homepage}) => `
   svg, foreignObject{
     fill: ${theme.palette.primary.main};
     color: ${theme.palette.primary.main}; 
-    max-height: ${homepage ? "calc(100vh - 150px)" :"70vh"};
+    max-height: ${homepage ? "calc(100vh - 150px)" :"50vh"};
     right: 0;
     transition: all .5s cubic-bezier(0.7, -0.01, 0.19, 1);
   }

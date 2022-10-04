@@ -23,9 +23,7 @@ interface ReferenceItemProps {
 const ReferenceItem: FC<ReferenceItemProps> = ({
   small = false,
   data
-}) => {  
-
-  console.log(data.slug);
+}) => {
   
 
   return (
