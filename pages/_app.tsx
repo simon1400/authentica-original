@@ -2,7 +2,6 @@ import {FC} from 'react';
 import type { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import SymbolSVG from 'components/Symbol'
 import Header from 'layout/Header';
 import Footer from 'layout/Footer';
 import "node_modules/hamburgers/dist/hamburgers.css"
@@ -19,6 +18,7 @@ import '../node_modules/react-modal-video/scss/modal-video.scss';
 import 'styles/global.scss'
 import Head from 'next/head';
 import Script from 'next/script';
+import CookieConsent from 'components/CookieConsent';
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -49,9 +49,11 @@ const MyApp: FC<MyAppProps> = (props) => {
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-W9NKJGR');`}
           </Script>
+          <Script id="Cookiew consent" type="text/javascript" src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.0/dist/cookieconsent.js" />
           <Header backgroundAbsolute={pageProps.bgHeaderAbsolute} />
           <Component {...pageProps} />
           <Footer data={pageProps.footer}/>
+          <CookieConsent />
         </WithGraphQL>
       </ThemeProvider>
     </CacheProvider>

@@ -25,8 +25,11 @@ const ReferenceItem: FC<ReferenceItemProps> = ({
   data
 }) => {  
 
+  console.log(data.slug);
+  
+
   return (
-    <Link href={data.slug} passHref>
+    <Link href={'/'+data.slug} passHref>
       <ReferenceItemComponent small={small} bg={data.Background}>
         {!small && <Logo inverse={checkColor(data.Background)}>
           <img src={process.env.APP_API+data.logo.data.attributes.url+'?format=webp&width=210'} />
