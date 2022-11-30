@@ -15,7 +15,7 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   @media (max-width: 1440px) {
     padding-top: ${homepage ? "100px" : "200px"};
     padding-bottom: ${homepage ? "60px" : "100px"};
-    min-height: 55vh;
+    /* min-height: 55vh; */
   }
   @media (max-width: 900px) {
     padding-top: ${homepage ? "100px" : "100px"};
