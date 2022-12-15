@@ -7,6 +7,7 @@ import { IFooter } from "interfaces/footer"
 import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
+import Script from "next/script"
 import {
   postsQuery, 
   postsCategoryQuery, 

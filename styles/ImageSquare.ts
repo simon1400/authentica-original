@@ -5,7 +5,7 @@ const ImageSquare = styled.div`
   position: relative;
   overflow: hidden;
   max-height: 695px;
-  img{
+  img, video{
     position: absolute;
     object-fit: cover;
     object-position: center;
