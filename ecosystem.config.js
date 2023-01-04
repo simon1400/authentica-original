@@ -1,8 +1,7 @@
 module.exports = {
   apps : [{
     name   : "Authentica client",
-    script : "yarn start",
-    env_production: {}
+    script : "yarn start"
   }],
 
   deploy : {
