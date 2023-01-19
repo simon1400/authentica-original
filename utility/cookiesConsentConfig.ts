@@ -36,15 +36,15 @@ const pluginConfig = {
     }
   },
 
-  onFirstAction: function (user_preferences, cookie) {
+  onFirstAction: function () {
     // callback triggered only once
   },
 
-  onAccept: function (cookie) {
+  onAccept: function () {
     // ...
   },
 
-  onChange: function (cookie, changed_preferences) {
+  onChange: function () {
     // ...
   },
 
