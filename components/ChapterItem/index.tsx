@@ -60,7 +60,7 @@ const ChapterItem: FC<ChapterProps> = ({
       </Container>}
       {!!images.length && <Container maxWidth="xl">
         <Grid container spacing={10} marginBottom={12} justifyContent="center">
-          {images.map((item, index) => <Grid key={index} item sm={6} md={column} xs={12}>
+          {images.map((item, index) => <Grid key={index} item sm={column} md={column} xs={12}>
             {column < 12 && <ImageSquare>
               <Image image={item} format="&resize=440x440" alt="" />
             </ImageSquare>}

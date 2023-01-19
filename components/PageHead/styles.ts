@@ -5,11 +5,11 @@ export const PageHead = styled.div<{homepage: boolean}>(({homepage}) => `
   position: relative;
   padding-top: ${homepage ? "0" : "30vh"};
   padding-bottom: ${homepage ? "0" : "15vh"};
-  min-height: ${homepage ? "calc(100vh - 112px)" : "50vh"};
+  min-height: ${homepage ? "calc(100vh - 112px)" : "55vh"};
   display: ${homepage ? "flex" : "block"};
   align-items: center;
   max-width: 60vw;
-  > div{
+  > div:first-of-type{
     max-width: 90%;
   }
   @media (max-width: 1440px) {

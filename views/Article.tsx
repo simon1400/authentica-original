@@ -26,7 +26,7 @@ const ArticleFull: NextPage<IArticle> = ({
       title={data.meta?.title}
       description={data.meta?.description}
     >
-       <PageHead 
+      <PageHead 
         head={data.title} 
         label={data.label} />
 

@@ -2,7 +2,11 @@ import { gql } from "@apollo/client";
 
 export const postsQuery = gql`
   query Posts($locale: I18NLocaleCode!) {
-    blogs(locale: $locale) {
+    blogs(
+      locale: $locale
+      pagination: {pageSize: 50},
+      sort: "createdAt:desc"
+    ) {
       data{
         attributes{
           title
@@ -31,7 +35,9 @@ export const postsFilterQuery = gql`
           }
         } 
       },
-      locale: $locale
+      locale: $locale,
+      pagination: {pageSize: 50},
+      sort: "createdAt:desc"
     ) {
       data{
         attributes{
@@ -54,7 +60,14 @@ export const postsFilterQuery = gql`
 
 export const postQuery = gql`
   query Post($slug: String!, $locale: I18NLocaleCode!) {
-    blogs(filters: { slug: { eq: $slug } }, locale: $locale) {
+    blogs(
+      filters: { 
+        slug: { 
+          eq: $slug 
+        } 
+      }, 
+      locale: $locale
+    ) {
       data{
         attributes{
           title

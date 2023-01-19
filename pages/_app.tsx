@@ -9,16 +9,15 @@ import createEmotionCache from 'utility/createEmotionCache';
 import theme from 'styles/theme';
 import { WithGraphQL } from 'utility/graphql';
 import { appWithTranslation } from 'next-i18next';
-
-import "../node_modules/slick-carousel/slick/slick.css"; 
-import "../node_modules/slick-carousel/slick/slick-theme.css";
-
-import '../node_modules/react-modal-video/scss/modal-video.scss';
-
-import 'styles/global.scss'
 import Head from 'next/head';
 import Script from 'next/script';
 import CookieConsent from 'components/CookieConsent';
+
+import "../node_modules/slick-carousel/slick/slick.css"; 
+import "../node_modules/slick-carousel/slick/slick-theme.css";
+import 'vanilla-cookieconsent/dist/cookieconsent.css';
+import '../node_modules/react-modal-video/scss/modal-video.scss';
+import 'styles/global.scss'
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;

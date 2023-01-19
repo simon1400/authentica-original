@@ -17,7 +17,6 @@ const Chapters: FC<IChapters> = ({
   return data.map((item, index) => {
     
     if(item.__typename === strCE+"Images") {
-      console.log('item', item)
       return <ChapterItem key={index} images={item.images.data} />
     }else if(item.__typename === strCE+"Text") {
       return <ChapterItem key={index} content={item.content} />
