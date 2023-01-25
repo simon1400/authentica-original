@@ -47,9 +47,11 @@ const PageHeadComponent: FC<PageHeadProps> = ({
     config: { duration: 500 },
   })
 
+  console.log(router)
+
   return (
     <Container>
-      <PageHead homepage={router.asPath === "/" ? true : false}>
+      <PageHead homepage={router.route === "/" ? true : false}>
         <div>
           <animated.div style={props}>
             <Typography variant='body1'>{label}</Typography>
