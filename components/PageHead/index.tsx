@@ -47,8 +47,6 @@ const PageHeadComponent: FC<PageHeadProps> = ({
     config: { duration: 500 },
   })
 
-  console.log(router)
-
   return (
     <Container>
       <PageHead homepage={router.route === "/" ? true : false}>
