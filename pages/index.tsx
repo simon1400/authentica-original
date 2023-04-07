@@ -11,7 +11,6 @@ import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
 import HeadMarkdown from 'components/HeadMarkdown';
 import SectionSlider from 'components/Slider';
-import Head from 'next/head';
 
 // @ts-ignore
 export async function getServerSideProps({locale}) {

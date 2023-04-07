@@ -1,6 +1,6 @@
 import { Container } from "@mui/material"
 import { FC, ReactChild, useEffect, useRef, useState } from "react"
-import { ContainerScroll, ContentScroll, ItemScroll, Scroll } from "./styled"
+import { ContainerScroll, ContentScroll, Scroll } from "./styled"
 
 interface IScrollSection {
   height: string;

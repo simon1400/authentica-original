@@ -41,13 +41,6 @@ const MyApp: FC<MyAppProps> = (props) => {
                 hrefLang={item.locale} 
                 href={`${process.env.APP_DOMAIN}${item.locale !== 'cs' ? `/${item.locale}` : ''}${item.slug}`} />)}
           </Head>
-          {/* <Script id="show-banner">
-            {`var __LMC_CAREER_WIDGET__ = {
-              apiKey: '35047211e51826f10cecaafe0f662c789f93f7a6eeca9280873e27b782c8b429',
-              widgetId: '240b4ea9-6a25-45e1-b0eb-2e93be3b0989',
-              selector: '#capybara'
-            };`}
-          </Script> */}
           <Script id="google-analytics" strategy="afterInteractive">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -56,8 +49,7 @@ const MyApp: FC<MyAppProps> = (props) => {
               })(window,document,'script','dataLayer','GTM-W9NKJGR');`}
           </Script>
           <Script id="Cookiew consent" type="text/javascript" src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.8.0/dist/cookieconsent.js" />
-          {/* <Script id="Career widget" type="text/javascript" async defer src="https://snippet.capybara.lmc.cz/js/widget-3.x.x.min.js" /> */}
-          <Header backgroundAbsolute={pageProps.bgHeaderAbsolute} />
+          <Header localization={pageProps?.localizations} backgroundAbsolute={pageProps.bgHeaderAbsolute} />
           <Component {...pageProps} />
           <Footer data={pageProps.footer}/>
           <CookieConsent />

@@ -9,19 +9,18 @@ const lang = [
   {label: "de", value: 'de'},
 ]
 
-const Lang: FC = () => {
+const Lang: FC<{localization: any[]}> = ({localization}) => {
 
   const router = useRouter()  
   
   return (
     <Nav>
       <ul>
-        {lang.map((item, idx) => 
-          <li key={idx} className={router.locale === item.value ? 'active' : undefined}>
-            <Link href="/" locale={item.value}>
-              {item.label}
-            </Link>
-          </li>)}
+        {lang.map((item, idx) => <li key={idx} className={router.locale === item.value ? 'active' : undefined}>
+          <Link href={localization.findIndex(itemLocale => itemLocale.locale === item.value) >= 0 ? router.asPath : "/"} locale={item.value}>
+            {item.label}
+          </Link>
+        </li>)}
       </ul>
     </Nav>
   )

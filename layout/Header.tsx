@@ -17,10 +17,12 @@ import LogoIcon from '../public/assets/logo.svg'
 
 interface HeaderProps {
   backgroundAbsolute?: string;
+  localization: any[];
 }
 
 const Header: FC<HeaderProps> = ({
-  backgroundAbsolute = "#ffffff"
+  backgroundAbsolute = "#ffffff",
+  localization
 }) => {
 
   const media = useMediaQuery("(max-width:1200px)")
@@ -73,7 +75,7 @@ const Header: FC<HeaderProps> = ({
             </Link>
           </div>
           <Grow />
-          <Lang />
+          <Lang localization={localization}/>
 
           <Hamburger 
             open={menu} 
