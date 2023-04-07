@@ -50,7 +50,7 @@ const AnimLink: FC<IAnimLink> = ({item, idx}) => {
 
   return (
     <animated.div style={props} onMouseEnter={() => hoverOn()} onMouseLeave={() => hoverOut()}>
-      <Link href={"/"+item.article.data?.attributes?.slug} passHref>
+      <Link style={{color: "black", textDecoration: "none"}}href={"/"+item.article.data?.attributes?.slug} passHref>
         <Head variant='h1'>
           <span>{item.Text}</span>
           {!mediaXs && <Lottie 

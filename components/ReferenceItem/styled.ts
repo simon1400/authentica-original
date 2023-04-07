@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import { darken, Typography } from '@mui/material';
+import Link from "next/link";
 
 
 interface AnchorProps {
@@ -7,7 +8,7 @@ interface AnchorProps {
   bg: string;
 }
 
-export const ReferenceItemComponent = styled.a<AnchorProps>(({small, bg}) => `
+export const ReferenceItemComponent = styled(Link)<AnchorProps>(({small, bg}) => `
   height: ${small ? '442px' : '900px'};
   background-color: ${bg};
   padding: ${small ? '40px 50px' : '60px'};

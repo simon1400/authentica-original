@@ -18,7 +18,7 @@ const Tags: FC<ITags> = ({
       <ul>
         {data.map((item ,index) => <li key={index}>
           <Link href={'/'+item.attributes.slug} passHref>
-            <a>{removeMarkdown(item.attributes.title)}</a>
+            {removeMarkdown(item.attributes.title)}
           </Link>
         </li>)}
       </ul>

@@ -37,10 +37,8 @@ const FooterLayout: FC<IFooter> = ({
     <Footer>
       <Content>
         <Typography color="white" variant="body2" marginBottom={mediaXs ? 6 : 12}>{data.subTitle}</Typography>
-        <Link href={'mailto:'+data.link}>
-          <a className="" target="_blank">
-            <Head color="white" variant="h2">{data.title}</Head>
-          </a>
+        <Link href={'mailto:'+data.link} target="_blank" passHref>
+          <Head color="white" variant="h2">{data.title}</Head>
         </Link>
         <Label>MEMBER OF AUTHENTICA GROUP</Label>
       </Content>

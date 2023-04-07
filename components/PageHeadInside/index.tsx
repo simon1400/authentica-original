@@ -47,7 +47,7 @@ const PageHeadInside: FC<IPageHeadeInside> = ({
         <Container>
           <Grid container spacing={18}>
             <Grid item xs={12} sm={8}>
-              <Typography variant='body1' component="div"><div dangerouslySetInnerHTML={{__html: content}}/></Typography>
+              <Typography variant='body1' component="div" dangerouslySetInnerHTML={{__html: content}} />
             </Grid>
             <Grid item xs={12} sm={4}>
               {!!tags.categories.length && <Tags title={t("category")} data={tags.categories} />}

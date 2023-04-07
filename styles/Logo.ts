@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const Logo = styled.a`
+const Logo = styled.div`
   height: 42px;
   display: flex;
   position: relative;

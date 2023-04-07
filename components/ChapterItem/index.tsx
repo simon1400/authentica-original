@@ -74,9 +74,8 @@ const ChapterItem: FC<ChapterProps> = ({
                 variant={contentBig ? "body1" : "body2"}
                 component="div"
                 marginBottom={12}
-              >
-                <div dangerouslySetInnerHTML={{ __html: content }} />
-              </Typography>
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
             )}
           </ContentWrap>
         </Container>

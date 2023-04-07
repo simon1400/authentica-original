@@ -19,7 +19,7 @@ const Lang: FC = () => {
         {lang.map((item, idx) => 
           <li key={idx} className={router.locale === item.value ? 'active' : undefined}>
             <Link href="/" locale={item.value}>
-              <a>{item.label}</a>
+              {item.label}
             </Link>
           </li>)}
       </ul>

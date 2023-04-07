@@ -13,7 +13,7 @@ const ContactItem: FC<ContactItem> = ({
   return(
     <ContactItemC>
       <Typography variant={level}>{data.title}</Typography>
-      <Typography variant="body2"><div dangerouslySetInnerHTML={{__html: data.content}} /></Typography>
+      <Typography variant="body2" component="div" dangerouslySetInnerHTML={{__html: data.content}} />
     </ContactItemC>
   )
 }
