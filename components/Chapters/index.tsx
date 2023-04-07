@@ -1,6 +1,5 @@
 import ChapterItem from "components/ChapterItem";
 import Numbers from "components/Numbers";
-import ScrollingSection from "components/ScrolingSection";
 import { FC } from "react"
 
 interface IChapters {
