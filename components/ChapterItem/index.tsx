@@ -82,8 +82,8 @@ const ChapterItem: FC<ChapterProps> = ({
       )}
       {!!images.length && (
         <Container maxWidth="xl">
-          {mediaXs && <SliderImg images={images} />}
-          {!mediaXs && <Grid
+          {mediaXs && column < 12 && <SliderImg images={images} />}
+          {(!mediaXs || column === 12) && <Grid
             container
             spacing={10}
             marginBottom={12}
