@@ -57,10 +57,10 @@ export async function getServerSideProps(ctx) {
         localizations
       }
     }
-  }else{
-    return {
-      notFound: true
-    }
+  }
+
+  return {
+    notFound: true
   }
 }
 
