@@ -6,6 +6,7 @@ import Map from "components/Map";
 import PageHead from "components/PageHead";
 import Page from "layout/Page";
 import { NextPage } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import contactQuery from "queries/contact";
 import { client } from "utility/graphql";
 
@@ -28,7 +29,8 @@ export async function getServerSideProps({locale}) {
     props: {
       data: contact,
       footer: contact.footer,
-      localizations
+      localizations,
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 }

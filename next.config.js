@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextTranslate = require('next-translate-plugin')
+const { i18n } = require('./next-i18next.config.js')
 
 const nextConfig = {
   reactStrictMode: true,
@@ -7,6 +7,7 @@ const nextConfig = {
     APP_API: process.env.NODE_ENV === "production" ? "https://authentica-strapi.hardart.cz" : "https://authentica-strapi.hardart.cz",
     APP_DOMAIN: process.env.NODE_ENV === "production" ? "https://authentica.cz" : "http://localhost:3009"
   },
+  i18n,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -17,4 +18,4 @@ const nextConfig = {
   }
 }
 
-module.exports = nextTranslate(nextConfig)
+module.exports = nextConfig

@@ -6,6 +6,7 @@ import TabsNav from "components/TabsNav"
 import { IMeta } from "interfaces/meta"
 import Page from "layout/Page"
 import { NextPage } from "next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import {
   cariersQuery, 
   cariersCategoryQuery, 
@@ -50,7 +51,8 @@ export async function getServerSideProps({locale}) {
       posts: posts.vacancies.data,
       category: pageCategory.vacancyCategories.data,
       locale: locale,
-      localizations
+      localizations,
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 }

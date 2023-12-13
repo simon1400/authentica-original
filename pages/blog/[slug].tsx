@@ -7,6 +7,7 @@ import Page from "layout/Page"
 import { NextPage } from "next"
 import {postQuery} from "queries/posts"
 import { client } from "utility/graphql"
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 // @ts-ignore
 export async function getServerSideProps(ctx) {
@@ -35,7 +36,8 @@ export async function getServerSideProps(ctx) {
     props: {
       data: post,
       footer: post.footer,
-      localizations
+      localizations,
+      ...(await serverSideTranslations(ctx.locale, ['common'])),
     },
   };
 }

@@ -15,6 +15,7 @@ import {
 } from "queries/posts"
 import { useState } from "react"
 import { client } from "utility/graphql"
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 // @ts-ignore
 export async function getServerSideProps({locale}) {
@@ -49,7 +50,8 @@ export async function getServerSideProps({locale}) {
       posts: posts.blogs.data,
       category: pageCategory.blogCategories.data,
       locale: locale,
-      localizations
+      localizations,
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
 }

@@ -11,6 +11,7 @@ import { useState } from 'react';
 import VideoModal from 'components/VideoModal';
 import HeadMarkdown from 'components/HeadMarkdown';
 import SectionSlider from 'components/Slider';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 // @ts-ignore
 export async function getServerSideProps({locale}) {
@@ -32,7 +33,8 @@ export async function getServerSideProps({locale}) {
     props: {
       data: homepage,
       footer: homepage.footer,
-      localizations
+      localizations,
+      ...(await serverSideTranslations(locale, ['common'])),
     },
   };
   

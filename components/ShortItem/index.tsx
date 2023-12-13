@@ -4,6 +4,8 @@ import Image from "components/Image";
 import { IImage } from "interfaces/image";
 import { FC } from "react"
 import ImageSquare from "styles/ImageSquare"
+import { useTranslation } from 'next-i18next';
+import { useRouter } from "next/router";
 
 interface IShortItem {
   content: string;
@@ -20,6 +22,10 @@ const ShortItem: FC<IShortItem> = ({
   title,
   prefix
 }) => {
+
+  const { t } = useTranslation("common")
+  const router = useRouter()
+
   return (
     <Container>
       <Grid container rowSpacing={{xs: 4, md: 16}} columnSpacing={{xs: 4, md: 16}} marginBottom={12}>
@@ -31,7 +37,7 @@ const ShortItem: FC<IShortItem> = ({
         <Grid item xs={12} sm={8}>
           <HeadMarkdown lavel="h3" marginBottom={8} title={title} />
           <Typography variant="body2" marginBottom={6} component="div" dangerouslySetInnerHTML={{__html: content}} />
-          <Button href={`/${prefix}/${slug}`} disableRipple>Zjistěte  více</Button>
+          <Button href={`${router.locale !== "cs" ? "/"+router.locale : ""}/${prefix}/${slug}`} disableRipple>{t("readMore")}</Button>
         </Grid>
       </Grid>
     </Container>

@@ -1,4 +1,5 @@
 import { NextPage } from "next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import articleQuery from "queries/article";
 import referenceQuery from "queries/reference";
 import { client } from "utility/graphql";
@@ -30,7 +31,8 @@ export async function getServerSideProps(ctx) {
       props: {
         data: article,
         footer: article.footer,
-        localizations
+        localizations,
+        ...(await serverSideTranslations(ctx.locale, ['common'])),
       }
     }
   }

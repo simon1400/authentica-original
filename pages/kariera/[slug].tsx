@@ -4,6 +4,7 @@ import PageHead from "components/PageHead"
 import { IMeta } from "interfaces/meta";
 import Page from "layout/Page"
 import { NextPage } from "next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import {carierQuery} from "queries/cariers";
 import { client } from "utility/graphql";
 
@@ -33,7 +34,8 @@ export async function getServerSideProps(ctx) {
     props: {
       data: vacancy,
       footer: vacancy.footer,
-      localizations
+      localizations,
+      ...(await serverSideTranslations(ctx.locale, ['common'])),
     },
   };
 }
