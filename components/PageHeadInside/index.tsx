@@ -1,6 +1,6 @@
 import { Container, Grid, Typography } from "@mui/material"
 import Tags from "components/Tags"
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from 'next-i18next';
 import { FC } from "react"
 import { Bottom, Top, WrapPageImg } from "./styles"
 

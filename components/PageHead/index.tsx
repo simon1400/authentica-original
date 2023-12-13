@@ -5,7 +5,7 @@ import { PageHead } from "./styles";
 
 import { useRouter } from "next/router";
 import HeadMarkdown from "components/HeadMarkdown";
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import AnimLink from "components/AnimLink";
 import SymbolSVG from "components/Symbol";
 

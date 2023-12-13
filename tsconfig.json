@@ -25,7 +25,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "i18n.js", "components/CookieConsent/index.ts"  ],
+, "next-i18next.config.js", "components/CookieConsent/index.ts"  ],
   "exclude": [
     "node_modules"
   ]
