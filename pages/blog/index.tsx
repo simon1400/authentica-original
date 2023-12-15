@@ -13,9 +13,10 @@ import {
   postsPageQuery,
   postsFilterQuery
 } from "queries/posts"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { client } from "utility/graphql"
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from "next/router"
 
 // @ts-ignore
 export async function getServerSideProps({locale}) {
@@ -81,6 +82,8 @@ const Posts: NextPage<IPosts> = ({
 
   const [getPosts] = useLazyQuery(postsFilterQuery)
 
+  const router = useRouter()
+
   const handleFilter = async (slug: string) => {
     if(slug === 'all') {
       setFilterPosts(posts)
@@ -94,6 +97,10 @@ const Posts: NextPage<IPosts> = ({
       setFilterPosts(res.data.blogs.data)      
     }
   }
+
+  useEffect(() => {
+    setFilterPosts(posts)
+  }, [router.locale])
 
   return (
     <Page

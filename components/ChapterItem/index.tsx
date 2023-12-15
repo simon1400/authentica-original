@@ -93,7 +93,7 @@ const ChapterItem: FC<ChapterProps> = ({
               <Grid key={index} item sm={column} md={column} xs={12}>
                 {column < 12 && (
                   <ImageSquare>
-                    <Image image={item} format="&resize=440x440" alt="" />
+                    <Image image={item} format="&resize=700x700" alt="" />
                   </ImageSquare>
                 )}
                 {column === 12 && (
