@@ -81,6 +81,7 @@ const SectionSlider: FC<ISectionSlider> = ({
   const settings = infinite ? settingsInfinite : settingsBase
 
   return (
+    // @ts-ignore
     <Slider {...settings}>
       {!infinite && !mediaXs && <div style={{width: "25vw"}}></div>}
       {children}
