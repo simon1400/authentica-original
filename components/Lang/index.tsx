@@ -17,7 +17,7 @@ const Lang: FC<{ localization: { slug: string; locale: string }[] }> = ({
   return (
     <Nav>
       <ul>
-        {lang.map((item, idx) => {
+        {localization?.length && lang.map((item, idx) => {
           const slugLocale = localization.find((itemLocale) => itemLocale.locale === item.value)
           return (
             <li
