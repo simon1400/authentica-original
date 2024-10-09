@@ -33,6 +33,8 @@ const Chapters: FC<IChapters> = ({
       return <Numbers key={index} data={item.number} />
     }else if(item.__typename === strCE+"Reference") {      
       return <ChapterItem key={index} smallReference={true} items={item.references.data} />
+    }else if(item.__typename === strCE+"Video") {      
+      return <ChapterItem key={index} videoUrl={item.videoUrl} />
     }
     return null
   })

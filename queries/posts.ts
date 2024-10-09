@@ -79,6 +79,9 @@ export const postQuery = gql`
             ... on ComponentElementHead{
               title
             }
+            ... on ComponentElementVideo{
+              videoUrl
+            }
             ... on ComponentElementImages{
               images{
                 data{

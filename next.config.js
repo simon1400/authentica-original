@@ -4,7 +4,7 @@ const { i18n } = require('./next-i18next.config.js')
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    APP_API: process.env.NODE_ENV === "production" ? "https://authentica-strapi.hardart.cz" : "https://authentica-strapi.hardart.cz",
+    APP_API: process.env.NODE_ENV === "production" ? "https://authentica-strapi.hardart.cz" : "http://localhost:1340",
     APP_DOMAIN: process.env.NODE_ENV === "production" ? "https://authentica.cz" : "http://localhost:3009"
   },
   i18n,

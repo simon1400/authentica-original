@@ -23,6 +23,7 @@ interface IButtonInfo {
 interface ChapterProps {
   content?: string;
   head?: string;
+  videoUrl?:string;
   items?: any[];
   images?: any[];
   buttonVariant?: ButtonProps["variant"];
@@ -30,12 +31,12 @@ interface ChapterProps {
   contentBig?: boolean;
   smallLevel?: boolean;
   smallReference?: boolean;
-  categoryItems?: boolean;
 }
 
 const ChapterItem: FC<ChapterProps> = ({
   content = "",
   head = "",
+  videoUrl = "",
   items = [],
   images = [],
   button = {},
@@ -43,7 +44,6 @@ const ChapterItem: FC<ChapterProps> = ({
   contentBig = false,
   smallLevel = false,
   smallReference = false,
-  categoryItems = false,
 }) => {
   const [column, setColumn] = useState(0);
 
@@ -130,6 +130,9 @@ const ChapterItem: FC<ChapterProps> = ({
           </Button>
         </Container>
       )}
+      <Container>
+        {!!videoUrl.length && <iframe className={'video-content'} width="100%" src={`https://www.youtube.com/embed/${videoUrl}`} title="Authentica video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />}
+      </Container>
     </section>
   );
 };

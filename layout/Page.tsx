@@ -2,6 +2,9 @@ import { useState, FC } from 'react';
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import PageProps from 'interfaces/page';
+import { Popup } from './Modal';
+import Cookies from 'js-cookie'
+import { useOnMountUnsafe } from 'utility/useOnMountUnsafe';
 
 const Page: FC<PageProps> = ({
   children,
@@ -20,6 +23,22 @@ const Page: FC<PageProps> = ({
   ogTitle = '',
   ogDescription = '',
 }) => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCloseModal = (url?: string, e?: any) => {
+    if(e){
+      e.preventDefault()
+    }
+    setOpenModal(false)
+    Cookies.set('popup', 'Popup was show', { expires: 1 })
+    if(url) {
+      router.push(url)
+    }
+  }
+
+  const handleOpenModal = () => {
+    setOpenModal(true)
+  }
 
   const router = useRouter()
   const global = {
@@ -33,7 +52,7 @@ const Page: FC<PageProps> = ({
     gtm: ''
   }
   
-  const [meta, setMeta] = useState({
+  const [meta] = useState({
     title: title || null,
     description: description || null,
     image: {
@@ -44,6 +63,13 @@ const Page: FC<PageProps> = ({
   const theTitle = meta.title ? (meta.title + global.defaultSep + global.defaultTitle) : global.defaultTitle;
   const theDescription = meta.description ? meta.description : global.defaultDescription;
   const theImage = image ? image : global.defaultImage;
+
+  useOnMountUnsafe(() => {
+    const popup = Cookies.get('popup');
+    if(popup === undefined && router.asPath !== '/blog/nova-vizualni-identita-authentica' && router.asPath !== '/en/blog/new-visual-identity-authentica') {
+      handleOpenModal()
+    }
+  })
 
   return (
     <>
@@ -94,6 +120,7 @@ const Page: FC<PageProps> = ({
 
       </Head>
       <main id={id} style={{paddingBottom: "100px", zIndex: "10", background: "white"}} className={className}>{children}</main>
+      <Popup open={openModal} handleClose={handleCloseModal}  />
     </>
   );
 }

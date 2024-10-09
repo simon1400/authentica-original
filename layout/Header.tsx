@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
-import { Container, useMediaQuery } from "@mui/material"
+import { Container } from "@mui/material"
 import Hamburger from "components/Hamburger";
 import Lang from "components/Lang";
 import Nav from "components/Nav";
@@ -13,7 +13,7 @@ import { Grow } from "styles/Grow";
 import Logo from "styles/Logo";
 import TopNav from "styles/TopNav";
 import { checkColor } from "utility/checkColor";
-import LogoIcon from '../public/assets/logo.svg'
+import LogoIcon from '../public/assets/logo-black.svg'
 
 interface HeaderProps {
   backgroundAbsolute?: string;
@@ -25,7 +25,6 @@ const Header: FC<HeaderProps> = ({
   localization
 }) => {
 
-  const media = useMediaQuery("(max-width:1200px)")
   const route = useRouter()
 
   const { loading, error, data } = useQuery(topNavQuery, {
