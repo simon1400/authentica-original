@@ -29,10 +29,10 @@ export const Popup = ({open, handleClose}: {open: boolean, handleClose: (url?: s
 
   useOnMountUnsafe(() => {
     if(router.locale === 'cs') {
-      setUrl('/blog/nova-vizualni-identita-authentica')
+      setUrl('https://authentica.cz/blog/nova-vizualni-identita-authentica')
       setImgUrl('/assets/Pop-up-na-web_CZ_2.jpg')
     }else if(router.locale === 'en'){
-      setUrl('/en/blog/new-visual-identity-authentica')
+      setUrl('https://authentica.cz/en/blog/new-visual-identity-authentica')
       setImgUrl('/assets/Pop-up-na-web_EN_2.jpg')
     }else if(router.locale === 'de') {
       setUrl('https://authentica.cz/en/blog/new-visual-identity-authentica')
@@ -48,7 +48,7 @@ export const Popup = ({open, handleClose}: {open: boolean, handleClose: (url?: s
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <span className={'close-icon-popup'}><CloseIcon onClick={() => handleClose(url)}/></span>
+        <span className={'close-icon-popup'}><CloseIcon onClick={() => handleClose()}/></span>
         <Link href={url} onClick={(e) => handleClose(url, e)} className={'baner-popup'}>
           <Image src={imgUrl} fill alt="Popup Cz" />
         </Link>

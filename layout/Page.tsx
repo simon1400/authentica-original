@@ -26,6 +26,7 @@ const Page: FC<PageProps> = ({
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseModal = (url?: string, e?: any) => {
+    console.log(url)
     if(e){
       e.preventDefault()
     }
