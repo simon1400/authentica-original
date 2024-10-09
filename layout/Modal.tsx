@@ -31,8 +31,11 @@ export const Popup = ({open, handleClose}: {open: boolean, handleClose: (url?: s
     if(router.locale === 'cs') {
       setUrl('/blog/nova-vizualni-identita-authentica')
       setImgUrl('/assets/Pop-up-na-web_CZ_2.jpg')
-    }else{
+    }else if(router.locale === 'en'){
       setUrl('/en/blog/new-visual-identity-authentica')
+      setImgUrl('/assets/Pop-up-na-web_EN_2.jpg')
+    }else if(router.locale === 'de') {
+      setUrl('https://authentica.cz/en/blog/new-visual-identity-authentica')
       setImgUrl('/assets/Pop-up-na-web_EN_2.jpg')
     }
   })
