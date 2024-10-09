@@ -25,15 +25,14 @@ const Page: FC<PageProps> = ({
 }) => {
   const [openModal, setOpenModal] = useState(false);
 
-  const handleCloseModal = (url?: string, e?: any) => {
-    console.log(url)
+  const handleCloseModal = (url?: string, lang?: string, e?: any, ) => {
     if(e){
       e.preventDefault()
     }
     setOpenModal(false)
     Cookies.set('popup', 'Popup was show', { expires: 1 })
     if(url) {
-      router.push(url)
+      router.push(url, url, {locale: lang})
     }
   }
 

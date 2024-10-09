@@ -21,22 +21,26 @@ const style = {
 };
 
 
-export const Popup = ({open, handleClose}: {open: boolean, handleClose: (url?: string, e?: any) => void}) => {
+export const Popup = ({open, handleClose}: {open: boolean, handleClose: (url?: string, lang?: string, e?: any) => void}) => {
 
   const [url, setUrl] = useState<string>('/blog/nova-vizualni-identita-authentica')
   const [imgUrl, setImgUrl] = useState<string>('/assets/Pop-up-na-web_CZ_2.jpg')
+  const [lang, setLang] = useState<string>('cs')
   const router = useRouter()
 
   useOnMountUnsafe(() => {
     if(router.locale === 'cs') {
-      setUrl('https://authentica.cz/blog/nova-vizualni-identita-authentica')
+      setUrl('/blog/nova-vizualni-identita-authentica')
       setImgUrl('/assets/Pop-up-na-web_CZ_2.jpg')
+      setLang('cs')
     }else if(router.locale === 'en'){
-      setUrl('https://authentica.cz/en/blog/new-visual-identity-authentica')
+      setUrl('/blog/new-visual-identity-authentica')
       setImgUrl('/assets/Pop-up-na-web_EN_2.jpg')
+      setLang('en')
     }else if(router.locale === 'de') {
-      setUrl('https://authentica.cz/en/blog/new-visual-identity-authentica')
+      setUrl('/blog/new-visual-identity-authentica')
       setImgUrl('/assets/Pop-up-na-web_EN_2.jpg')
+      setLang('en')
     }
   })
 
@@ -49,7 +53,7 @@ export const Popup = ({open, handleClose}: {open: boolean, handleClose: (url?: s
     >
       <Box sx={style}>
         <span className={'close-icon-popup'}><CloseIcon onClick={() => handleClose()}/></span>
-        <Link href={url} onClick={(e) => handleClose(url, e)} className={'baner-popup'}>
+        <Link href={url} onClick={(e) => handleClose(url, lang, e)} className={'baner-popup'}>
           <Image src={imgUrl} fill alt="Popup Cz" />
         </Link>
       </Box>
