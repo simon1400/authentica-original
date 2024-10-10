@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 const Logo = styled.div`
-  height: 42px;
+  height: 60px;
   display: flex;
   position: relative;
   z-index: 105;
