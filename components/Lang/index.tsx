@@ -28,7 +28,7 @@ const Lang: FC<{ localization: { slug: string; locale: string }[] }> = ({
                 replace
                 href={
                   slugLocale
-                    ? "/" + slugLocale.slug
+                    ? slugLocale.slug
                     : "/"
                 }
                 locale={item.value}
